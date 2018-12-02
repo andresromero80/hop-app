@@ -29,3 +29,14 @@
 
 <%= link_to 'Edit', edit_trade_path(@trade) %> |
 <%= link_to 'Back', trades_path %>
+
+<div>
+	<% if user_signed_in? && current_user.id != @trade.user_id %>
+      <%= link_to "Message #{@trade.user.email}", conversations_path(sender_id: current_user.id, recipient_id: @trade.user.id), method: 'post', class:"button is-link" %>
+    <% elsif user_signed_in? && current_user.id == @trade.user_id  %>
+      <%= link_to "Conversations", conversations_path %>
+    <% else %>
+
+    <%= link_to "Sign up to message #{@trade.user.name}", new_user_registration_path %>
+    <% end %>
+</div>
