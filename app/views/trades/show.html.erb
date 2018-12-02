@@ -6,6 +6,18 @@
 </p>
 
 <p>
+	<% if @trade.images.attached? %>
+      <div class="columns is-multiline">
+        <% @trade.images.each do |image| %>
+          <div class="column is-one-third">
+            <%= image_tag image.variant(resize: "800x600>") %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @trade.description %>
 </p>

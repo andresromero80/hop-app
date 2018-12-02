@@ -1,0 +1,46 @@
+<nav class="colorlib-nav" role="navigation">
+	<div class="top-menu">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<div id="colorlib-logo">
+            <%= link_to "HOP", root_path, id:"colorlib-logo" %>
+          </div>
+				</div>
+				<div class="col-xs-10 text-right menu-1">
+					<ul>
+						<li class="active"><%= link_to "Home", root_path %></li>
+						<li class="has-dropdown">
+							<%= link_to "Trades", trades_path %>
+							<!-- <ul class="dropdown">
+								<li><a href="cart.html">Shipping Cart</a></li>
+								<li><a href="checkout.html">Checkout</a></li>
+							</ul> -->
+						</li>
+            <li class="has-dropdown">
+              <%= link_to "User", "#" %>
+              <ul class="dropdown">
+                <% unless user_signed_in? %>
+                  <li>
+                    <%= link_to "Log in", new_user_session_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Sign up", new_user_registration_path %>
+                  </li>
+                  <% else %>
+                    <li>
+                      <%= link_to "Edit", edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Profil", "#" %>
+                  </li>
+                  <li>
+                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                  </li>
+                  <% end %>
+              </ul>
+			      </div>
+		       </div>
+	        </div>
+        </div>
+</nav>
