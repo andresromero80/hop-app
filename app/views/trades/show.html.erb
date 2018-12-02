@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @trade.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @trade.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @trade.user %>
+</p>
+
+<%= link_to 'Edit', edit_trade_path(@trade) %> |
+<%= link_to 'Back', trades_path %>
