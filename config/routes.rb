@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'customer/signup'
+  get 'customer/login'
   # get 'messages/index'
   # get 'conversations/index'
 
