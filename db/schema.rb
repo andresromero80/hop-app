@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
   end
 
   create_table "categories_products", id: false, force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "product_id", null: false
-    t.index ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id"
-    t.index ["product_id", "category_id"], name: "index_categories_products_on_product_id_and_category_id"
+    t.bigint "category_id"
+    t.bigint "product_id"
+    t.index ["category_id"], name: "index_categories_products_on_category_id"
+    t.index ["product_id"], name: "index_categories_products_on_product_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories_products", "categories"
+  add_foreign_key "categories_products", "products"
   add_foreign_key "inventories", "users"
   add_foreign_key "products", "inventories"
   add_foreign_key "trades", "users"
