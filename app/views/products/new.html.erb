@@ -1,4 +1,6 @@
   <%= form_for @product do |f| %>
+	  <%= f.label :uploads %>
+	  <%= f.file_field :uploads, multiple: true %>
 
 	  <%= f.label :short_desc %>
 	  <%= f.text_field :short_desc %>
