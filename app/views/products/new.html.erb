@@ -2,6 +2,9 @@
 	  <%= f.label :uploads %>
 	  <%= f.file_field :uploads, multiple: true %>
 
+	
+		<%= f.collection_select(:categories, @categories, :id, :name, {}, :multiple => true) %>
+
 	  <%= f.label :short_desc %>
 	  <%= f.text_field :short_desc %>
 
