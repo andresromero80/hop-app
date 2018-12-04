@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  short_desc: MyString
+  long_desc: MyString
+  brand: MyString
+  available: false
+  inventory: one
+  category: one
+
+two:
+  short_desc: MyString
+  long_desc: MyString
+  brand: MyString
+  available: false
+  inventory: two
+  category: two
