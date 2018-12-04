@@ -1,0 +1,176 @@
+#carousel-area {
+  overflow: hidden;
+  background: #2c3e50;
+  position: relative;
+  /*
+			WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+			now override the 3.3 new styles for modern browsers & apply opacity
+			*/
+}
+#carousel-area .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+#carousel-area .carousel-inner .active {
+  opacity: 1;
+}
+#carousel-area .carousel-inner .active.left,
+#carousel-area .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+#carousel-area .carousel-inner .next.left,
+#carousel-area .carousel-inner .prev.right {
+  opacity: 1;
+}
+#carousel-area .carousel-control {
+  z-index: 2;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+  #carousel-area .carousel-inner > .item.next,
+  #carousel-area .carousel-inner > .item.active.right {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  #carousel-area .carousel-inner > .item.prev,
+  #carousel-area .carousel-inner > .item.active.left {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  #carousel-area .carousel-inner > .item.next.left,
+  #carousel-area .carousel-inner > .item.prev.right,
+  #carousel-area .carousel-inner > .item.active {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+#carousel-area .item {
+  background-size: 100%;
+  background-size: cover;
+  height: 560px;
+}
+#carousel-area .item .carousel-caption {
+  top: 27%;
+  right: 10%;
+  left: 10%;
+  text-shadow: none;
+}
+#carousel-area .item .carousel-caption h2 {
+  line-height: 94px;
+  margin: 0px 0px 5px;
+  padding: 0px;
+  letter-spacing: 2px;
+  font-size: 42px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+#carousel-area .item .carousel-caption h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+#carousel-area .item .carousel-caption .btn {
+  margin: 30px 15px;
+}
+#carousel-area .active {
+  opacity: 1;
+}
+#carousel-area .active.left,
+#carousel-area .active.right {
+  left: 0;
+  z-index: 1;
+}
+#carousel-area .carousel-control {
+  z-index: 10;
+  width: 90px;
+  height: 55px;
+  top: 55%;
+  padding: 10px 5px;
+  box-shadow: none;
+  background-image: none;
+  margin-top: -35px;
+  text-shadow: none;
+}
+#carousel-area .carousel-control i {
+  border-radius: 100%;
+  border: 2px solid #fff;
+  width: 50px;
+  height: 50px;
+  padding: 15px;
+}
+#carousel-area .carousel-control i:hover {
+  background: #3498db;
+}
+#carousel-area .left.carousel-control {
+  left: 5%;
+}
+#carousel-area .right.carousel-control {
+  right: 5%;
+}
+#carousel-area .carousel-indicators {
+  bottom: 45px;
+}
+#carousel-area .carousel-indicators li {
+  border-radius: 4px;
+  width: 40px;
+  height: 8px;
+  margin: 0 5px;
+}
+#carousel-area .carousel-indicators li:hover,
+#carousel-area .carousel-indicators li.active {
+  opacity: 1.0;
+}
+#carousel-area:hover .carousel-control {
+  display: block;
+}
+#carousel-area i {
+  margin-right: 10px;
+}
+#hero-area {
+  background: url(../img/bg/bg1.jpg) no-repeat;
+  background-size: cover;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+#hero-area .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.6);
+}
+#hero-area .contents {
+  padding: 160px 0 210px;
+}
+#hero-area .contents .head-title {
+  font-size: 50px;
+  font-weight: 300;
+  color: #fff;
+  white-space: nowrap;
+  line-height: 58px;
+  margin-bottom: 15px;
+}
+#hero-area .contents p {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 26px;
+}
+#search-bg-color {
+  margin-top: 40px;
+  top: 0;
+  z-index: 99;
+}
+#search-bg-color .search-bar {
+  background: rgba(151, 151, 151, 0.33);
+}
+#search-bg-color .search-bar .form-group {
+  margin: 0;
+}
