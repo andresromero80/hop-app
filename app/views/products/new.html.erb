@@ -1,0 +1,16 @@
+  <%= form_for @product do |f| %>
+
+	  <%= f.label :short_desc %>
+	  <%= f.text_field :short_desc %>
+
+	  <%= f.label :long_desc %>
+	  <%= f.text_field :long_desc %>
+
+	  <%= f.label :brand %>
+	  <%= f.text_field :brand %>
+
+	  <%= f.label :state %>
+	  <%= f.select :state, @states %>
+
+	  <%= f.submit %>
+  <% end %>
