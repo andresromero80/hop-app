@@ -3,3 +3,166 @@
 <%= render 'form', trade: @trade %>
 
 <%= link_to 'Back', trades_path %>
+
+<!-- Content section Start -->
+  <section id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+          <div class="page-ads box">
+            <h2 class="title-2">Post A Free Classified Ad</h2><!-- Start Search box -->
+            <div class="row search-bar mb30 red-bg">
+              <div class="advanced-search">
+                <form class="search-form" method="get">
+                  <div class="col-md-4 col-sm-12 search-col">
+                    <div class="input-group-addon search-category-container">
+                      <label class="styled-select"><span class="hidden-sm hidden-xs">Category </span><select class="dropdown-product selectpicker" name="product-cat">
+                        <option value="items-for-sale">
+                          Gadgets
+                        </option>
+                        <option value="real_estate">
+                          Real Estate
+                        </option>
+                        <option value="services">
+                          Services
+                        </option>
+                        <option value="vehicles">
+                          Vehicles
+                        </option>
+                        <option value="jobs">
+                          Jobs
+                        </option>
+                        <option class="subitem" value="community">
+                          Community
+                        </option>
+                        <option value="personals">
+                          Personals
+                        </option>
+                        <option value="training">
+                          Training
+                        </option>
+                      </select></label>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12 search-col">
+                    <div class="input-group-addon search-category-container">
+                      <label class="styled-select location-select"><span class="hidden-sm hidden-xs">Location </span><select class="dropdown-product selectpicker" name="product-cat">
+                        <option value="New York">
+                          New York
+                        </option>
+                        <option value="California">
+                          California
+                        </option>
+                        <option value="Washington">
+                          Washington
+                        </option>
+                        <option value="churches">
+                          Birmingham
+                        </option>
+                        <option value="Birmingham">
+                          Chicago
+                        </option>
+                        <option value="Phoenix">
+                          Phoenix
+                        </option>
+                      </select></label>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12 search-col">
+                    <div class="input-group-addon search-category-container">
+                      <label class="styled-select default-select"><span class="hidden-sm hidden-xs">Type </span><select class="dropdown-product selectpicker" name="product-cat">
+                        <option value="New York">
+                          Sell
+                        </option>
+                        <option value="California">
+                          Buy
+                        </option>
+                      </select></label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div><!-- End Search box -->
+            <form class="form-ad">
+              <div class="form-group mb30">
+                <label class="control-label">Ad title</label> <input class="form-control input-md" name="Adtitle" placeholder="Write a suitable title for your ad" required="" type="text"> <span class="help-block">A great title needs at least 60 characters.</span>
+              </div>
+              <div class="form-group mb30">
+                <label class="control-label" for="textarea">Describe ad</label> 
+                <textarea class="form-control" id="textarea" name="textarea" placeholder="Describe what makes your ad unique" rows="4"></textarea>
+              </div>
+              <div class="form-group mb30 clearfix">
+                <label class="control-label" for="textarea">Price</label>
+                <div class="form-inline">
+                  <div class="form-group col-md-3 col-sm-5 col-xs-12">
+                    <div class="input-group">
+                      <span class="input-group-addon addon">$</span><input class="form-control" id="price" placeholder="Item Price" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-12 checkbox form-control-static">
+                    <label><input type="checkbox"><span class="checkbox-material"></span>Negotiable</label>
+                  </div><!-- Start Search box -->
+                  <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
+                    <form class="search-form" method="get">
+                      <div class="input-group-addon search-category-container">
+                        <label class="styled-select default-select">or <select class="dropdown-product selectpicker" name="product-cat">
+                          <option value="New York">
+                            Alternative Options
+                          </option>
+                          <option value="California">
+                            By Deal
+                          </option>
+                          <option value="California">
+                            By Exchange
+                          </option>
+                          <option value="California">
+                            By Free
+                          </option>                          
+                        </select></label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <h2 class="title-2">Add Images to Your Ad</h2>
+              <div class="form-group">
+                <label class="control-label">Featured Image</label> <input class="file" id="featured-img" type="file"><br>
+                <br>
+                <label class="control-label">Other Images</label> <input class="file" data-show-preview="false" id="gallery-img-a" type="file"><br>
+                <input class="file" data-show-preview="false" id="gallery-img-b" type="file"><br>
+                <input class="file" data-show-preview="false" id="gallery-img-c" type="file"><br>
+                <input class="file" data-show-preview="false" id="gallery-img-d" type="file">
+              </div>
+              <p class="help-block">Add up to 4 photos. Use a real image of your product, not catalogs.</p>
+            </form>
+          </div>
+          <div class="mb30"></div>
+          <div class="box">
+          <h2 class="title-2">Your Contact Information</h2>
+          <div class="form-group">
+            <label class="control-label" for="textarea">Name</label> <input class="form-control" placeholder="Your Name" type="text">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="textarea">Email</label> <input class="form-control" placeholder="Your Email" type="text">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="textarea">Phone Number</label> <input class="form-control" placeholder="Phone Number" type="text">
+            <div class="checkbox">
+              <label><input type="checkbox"> <small>Hide the phone number on this ads.</small></label>
+            </div>
+            </div>
+          </div>
+          <div class="mb30"></div>
+          <div class="form-group">
+            <div class="page-ads box">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet porta eros, eget facilisis arcu. Duis condimentum fermentum enim, ac rutrum erat venenatis vel Morbi pharetra viverra faucibus.</p>
+              <div class="checkbox">
+                <label><input type="checkbox"> I agree to the <a href="#">Terms of Use</a></label>
+              </div><br>
+              <button class="btn btn-common" type="button">Submit for review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- Content section End -->
