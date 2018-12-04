@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @trade.title %>
+</p>
+
+<p>
+	<% if @trade.images.attached? %>
+      <div class="columns is-multiline">
+        <% @trade.images.each do |image| %>
+          <div class="column is-one-third">
+            <%= image_tag image.variant(resize: "800x600>") %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @trade.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @trade.user %>
+</p>
+
+<%= link_to 'Edit', edit_trade_path(@trade) %> |
+<%= link_to 'Back', trades_path %>
+
+<div>
+	<% if user_signed_in? && current_user.id != @trade.user_id %>
+      <%= link_to "Message #{@trade.user.email}", conversations_path(sender_id: current_user.id, recipient_id: @trade.user.id), method: 'post', class:"button is-link" %>
+    <% elsif user_signed_in? && current_user.id == @trade.user_id  %>
+      <%= link_to "Conversations", conversations_path %>
+    <% else %>
+
+    <%= link_to "Sign up to message #{@trade.user.name}", new_user_registration_path %>
+    <% end %>
+</div>
