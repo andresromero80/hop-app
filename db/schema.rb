@@ -66,8 +66,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
   end
 
   create_table "inventories", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
   create_table "loans", force: :cascade do |t|
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "inventory_id"
+    t.string "state"
     t.index ["inventory_id"], name: "index_products_on_inventory_id"
   end
 
@@ -127,6 +130,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "inventories", "users"
   add_foreign_key "products", "inventories"
   add_foreign_key "trades", "users"
   add_foreign_key "users", "addresses"
