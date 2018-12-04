@@ -11,15 +11,15 @@
               <span class="icon-bar"></span>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <div class="navbar-brand logo" href="index.html"><%= link_to "HOP", root_path, id:"colorlib-logo" %>HOP</div>
+            <div class="navbar-brand logo" href="index.html"><%= link_to "HOP", root_path, id:"colorlib-logo" %></div>
           </div>
           <!-- brand and toggle menu for mobile End -->
 
           <!-- Navbar Start -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-              <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li>
+              <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
+              <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
               <% unless user_signed_in? %>
                   <li>
                     <%= link_to "Log in", new_user_session_path %>
