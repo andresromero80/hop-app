@@ -6,6 +6,10 @@ class CategoriesController < ApplicationController
 		permitted = params.require(:category).permit(:name)
 	end
 
+	def index
+		@categories = Category.all
+	end
+
 	def show
 		@category = Category.find(params[:id])
 	end
