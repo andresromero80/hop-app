@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 	root to: "static_pages#index"
   get '/loans/ask/:id_loaner/:id_product', to: 'loans#loan_ask'
-  get 'inventories/show'
+  get '/my-inventory', to: 'inventories#show'
   
   resources :conversations do
     resources :messages
@@ -10,11 +10,14 @@ Rails.application.routes.draw do
 
   resources :trades, :products, :categories
   devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
+
   root to: "static_pages#index"
   get 'profile/account', to: 'profile#account'
   get 'profile/archives', to: 'profile#archives'
   get 'profile/favourites', to: 'profile#favourites'
   get 'profile/ads', to: 'profile#my_ads'
+  get '/profile/loan-requests-pending', to: 'profile#loan_requests_pending'
   get 'messages/index', to: 'messages#index'
-end
 
+  post '/products/search', to: 'searches#search'
+end

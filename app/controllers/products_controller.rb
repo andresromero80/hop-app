@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 	before_action :product_param, only: ['create']
 
 	def index
+		@products = Product.all
 	end
 	
 	def product_param
@@ -36,5 +37,7 @@ class ProductsController < ApplicationController
 				@product.categories << Category.find(c)
 			end
 		end
+
+		redirect_to '/my-inventory'
 	end
 end
