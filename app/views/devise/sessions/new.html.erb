@@ -22,7 +22,7 @@
                 Login
               </h3>
               <div role="form" class="login-form">
-                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="form-group">
                   <div class="input-icon">
                     <!-- <i class="icon fa fa-user"></i>
@@ -43,12 +43,12 @@
                   </div>
                 </div>                  
                 <div class="checkbox">
-                  <!-- <input type="checkbox" id="remember" name="rememberme" value="forever" style="float: left;"> -->
+                  <!-- <input type="checkbox" id="remember" name="rememberme" value="forever" style="float: left;"> 
                   <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                  <!-- <label for="remember">Remember me</label> -->
+                   <label for="remember">Remember me</label> -->
                 </div>
                 <!-- <button class="btn btn-common log-btn">Submit</button> -->
-                <%= f.button :submit, "Log in", class: 'btn btn-common log-btn' %>
+                <%= f.submit :submit, class: 'btn btn-common log-btn' %>
                 <% end %>
               </div>
               <%= render "devise/shared/links" %>

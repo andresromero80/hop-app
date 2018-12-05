@@ -35,6 +35,23 @@
                     <%= link_to "Messages", conversations_path %>
                   </li>
                   <li>
+                    <div class="dropdown-nav">
+                    <button class="dropbtn">
+                    <%= link_to "Profil", profile_account_path %></button>
+                    <ul class="dropdown-content">
+                      <li>
+                        <%= link_to "Archives", profile_archives_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Favourites", profile_favourites_path %>
+                      </li>
+                      <li>
+                        <%= link_to "My Ads", profile_ads_path %>
+                      </li>
+                    </ul>
+                    </div>        
+                  </li>
+                  <li>
                     <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                   </li>
                   <% end %>

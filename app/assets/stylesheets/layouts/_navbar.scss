@@ -1,0 +1,30 @@
+.dropdown-nav {
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(119, 119, 119);
+}
+
+.dropbtn {
+  border: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content li {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content li:hover {background-color: #f1f1f1}
+
+.dropdown-nav:hover .dropdown-content {
+  display: block;
+}
+
