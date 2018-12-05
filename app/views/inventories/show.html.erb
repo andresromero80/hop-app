@@ -1,6 +1,15 @@
+<nav id="inventory-navigation-bar" class="navbar">
+	<a href="/products/new"> Add a product to my inventory </a>
+</nav>
+
 <% @products.each do |p| %>
-	<div>
-		<%= p.title %>
+	<div id="product">
+		<p>
+			Title : <%= p.title %>
+		</p>
+		<% p.uploads.each do |u| %>
+			<%= image_tag u.variant(resize: "250x250") %>
+		<% end %>
 		<a href="/loans/ask/<%= @inventory.user_id %>/<%= p.id %>">Ask for loaning</a>
 	</div>
 <% end %>
