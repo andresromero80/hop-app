@@ -10,4 +10,10 @@ Rails.application.routes.draw do
 
   resources :trades, :products, :categories
   devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
+  root to: "static_pages#index"
+  get '/customer/signup'
+  get '/customer/login'
+  get '/profile/account', to: 'profile#account'
+  get 'messages/index', to: 'messages#index'
 end
+

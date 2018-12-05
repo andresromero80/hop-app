@@ -21,8 +21,8 @@
               <h3>
                 Login
               </h3>
-              <form role="form" class="login-form">
-                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div role="form" class="login-form">
+                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="form-group">
                   <div class="input-icon">
                     <!-- <i class="icon fa fa-user"></i>
@@ -50,7 +50,7 @@
                 <!-- <button class="btn btn-common log-btn">Submit</button> -->
                 <%= f.button :submit, "Log in", class: 'btn btn-common log-btn' %>
                 <% end %>
-              </form>
+              </div>
               <%= render "devise/shared/links" %>
               <ul class="form-links">
                 <li class="pull-left"><a href="signup.html">Don't have an account?</a></li>
