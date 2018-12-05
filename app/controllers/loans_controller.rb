@@ -6,7 +6,7 @@ class LoansController < ApplicationController
 	end 
 
 	def loan_ask
-		@loan = Loan.new
+		@loan_ask = LoanAsk.create(product_id: params[:id_product], loaner_id: params[:id_loaner], receiver_id: current_user.id)
 
     if Conversation.between(current_user.id, params[:id_loaner]).present?
       @conversation = Conversation.between(current_user.id, params[:id_loaner]).first
