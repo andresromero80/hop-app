@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 	before_action :product_param, only: ['create']
+	before_action :authenticate_user!
 
 	def index
 		@products = Product.all
@@ -11,6 +12,10 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@inventory = Inventory.find(@product.inventory_id)
+		@user = User.find(@inventory.user_id)
+		@users = User.all
+		@conversations = Conversation.all
 	end
 	
 	def new
