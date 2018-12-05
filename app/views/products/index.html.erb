@@ -1,0 +1,22 @@
+<!-- Card Presentation of Products -->
+<div class="card">
+  <div class="card-header">
+    <h3>Products</h3>
+  </div>
+</div>
+
+  <% @products.each.with_index do |product,ind| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">User No. <%= ind + 1%></h5>
+        <p class="card-text">
+          Title: <%= product.title %><br/>
+          Short Description: <%= product.short_desc %><br/>
+
+          <a href= <%= product_path(product.id) %> class ="btn btn-primary">Open product</a>
+
+          
+      
+      </div>
+    </div>
+  <% end %>  
