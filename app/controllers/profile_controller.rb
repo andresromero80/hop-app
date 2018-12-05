@@ -14,7 +14,9 @@ class ProfileController < ApplicationController
 	def my_ads
 	end
 
-	def pending_approval_ads
+	def loan_requests_pending
+		@requests_from_others = LoanAsk.find_by(loaner_id: current_user.id)
+		@my_asks = LoanAsk.find_by(receiver_id: current_user.id)
 	end
 
 	def saved_search
