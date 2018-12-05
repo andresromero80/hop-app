@@ -5,6 +5,9 @@
 	
 		<%= f.collection_select(:categories, @categories, :id, :name, {}, :multiple => true) %>
 
+	  <%= f.label :title %>
+	  <%= f.text_field :title %>
+
 	  <%= f.label :short_desc %>
 	  <%= f.text_field :short_desc %>
 
