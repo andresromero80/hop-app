@@ -1,2 +1,6 @@
-<h1>Inventories#show</h1>
-<p>Find me in app/views/inventories/show.html.erb</p>
+<% @products.each do |p| %>
+	<div>
+		<%= p.title %>
+		<a href="/loans/ask/<%= @inventory.user_id %>/<%= p.id %>">Ask for loaning</a>
+	</div>
+<% end %>

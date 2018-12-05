@@ -1,8 +1,11 @@
 class ProductsController < ApplicationController
 	before_action :product_param, only: ['create']
 
+	def index
+	end
+	
 	def product_param
-		params.require(:product).permit(:short_desc, :long_desc, :brand, :state, uploads: [])
+		params.require(:product).permit(:title, :short_desc, :long_desc, :brand, :state, uploads: [])
 	end
 
 	def show
