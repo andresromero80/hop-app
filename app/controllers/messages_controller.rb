@@ -28,8 +28,6 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new
   end
 
-
-
   private
 
     def message_params
