@@ -1,14 +1,82 @@
-<h1>Conversations#index</h1>
-<p>Find me in app/views/conversations/index.html.erb</p>
+    <!-- Start Content -->
+    
 
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 page-content">
+            <div class="inner-box">              
+              <h2 class="title-2">Boite de réception</h2>
+              <div class="table-responsive">
+                <div class="table-action">
+                  <div class="checkbox">
+                    <label for="checkAll">
+                      <input id="checkAll" type="checkbox">
+                      Select: All | <a href="#" class="btn btn-xs btn-danger">Delete <i class="fa fa-close"></i></a>
+                    </label>
+                  </div>
+                  <div class="table-search pull-right col-xs-7">
+                    <div class="form-group">
+                      <label class="col-xs-5 control-label text-right">Search <br>
+                        <a title="clear filter" class="clear-filter" href="#clear">[clear]</a> 
+                      </label>
+                      <div class="col-xs-7 searchpan">
+                        <input class="form-control" id="filter" type="text">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <table class="table table-striped table-bordered add-manage-table">
+                  <thead>
+                    <tr>
+                      <th data-type="numeric"></th>
+                      <th>Destinataire</th>
+                      <th>Objet</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="add-img-selector col-xs-12">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </div>
+                      </td>
+                      <td class="ads-details-td col-xs-12">
+                      <% @users.each do |user| %>
+                        <% if user.id != current_user.id %>
+                        <%= link_to "Message #{user.email}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post", class: 'table table-striped table-bordered add-manage-table' %>
+                        <% end %>
+                      <% end %>
+                      </td>
+                      <td class="action-td col-xs-12">
+                        <p> <a class="btn btn-info btn-xs"> <i class="fa fa-recycle"></i> Repost </a></p>
+                        <p> <a class="btn btn-danger btn-xs"> <i class=" fa fa-trash"></i> Delete </a></p>
+                      </td>
+                    </tr>
+                    
+                    </tr>
+                  </tbody>
+                </table>
+              </div>               
+            </div>
+          </div>
+        </div>  
+      </div>      
+    </div>
+    <!-- End Content -->
+
+<div class="container">
+  <div class="row">
+<div class="inner-box">
+<div class="table-responsive">
 <div class="columns">
   <div class="column is-3">
     <h3 class="title is-3">All Users</h3>
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-       <%= link_to "Message #{user.email}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %>
-      <% end %>
-    <% end %>
+    
   </div>
 
   <div class="column is-7">
@@ -31,4 +99,8 @@
       <% end %>
     <% end %>
   </div>
+</div>
+</div>
+</div>
+</div>
 </div>
