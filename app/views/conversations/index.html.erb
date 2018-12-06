@@ -1,6 +1,5 @@
     <!-- Start Content -->
     
-
     <div id="content">
       <div class="container">
         <div class="row">
@@ -91,8 +90,11 @@
         <% unless current_user.id == recipient %>
           <div class="columns">
             <div class="column">
-
-              <div class="inline-block"><%= link_to recipient.email, conversation_messages_path(conversation) %></div>
+                  <div class="inline-block">
+                    <%= link_to "From: #{User.find(conversation.sender_id).email},
+                                To: #{User.find(conversation.recipient_id).email}
+                     Product: #{Product.find(conversation.product_id).title}", product_conversation_messages_path(conversation, conversation.product_id) %>
+                  </div>
             </div>
           </div>
         <% end %>

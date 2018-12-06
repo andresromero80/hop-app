@@ -45,8 +45,6 @@
 </section>
 
 
-
-
     
       
 
@@ -81,10 +79,9 @@
                       <div class="col-md-12">
                         <div class="form-group"> 
                           <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
-                          <%= form_for [@conversation, @message] do |f| %>
+                          <%= form_for [@product, @conversation, @message] do |f| %>
                           <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
                           <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-                          <br>
                           <div class="text-align-right">
                           <%= f.submit "Send message", class: 'btn btn-common' %>
                           </div>

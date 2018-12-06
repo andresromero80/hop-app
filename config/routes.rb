@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   get '/loans/ask/:id_loaner/:id_product', to: 'loans#loan_ask'
   get '/my-inventory', to: 'inventories#show'
   
-  resources :conversations do
-    resources :messages
+  resources :products do
+    resources :conversations do
+      resources :messages
+    end
   end
 
-  resources :trades, :products, :categories
+  resources :trades, :categories
   devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
 
   root to: "static_pages#index"
@@ -20,4 +22,6 @@ Rails.application.routes.draw do
   get 'messages/index', to: 'messages#index'
 
   post '/products/search', to: 'searches#search'
+
+  get 'conversations', to: 'conversations#index'
 end

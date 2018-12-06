@@ -6,9 +6,11 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p><%= @product.long_desc %></p>
-      <footer class="blockquote-footer"> by: <%= @product.title %> <cite title="Source Title">on <%= @product.updated_at %></cite></footer>
+      <footer class="blockquote-footer"> by: <%= @user.email %> <cite title="Source Title">on <%= @product.updated_at %></cite></footer>
     </blockquote>
   </div>
 </div>
 
-<a href= "#" class="btn btn-default"> Demande de pret </a>
+ <% if @user.id != current_user.id %>
+       <%= link_to "Demande de pret #{@user.email}", product_conversations_path(sender_id: current_user.id, recipient_id: @user.id, product_id: @product.id), method: "post", class: "btn btn-default" %>
+ <% end %>
