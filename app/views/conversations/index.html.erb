@@ -1,15 +1,6 @@
 <h1>Conversations#index</h1>
 <p>Find me in app/views/conversations/index.html.erb</p>
 
-<div class="columns">
-  <div class="column is-3">
-    <h3 class="title is-3">All Users</h3>
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-       <%= link_to "Message #{user.email}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %>
-      <% end %>
-    <% end %>
-  </div>
 
   <div class="column is-7">
     <h3 class="title is-3">Conversations</h3>
@@ -23,8 +14,11 @@
         <% unless current_user.id == recipient %>
           <div class="columns">
             <div class="column">
-
-              <div class="inline-block"><%= link_to recipient.email, conversation_messages_path(conversation) %></div>
+                  <div class="inline-block">
+                    <%= link_to "From: #{User.find(conversation.sender_id).email},
+                                To: #{User.find(conversation.recipient_id).email}
+                     Product: #{Product.find(conversation.product_id).title}", product_conversation_messages_path(conversation, conversation.product_id) %>
+                  </div>
             </div>
           </div>
         <% end %>

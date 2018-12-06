@@ -1,17 +1,3 @@
-<!-- Container -->
-<div class="card">
-  <div class="card-header">
-    <h3><%= @product.title %></h3>
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p><%= @product.long_desc %></p>
-      <footer class="blockquote-footer"> by: <%= @product.title %> <cite title="Source Title">on <%= @product.updated_at %></cite></footer>
-    </blockquote>
-  </div>
-</div>
-
-<a href= "#" class="btn btn-default"> Demande de pret </a>
 
     <!-- Start Content -->
     <div id="content">
@@ -22,20 +8,24 @@
             <div class="col-sm-8">
               <div class="inner-box ads-details-wrapper">
                 <h2><%= @product.title %></h2>
-                <p class="item-intro"><span class="poster">For sale by <span class="ui-bubble is-member">John</span> <span class="date"> 20 Mar  2:27 am</span> from <span class="location">New York</span></p>
+                <footer class="blockquote-footer"> by: <%= @user.email %> <cite title="Source Title">on <%= @product.updated_at %></cite></footer></p>
+
+                <% if !@product.uploads.nil? %>
+                <% @product.uploads.each do |u| %>
                 <div id="owl-demo" class="owl-carousel owl-theme">
                     <div class="item">
-                      <img src="assets/img/productinfo/img1.jpg" alt="">
+                      <%= image_tag u.variant(resize: "250x250") %>
                     </div>
                     <div class="item">
-                      <img src="assets/img/productinfo/img2.jpg" alt="">
+                      <img src="assets/img/productinfo/djembe.jpg" alt="">
                     </div>
                     <div class="item">
-                      <img src="assets/img/productinfo/img3.jpg" alt="">
+                      <img src="assets/img/productinfo/djembe.jpg" alt="">
                     </div>
                 </div>
+                <% end %>
+              <% end %>
               </div>
-
               <div class="box">
                 <h2 class="title-2"><strong>Ad Details</strong></h2>
                   <div class="row">
@@ -51,21 +41,26 @@
                       <li><i class="fa fa-check-circle"></i> 13.3" Retina Display</li>
                       <li><i class="fa fa-check-circle"></i> Intect Box</li>
                       <li><i class="fa fa-check-circle"></i> 1 Year international warranty</li>
+
+                       <% if @user.id != current_user.id %>
+                      <%= link_to "Demande de pret #{@user.email}", product_conversations_path(sender_id: current_user.id, recipient_id: @user.id, product_id: @product.id), method: "post", class: "btn btn-default" %>
+                      <% end %>
+
                   </div>
                   <div class="col-md-4">
                     <aside class="panel panel-body panel-details">
                       <ul>
                         <li>
-                        <p class=" no-margin "><strong>Price:</strong> $1,245</p>
+                        <p class=" no-margin "><strong>Durée du prêt:</strong> de.. à..</p>
                         </li>
                         <li>
-                        <p class="no-margin"><strong>Type:</strong> <a href="#">Electronics</a>, <a href="#">For sale</a></p>
+                        <p class="no-margin"><strong>Type:</strong> <a href="#">Electronics</a></p>
                         </li>
                         <li>
                         <p class="no-margin"><strong>Location:</strong> <a href="#">New York</a></p>
                         </li>
                         <li>
-                        <p class=" no-margin "><strong>Condition:</strong> New</p>
+                        <p class=" no-margin "><strong>States:</strong> New</p>
                         </li>
                         <li>
                         <p class="no-margin"><strong>Brand:</strong> <a href="#">Apple</a></p>
@@ -76,22 +71,10 @@
                     <div class="ads-action">
                       <ul class="list-border">
                         <li>
-                          <a href="#"> <i class=" fa fa-phone"></i> 022445167532 </a></li>
-                        <li>
-                        <li>
-                          <a href="#">Posted by <i class=" fa fa-user"></i> John</a></li>
+                          <a href="#">Posted by <i class=" fa fa-user"></i> <%= @user.email %></a></li>
                         <li>
                           <a href="#"> <i class=" fa fa-heart"></i> Save ad</a></li>
                         <li>
-                          <a href="#"> <i class="fa fa-share-alt"></i> Share </a>
-                      <div class="social-link">  
-                      <a class="twitter" target="_blank" data-original-title="twitter" href="#" data-toggle="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a>
-                      <a class="facebook" target="_blank" data-original-title="facebook" href="#" data-toggle="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a>
-                      <a class="google" target="_blank" data-original-title="google-plus" href="#" data-toggle="tooltip" data-placement="top"><i class="fa fa-google"></i></a>
-                      <a class="linkedin" target="_blank" data-original-title="linkedin" href="#" data-toggle="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a>
-                      </div>
-
-                        </li>
                       </ul>
                     </div>
                   </div>
@@ -171,3 +154,4 @@
           </div>
       </div>         
     </div>
+
