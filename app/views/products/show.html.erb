@@ -12,5 +12,5 @@
 </div>
 
  <% if @user.id != current_user.id %>
-       <%= link_to "Demande de pret #{@user.email}", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post", class: "btn btn-default" %>
+       <%= link_to "Demande de pret #{@user.email}", product_conversations_path(sender_id: current_user.id, recipient_id: @user.id, product_id: @product.id), method: "post", class: "btn btn-default" %>
  <% end %>
