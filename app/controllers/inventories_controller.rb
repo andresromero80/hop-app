@@ -1,6 +1,7 @@
 class InventoriesController < ApplicationController
   def show
   	@products = []
+    @categories = Category.all
   	if !@inventory.products.nil?
   		@products = @inventory.products
   	end
