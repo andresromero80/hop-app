@@ -1,16 +1,57 @@
-<nav id="inventory-navigation-bar" class="navbar">
-	<a href="/products/new"> Add a product to my inventory </a>
-</nav>
+<section class="grid-category">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box-title no-border">
+          <div class="inner">
+          	<nav id="inventory-navigation-bar" class="navbar">
+							<a href="/products/new" class="btn btn-primary"> Share Product </a>
+						</nav>
+            <h3 class="section-title"><span> My Shared Products </span></h3>
+            <a href="/categories" class="sell-your-item"><i class="fa fa-th-large"></i> View more 
+            </a>
+          </div>
+        </div>
+      </div>
 
-<% @products.each do |p| %>
-	<div id="product">
-		<p>
-			Title : <%= p.title %>
-		</p>
-		<% p.uploads.each do |u| %>
-			<%= image_tag u.variant(resize: "250x250") %>
-		<% end %>
-		<%= link_to "Edit", edit_product_path(p) %>
-		<a href="/loans/ask/<%= @inventory.user_id %>/<%= p.id %>">Ask for loaning</a>
+      <table class="table table-condensed">
+      	<thead>
+      		<tr>
+      			<th> Title </th>
+      			<th> Pictures </th>
+      			<th> Actions </th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		<% @products.each do |p| %>
+      			<tr>
+      				<td>
+      					<%= p.title.capitalize %>
+		      		</td>
+
+		      		<td>
+		      			<a href="/products/<%= p.id %>" class="nav-link">
+			        		<% p.uploads.each do |u| %>
+			        			<%= image_tag u.variant(resize: "250x250") %>
+			        		<% end %>
+		        		</a>
+		      		</td>
+	      			<td>
+	      				<ul>
+									<li>
+										<%= link_to "Edit", edit_product_path(p), class: "nav-link" %>
+									</li>
+									<li>
+										<a href="/loans/ask/<%= @inventory.user_id %>/<%= p.id %>" class="nav-link">
+										Ask for loaning
+										</a>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					<% end %>
+      	</tbody>
+      </table>
+		</div>
 	</div>
-<% end %>
+</section>
