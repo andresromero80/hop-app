@@ -68,4 +68,3 @@ gem 'jquery-rails'
 
 gem 'faker'
 gem 'image_processing'
-gem "mini_magick"
