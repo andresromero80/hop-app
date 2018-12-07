@@ -5,6 +5,11 @@ class LoansController < ApplicationController
 		params.require(:loan).permit(:loaner_id, :receiver_id, :product_id, :loan_back_limit)
 	end 
 
+	# def confirm_loan_ask
+	# 		@loan_ask = LoanAsk.create(product_id: params[:id_product], loaner_id: params[:id_loaner], receiver_id: current_user.id)
+	
+	# end
+
 	def loan_ask
 		@loan_ask = LoanAsk.create(product_id: params[:id_product], loaner_id: params[:id_loaner], receiver_id: current_user.id)
 
@@ -21,8 +26,15 @@ class LoansController < ApplicationController
     redirect_to conversation_messages_path(@conversation)
 	end
 
-	def loan_confirm
+	def confirm
+		loan_ask = LoanAsk.find(params[:loan_ask_id].to_i)
+		loan_ask.update(loaner_confirm: true)
+		loan = Loan.create(loan_ask_id: loan_ask.id)
+	end
 
+	def refuse
+		loan_ask = LoanAsk.find(params[:loan_ask_id].to_i)
+		loan_ask.update(loaner_confirm: false)
 	end
 
 	def loan_return

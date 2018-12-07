@@ -10,6 +10,7 @@
 		<% p.uploads.each do |u| %>
 			<%= image_tag u.variant(resize: "250x250") %>
 		<% end %>
+		<%= link_to "Edit", edit_product_path(p) %>
 		<a href="/loans/ask/<%= @inventory.user_id %>/<%= p.id %>">Ask for loaning</a>
 	</div>
 <% end %>

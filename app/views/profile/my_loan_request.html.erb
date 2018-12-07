@@ -5,7 +5,7 @@
       <%= render :partial => "profile/sidebar" %>
       <div class="col-sm-9 page-content">
         <div class="inner-box">
-          <h2 class="title-2"><i class="fa fa-hourglass-o"></i> Pending/Approval</h2>
+          <h2 class="title-2"><i class="fa fa-hourglass-o"></i> My Loan Requests </h2>
           <div class="table-responsive">
             <div class="table-action">
               <div class="checkbox">
@@ -35,8 +35,8 @@
                 </tr>
               </thead>
               <tbody>
-                <% if !@requests_from_others.nil? %>
-                  <% @requests_from_others.each do |loan_ask| %>
+                <% if !@my_asks.nil? %>
+                  <% @my_asks.each do |loan_ask| %>
                     <% if !loan_ask.nil? %>
                       <% product = loan_ask.product %>
                         <tr>
@@ -55,24 +55,24 @@
                             </a>
                           </td>
                           <td class="ads-details-td">
-                            <h4><a href="/products/<%= product.id %>"> <%= loan_ask.product.title.capitalize %> </a></h4>
+                            <h4>
+                              <a href="/products/<%= product.id %>">
+                                <%= loan_ask.product.title.capitalize %>
+                              </a>
+                            </h4>
                             <p> <strong> Posted On </strong>:
                             02-Oct-2017, 04:38 PM </p>
                             <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p>
                           </td>
                           <td class="action-td">
-                            <p>
-                              <a href="/loan-confirm/<%= loan_ask.id %>" data-remote="true" class="btn btn-primary btn-xs">
-                                <i class="fa fa-pencil-square-o"></i>
-                                Confirm
-                              </a>
-                            </p>
-                            <p>
-                              <a href="/loan-refuse/<%= loan_ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
-                                <i class=" fa fa-trash"></i>
-                                Refuse
-                              </a>
-                            </p>
+                            <% if loan_ask.receiver_id != current_user.id %>
+                              <p>
+                                <a href="/loan-refuse/<%= loan_ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
+                                  <i class=" fa fa-trash"></i>
+                                  Refuse
+                                </a>
+                              </p>
+                            <% end %>
                           </td>
                         </tr>
                         <% end %>
