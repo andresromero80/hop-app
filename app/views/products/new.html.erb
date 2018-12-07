@@ -1,24 +1,85 @@
-  <%= form_for @product do |f| %>
-	  <%= f.label :uploads %>
-	  <%= f.file_field :uploads, multiple: true %>
+	<section id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+          <div class="page-ads box">
+            <h2 class="title-2">Post A Free Classified Ad</h2>
+             <div class="row search-bar mb30 red-bg">
+              <div class="advanced-search">
+                <%= form_for @product, class: "search-form" do |f| %>
+                  <div class="col-md-4 col-sm-12 search-col">
+                    <div class="input-group-addon search-category-container">
+                      <label class="styled-select">
+                        <span class="hidden-sm hidden-xs">
+                          Category
+                        </span>
+                        <%= f.collection_select(:categories, @categories, :id, :name, {}, :multiple => true, class: "dropdown-product selectpicker") %>
+                      </label>
+                    </div>
+                  </div>
 
-	
-		<%= f.collection_select(:categories, @categories, :id, :name, {}, :multiple => true) %>
+                  <div class="col-md-4 col-sm-12 search-col">
+                    <div class="input-group-addon search-category-container">
+                      <label class="styled-select">
+                        <span class="hidden-sm hidden-xs">
+                          State
+                        </span>
+                        <select class="dropdown-product selectpicker" name="product[state]">
+                          <% @states.each do |state| %>
+                            <option value="<%= state %>"> <%= state %> </option>
+                          <% end %>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
 
-	  <%= f.label :title %>
-	  <%= f.text_field :title %>
+                  <div class="col-md-4 col-sm-12 search-col">
+                    <div class="input-group-addon search-category-container">
+                      <label class="styled-select">
+                        <span class="hidden-sm hidden-xs">
+                          Brand
+                        </span>
+                        <select class="dropdown-product selectpicker" name="product[state]">
+                          <% @brands.each do |brand| %>
+                            <option value="<%= brand %>"> <%= brand %> </option>
+                          <% end %>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb30">
+                <%= f.label :title, class: "control-label" %>
+                <%= f.text_field :title, class: 'form-control input-md' %>
+              </div>
+              <div class="form-group mb30">
+                <%= f.label :short_desc, class: "control-label" %>
+                <%= f.text_area :short_desc, class: 'form-control' %>
+              </div>
+              <div class="form-group mb30">
+                <%= f.label :long_desc, class: "control-label" %>
+                <%= f.text_area :long_desc, class: 'form-control' %>
+              </div>
 
-	  <%= f.label :short_desc %>
-	  <%= f.text_field :short_desc %>
-
-	  <%= f.label :long_desc %>
-	  <%= f.text_field :long_desc %>
-
-	  <%= f.label :brand %>
-	  <%= f.text_field :brand %>
-
-	  <%= f.label :state %>
-	  <%= f.select :state, @states %>
-
-	  <%= f.submit %>
-  <% end %>
+              <h2 class="title-2">Add Images to Your Ad</h2>
+              <div class="form-group">
+                <%= f.label :uploads, class: "control-label" %>
+                <%= f.file_field :uploads, multiple: true, class: 'file'%> <br>
+ 			          <br>
+<!--                 <label class="control-label">Other Images</label> <input class="file" data-show-preview="false" id="gallery-img-a" type="file"><br>
+                <input class="file" data-show-preview="false" id="gallery-img-b" type="file"><br>
+                <input class="file" data-show-preview="false" id="gallery-img-c" type="file"><br>
+                <input class="file" data-show-preview="false" id="gallery-img-d" type="file">
+              </div>
+              <p class="help-block">Add up to 4 photos. Use a real image of your product, not catalogs.</p>
+ -->        
+          </div>
+             <%= f.submit "Submit", class: 'btn btn-common' %>
+             <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

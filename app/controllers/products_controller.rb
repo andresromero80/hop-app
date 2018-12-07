@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
 	end
 	
 	def new
+		@brands = [
+			"thompson",
+			"sony"
+		]
 		@states = [
 			"neuf",
 			"en bon état",

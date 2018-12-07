@@ -47,7 +47,7 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (9.4.1)
+    autoprefixer-rails (9.4.2)
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -256,4 +256,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.6
+   1.16.2
