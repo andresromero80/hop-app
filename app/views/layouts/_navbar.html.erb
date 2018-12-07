@@ -1,54 +1,57 @@
 <!-- Header Section Start -->
-    <div class="header">    
-      <nav class="navbar navbar-default main-navigation" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <!-- Stat Toggle Nav Link For Mobiles -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- End Toggle Nav Link For Mobiles -->
-            <div class="navbar-brand logo" href="index.html"><%= link_to "HOP", root_path, id:"colorlib-logo" %></div>
-          </div>
-          <!-- brand and toggle menu for mobile End -->
+<div class="header">    
+  <nav class="navbar navbar-default main-navigation" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Stat Toggle Nav Link For Mobiles -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- End Toggle Nav Link For Mobiles -->
+        <div class="navbar-brand logo" href="index.html"><%= link_to "HOP", root_path, id:"colorlib-logo" %></div>
+      </div>
+      <!-- brand and toggle menu for mobile End -->
 
-          <!-- Navbar Start -->
-          <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-              <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-              <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
-              <% unless user_signed_in? %>
-                  <li>
-                    <%= link_to "Log in", new_user_session_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Sign up", new_user_registration_path %>
-                  </li>
-                  <% else %>
-                  <li>
-                    <%= link_to "Products", "/products" %>
-                  </li>
-                    <li>
-                      <%= link_to "Edit", edit_user_registration_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Messages", "/conversations" %>
-                  </li>
-                  <li>
-                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                  </li>
-                  <% end %>
-              <li class="postadd">
-                <a class="btn btn-danger btn-post" href="post-ads.html"><span class="fa fa-plus-circle"></span> Post an Ad</a>
+      <!-- Navbar Start -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
+          <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
+          <% unless user_signed_in? %>
+              <li>
+                <%= link_to "Log in", new_user_session_path %>
               </li>
-            </ul>
-          </div>
-          <!-- Navbar End -->
-        </div>
-      </nav>
-
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "Products", "/products" %>
+              </li>
+                <li>
+                  <%= link_to "Edit", edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "Messages", "/conversations" %>
+              </li>
+              <li>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+              </li>
+              <% end %>
+          <li class="postadd">
+            <a class="btn btn-danger btn-post" href="/products/new">
+              <span class="fa fa-plus-circle"></span>
+              Add products
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Navbar End -->
     </div>
-    <!-- Header Section End -->
+  </nav>
+
+</div>
+<!-- Header Section End -->

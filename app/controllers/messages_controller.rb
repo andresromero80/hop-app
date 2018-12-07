@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @product = Product.find(params[:product_id])
+    # @product = Product.find(params[:product_id])
     @messages = @conversation.messages
 
     if @messages.length > 10

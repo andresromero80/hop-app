@@ -3,5 +3,4 @@ class Product < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :loans
   has_many_attached :uploads
-  has_many :conversations
 end
