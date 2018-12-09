@@ -15,13 +15,13 @@
 //= require turbolinks
 //= require_tree .
 
-//= require js/main.js
-//= require js/jquery-min.js      
+//= require js/jquery-min.js 
+//= require js/owl.carousel.min.js 
+//= require js/main.js    
 //= require js/bootstrap.min.js
 //= require js/material.min.js
 //= require js/material-kit.js
 //= require js/jquery.parallax.js
-//= require js/owl.carousel.min.js
 //= require js/wow.js
 //= require js/jquery.counterup.min.js
 //= require js/waypoints.min.js
