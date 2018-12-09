@@ -14,3 +14,20 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+	//= require assets/js/jquery-min
+    //= require assets/js/bootstrap.min
+    //= require assets/js/material.min
+    //= require assets/js/material-kit
+    //= require assets/js/jquery.parallax
+    //= require assets/js/owl.carousel.min
+    //= require assets/js/wow
+    //= require assets/js/main
+    //= require assets/js/jquery.counterup.min
+    //= require assets/js/waypoints.min
+    //= require assets/js/jasny-bootstrap.min
+    //= require assets/js/form-validator.min
+    //= require assets/js/contact-form-script
+    //= require assets/js/jquery.themepunch.revolution.min
+    //= require assets/js/jquery.themepunch.tools.min
+    //= require assets/js/bootstrap-select.min
