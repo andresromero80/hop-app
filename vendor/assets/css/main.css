@@ -1055,3 +1055,34 @@ select > opation:focus {
 .features-box .features-content p {
   color: #888;
 }
+/* ==========================================================================
+   Featured Listings Styles
+   ========================================================================== */
+.featured-lis {
+  margin-top: 30px;
+}
+#new-products .product-item {
+  padding: 0px 5px;
+  text-align: center;
+}
+#new-products .product-item .carousel-thumb {
+  display: block;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 99;
+  overflow: hidden;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+#new-products .product-item .carousel-thumb img {
+  -webkit-transition: all 0.9s ease;
+  -moz-transition: all 0.9s ease;
+  -ms-transition: all 0.9s ease;
+  -0-transition: all 0.9s ease;
+  transition: all 0.9s ease;
+}
