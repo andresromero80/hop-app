@@ -1055,3 +1055,154 @@ select > opation:focus {
 .features-box .features-content p {
   color: #888;
 }
+/* ==========================================================================
+   Featured Listings Styles
+   ========================================================================== */
+.featured-lis {
+  margin-top: 30px;
+}
+#new-products .product-item {
+  padding: 0px 5px;
+  text-align: center;
+}
+#new-products .product-item .carousel-thumb {
+  display: block;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 99;
+  overflow: hidden;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+#new-products .product-item .carousel-thumb img {
+  -webkit-transition: all 0.9s ease;
+  -moz-transition: all 0.9s ease;
+  -ms-transition: all 0.9s ease;
+  -0-transition: all 0.9s ease;
+  transition: all 0.9s ease;
+}
+#new-products .product-item .carousel-thumb .overlay {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  bottom: -1px;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+#new-products .product-item .carousel-thumb .overlay i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  visibility: visible;
+  width: 40px;
+  height: 40px;
+  background: #3498db;
+  color: #fff;
+  font-size: 18px;
+  line-height: 40px;
+  margin: -20px auto;
+  box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  z-index: 99;
+  -webkit-transform: scale(0.2);
+  -moz-transform: scale(0.2);
+  -ms-transform: scale(0.2);
+  -o-transform: scale(0.2);
+  transform: scale(0.2);
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+#new-products .product-item .carousel-thumb:hover img {
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -0-transform: scale(0.9);
+  transform: scale(0.9);
+}
+#new-products .product-item .carousel-thumb:hover {
+  border-color: #3498db;
+}
+#new-products .product-item .carousel-thumb:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+#new-products .product-item .carousel-thumb:hover i {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -0-transform: scale(1);
+  transform: scale(1);
+}
+#new-products .product-item .item-name {
+  font-size: 14px;
+  line-height: 16px;
+}
+#new-products .product-item .price {
+  color: #444;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 7px;
+}
+#new-products .owl-controls .owl-buttons {
+  position: relative;
+  top: -215px;
+  left: 0;
+}
+#new-products .owl-controls .owl-buttons div.owl-prev {
+  float: left;
+  margin-left: -45px;
+}
+#new-products .owl-controls .owl-buttons div.owl-next {
+  float: right !important;
+  margin-right: -45px;
+}
+.owl-theme .owl-controls .owl-buttons div {
+  width: 40px;
+  height: 40px;
+  display: block !important;
+  background: #3498db !important;
+  text-align: center;
+  display: inline-block;
+  opacity: 1!important;
+  border-radius: 0!important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18), 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+.owl-theme .owl-controls .owl-buttons div:hover {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  opacity: 0.8!important;
+}
+.owl-theme .owl-controls .owl-buttons div i {
+  color: #fff;
+  font-size: 16px;
+  line-height: 32px;
+}
