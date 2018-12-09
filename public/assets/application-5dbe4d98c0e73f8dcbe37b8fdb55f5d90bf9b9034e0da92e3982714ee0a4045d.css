@@ -1,4 +1,4 @@
-/* line 1, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 1, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 body {
   background-color: #fff;
   color: #333;
@@ -8,62 +8,62 @@ body {
   line-height: 18px;
 }
 
-/* line 10, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 10, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-/* line 16, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 16, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
 
-/* line 22, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 22, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 a {
   color: #000;
 }
-/* line 25, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 25, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 a:visited {
   color: #666;
 }
-/* line 29, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 29, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 a:hover {
   color: #fff;
   /*    background-color: #000;*/
 }
 
-/* line 35, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 35, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 th {
   padding-bottom: 5px;
 }
 
-/* line 39, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 39, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 td {
   padding: 0 5px 7px;
 }
 
-/* line 44, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 44, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
-/* line 49, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 49, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 #notice {
   color: green;
 }
 
-/* line 53, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 53, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 59, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 59, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -71,7 +71,7 @@ div.field, div.actions {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 66, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 66, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -81,13 +81,13 @@ div.field, div.actions {
   background-color: #c00;
   color: #fff;
 }
-/* line 76, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 76, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
 }
 
-/* line 82, /home/seriald/dev/thp-project/hop-app/app/assets/stylesheets/scaffolds.scss */
+/* line 82, /Users/andresromero80/Desktop/THP/final/hop-app/app/assets/stylesheets/scaffolds.scss */
 label {
   display: block;
 }
@@ -1122,7 +1122,7 @@ select > opation:focus {
    Service Box
    ========================================================================== */
 .features {
-  background: url("../img/bg/bg.jpg") center center no-repeat;
+  /*background: url("../img/bg/bg.jpg") center center no-repeat;*/
   padding: 60px 0;
   margin: 30px 0;
 }
@@ -1174,7 +1174,7 @@ select > opation:focus {
   transition: all .4s ease;
 }
 #new-products .product-item .carousel-thumb img {
-  -0-transition: all 0.9s ease;
+  /*-0-transition: all 0.9s ease;*/
   transition: all 0.9s ease;
 }
 #new-products .product-item .carousel-thumb .overlay {
@@ -1214,7 +1214,7 @@ select > opation:focus {
 }
 #new-products .product-item .carousel-thumb:hover img {
   -webkit-transform: scale(0.9);
-  -0-transform: scale(0.9);
+  /*-0-transform: scale(0.9);*/
   transform: scale(0.9);
 }
 #new-products .product-item .carousel-thumb:hover {
@@ -1228,7 +1228,7 @@ select > opation:focus {
   opacity: 1;
   visibility: visible;
   -webkit-transform: scale(1);
-  -0-transform: scale(1);
+  /*-0-transform: scale(1);*/
   transform: scale(1);
 }
 #new-products .product-item .item-name {
@@ -1309,7 +1309,7 @@ select > opation:focus {
     Counter Style
     ========================================================================== */
 #counter {
-  background: url("../img/bg/counter-bg.jpg") center center no-repeat;
+  /*background: url("../img/bg/counter-bg.jpg") center center no-repeat;*/
   background-size: cover;
   color: #fff;
   padding: 60px 0;
@@ -2166,7 +2166,7 @@ table.add-manage-table > tbody > tr > th {
   line-height: 38px;
 }
 .app {
-  background: url("../img/bg/app-bg.jpg") fixed;
+  /*background: url("../img/bg/app-bg.jpg") fixed;*/
   background-size: cover;
   color: #fff;
   padding: 80px 0;
@@ -10598,21 +10598,21 @@ img.tp-slider-alternative-image	{	width:100%; height:auto;}
 
 
 .tp-simpleresponsive  .button.blue, .tp-simpleresponsive  .button:hover.blue,
-.tp-simpleresponsive  .purchase.blue, .tp-simpleresponsive  .purchase:hover.blue			{ background-color:#1d78cb;        box-shadow:   0px 3px 0px 0px #0f3e68}
+.tp-simpleresponsive  .purchase.blue, .tp-simpleresponsive  .purchase:hover.blue			{ background-color:#1d78cb;        box-shadow:   0px 3px 0px 0px #0f3e68; }
 
 
 .tp-simpleresponsive  .button.red, .tp-simpleresponsive  .button:hover.red,
-.tp-simpleresponsive  .purchase.red, .tp-simpleresponsive  .purchase:hover.red				{ background-color:#cb1d1d;        box-shadow:   0px 3px 0px 0px #7c1212}
+.tp-simpleresponsive  .purchase.red, .tp-simpleresponsive  .purchase:hover.red				{ background-color:#cb1d1d;        box-shadow:   0px 3px 0px 0px #7c1212; }
 
 .tp-simpleresponsive  .button.orange, .tp-simpleresponsive  .button:hover.orange,
-.tp-simpleresponsive  .purchase.orange, .tp-simpleresponsive  .purchase:hover.orange		{ background-color:#ff7700;        box-shadow:   0px 3px 0px 0px #a34c00}
+.tp-simpleresponsive  .purchase.orange, .tp-simpleresponsive  .purchase:hover.orange		{ background-color:#ff7700;        box-shadow:   0px 3px 0px 0px #a34c00; }
 
 .tp-simpleresponsive  .button.darkgrey, .tp-simpleresponsive  .button.grey,
 .tp-simpleresponsive  .button:hover.darkgrey, .tp-simpleresponsive  .button:hover.grey,
-.tp-simpleresponsive  .purchase.darkgrey, .tp-simpleresponsive  .purchase:hover.darkgrey	{ background-color:#555;        box-shadow:   0px 3px 0px 0px #222}
+.tp-simpleresponsive  .purchase.darkgrey, .tp-simpleresponsive  .purchase:hover.darkgrey	{ background-color:#555;        box-shadow:   0px 3px 0px 0px #222; }
 
 .tp-simpleresponsive  .button.lightgrey, .tp-simpleresponsive  .button:hover.lightgrey,
-.tp-simpleresponsive  .purchase.lightgrey, .tp-simpleresponsive  .purchase:hover.lightgrey	{ background-color:#888;        box-shadow:   0px 3px 0px 0px #555}
+.tp-simpleresponsive  .purchase.lightgrey, .tp-simpleresponsive  .purchase:hover.lightgrey	{ background-color:#888;        box-shadow:   0px 3px 0px 0px #555; }
 
 
 
