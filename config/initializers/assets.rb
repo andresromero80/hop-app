@@ -20,4 +20,3 @@ Rails.application.config.assets.precompile +=
      vendor/bootstrap/*.js vendor/bootstrap/*.css \
      vendor/bootstrap/**/*.js vendor/bootstrap/**/*.css)
 
-Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/
