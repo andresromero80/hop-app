@@ -1,6 +1,10 @@
 class InventoriesController < ApplicationController
   def show
-  	@products = @inventory.products
+  	@products = []
+    @categories = Category.all
+  	if !@inventory.products.nil?
+  		@products = @inventory.products
+  	end
   	# @products.each do |p|
   	# 	p.uploads.each do |u|
   	# 		puts url_for(u)

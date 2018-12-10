@@ -1023,7 +1023,7 @@ select > opation:focus {
    Service Box
    ========================================================================== */
 .features {
-  background: url() center center no-repeat;
+  /*background: url("../img/bg/bg.jpg") center center no-repeat;*/
   padding: 60px 0;
   margin: 30px 0;
 }
@@ -1082,8 +1082,9 @@ select > opation:focus {
   -webkit-transition: all 0.9s ease;
   -moz-transition: all 0.9s ease;
   -ms-transition: all 0.9s ease;
-  transition: all 0.9s ease;
+  /*-0-transition: all 0.9s ease;*/
 }
+
 #new-products .product-item .carousel-thumb .overlay {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
@@ -1137,7 +1138,7 @@ select > opation:focus {
   -webkit-transform: scale(0.9);
   -moz-transform: scale(0.9);
   -ms-transform: scale(0.9);
-  transform: scale(0.9);
+  /*-0-transform: scale(0.9);*/
 }
 #new-products .product-item .carousel-thumb:hover {
   border-color: #3498db;
@@ -1152,7 +1153,7 @@ select > opation:focus {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
-  transform: scale(1);
+  /*-0-transform: scale(1);*/
 }
 #new-products .product-item .item-name {
   font-size: 14px;
@@ -1232,7 +1233,7 @@ select > opation:focus {
     Counter Style
     ========================================================================== */
 #counter {
-  background: url() center center no-repeat;
+  /*background: url("../img/bg/counter-bg.jpg") center center no-repeat;*/
   background-size: cover;
   color: #fff;
   padding: 60px 0;
@@ -2122,7 +2123,7 @@ table.add-manage-table > tbody > tr > th {
   line-height: 38px;
 }
 .app {
-  background: url() fixed;
+  /*background: url("../img/bg/app-bg.jpg") fixed;*/
   background-size: cover;
   color: #fff;
   padding: 80px 0;

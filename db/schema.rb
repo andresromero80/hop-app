@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_112238) do
+ActiveRecord::Schema.define(version: 2018_12_05_124245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,6 @@ ActiveRecord::Schema.define(version: 2018_12_06_112238) do
     t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_id"
-    t.index ["product_id"], name: "index_conversations_on_product_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -76,7 +74,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_112238) do
   end
 
   create_table "loan_asks", force: :cascade do |t|
-    t.boolean "loeaner_confirm"
+    t.boolean "loaner_confirm"
     t.integer "loaner_id"
     t.integer "receiver_id"
     t.bigint "product_id"
@@ -153,7 +151,6 @@ ActiveRecord::Schema.define(version: 2018_12_06_112238) do
 
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
-  add_foreign_key "conversations", "products"
   add_foreign_key "inventories", "users"
   add_foreign_key "products", "inventories"
   add_foreign_key "trades", "users"
