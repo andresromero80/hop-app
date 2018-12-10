@@ -1,46 +1,58 @@
-<nav class="colorlib-nav" role="navigation">
-	<div class="top-menu">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-2">
-					<div id="colorlib-logo">
-            <%= link_to "HOP", root_path, id:"colorlib-logo" %>
-          </div>
-				</div>
-				<div class="col-xs-10 text-right menu-1">
-					<ul>
-						<li class="active"><%= link_to "Home", root_path %></li>
-						<li class="has-dropdown">
-							<%= link_to "Trades", trades_path %>
-							<!-- <ul class="dropdown">
-								<li><a href="cart.html">Shipping Cart</a></li>
-								<li><a href="checkout.html">Checkout</a></li>
-							</ul> -->
-						</li>
-            <li class="has-dropdown">
-              <%= link_to "User", "#" %>
-              <ul class="dropdown">
-                <% unless user_signed_in? %>
-                  <li>
-                    <%= link_to "Log in", new_user_session_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Sign up", new_user_registration_path %>
-                  </li>
-                  <% else %>
-                    <li>
-                      <%= link_to "Edit", edit_user_registration_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Messages", conversations_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                  </li>
-                  <% end %>
-              </ul>
-			      </div>
-		       </div>
-	        </div>
-        </div>
-</nav>
+<!-- Header Section Start -->
+<div class="header">    
+  <nav class="navbar navbar-default main-navigation" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Stat Toggle Nav Link For Mobiles -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- End Toggle Nav Link For Mobiles -->
+        <div class="navbar-brand logo" href="index.html"><%= link_to image_tag("logo.png"), root_path, id:"colorlib-logo" %></div>
+        </a>
+      </div>
+      <!-- brand and toggle menu for mobile End -->
+
+      <!-- Navbar Start -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
+          <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
+          <% unless user_signed_in? %>
+              <li>
+                <%= link_to "Log in", new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "Products", "/products" %>
+              </li>
+                <li>
+                  <%= link_to "Edit", edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "Messages", "/conversations" %>
+              </li>
+              <li>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+              </li>
+              <% end %>
+          <li class="postadd">
+            <a class="btn btn-danger btn-post" href="/products/new">
+              <span class="fa fa-plus-circle"></span>
+              Add products
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Navbar End -->
+    </div>
+  </nav>
+
+</div>
+<!-- Header Section End -->

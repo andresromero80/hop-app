@@ -1,5 +1,7 @@
 //Bootstrap Select
 
+$(document).on('turbolinks:load', function() { //Added line
+
 jQuery(document).ready(function( $ ) {
 $('.selectpicker').selectpicker({
   style: 'btn-select',
@@ -229,3 +231,5 @@ $(document).ready(function () {
     $('.item-list .add-desc-box').removeClass("col-sm-9");
     $('.item-list .add-desc-box').addClass("col-sm-7");
   });
+
+  }); //Added line
