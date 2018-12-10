@@ -1,0 +1,79 @@
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <div class="box">
+          <h2 class="title-2">Share a new product to the community</h2>
+           <div class="row search-bar mb30 red-bg">
+            <div class="advanced-search">
+              <%= form_for @product, class: "search-form" do |f| %>
+                <div class="col-md-4 col-sm-12 search-col">
+                  <div class="input-group-addon search-category-container">
+                    <label class="styled-select">
+                      <span class="hidden-sm hidden-xs">
+                        Category
+                      </span>
+                      <%= f.collection_select(:categories, @categories, :id, :name, {}, :multiple => true, class: "dropdown-product selectpicker") %>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 search-col">
+                  <div class="input-group-addon search-category-container">
+                    <label class="styled-select">
+                      <span class="hidden-sm hidden-xs">
+                        State
+                      </span>
+                      <select class="dropdown-product selectpicker" name="product[state]">
+                        <% @states.each do |state| %>
+                          <option value="<%= state %>"> <%= state %> </option>
+                        <% end %>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 search-col">
+                  <div class="input-group-addon search-category-container">
+                    <label class="styled-select">
+                      <span class="hidden-sm hidden-xs">
+                        Brand
+                      </span>
+                      <select class="dropdown-product selectpicker" name="product[state]">
+                        <% @brands.each do |brand| %>
+                          <option value="<%= brand %>"> <%= brand %> </option>
+                        <% end %>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb30">
+              <%= f.label :title, class: "control-label" %>
+              <%= f.text_field :title, class: 'form-control input-md' %>
+            </div>
+            <div class="form-group mb30">
+              <%= f.label :short_desc, class: "control-label" %>
+              <%= f.text_area :short_desc, class: 'form-control' %>
+            </div>
+            <div class="form-group mb30">
+              <%= f.label :long_desc, class: "control-label" %>
+              <%= f.text_area :long_desc, class: 'form-control' %>
+            </div>
+
+            <h2 class="title-2">Add Images to Your Ad</h2>
+            <div class="form-group">
+              <%= f.label :uploads, class: "control-label" %>
+              <%= f.file_field :uploads, multiple: true, class: 'file'%>
+              <br>
+              <br>
+            </div>
+           <%= f.submit "Submit", class: 'btn btn-common' %>
+           <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

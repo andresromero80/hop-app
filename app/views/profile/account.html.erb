@@ -1,0 +1,116 @@
+<!-- Start Content -->
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <%= render :partial => "profile/sidebar" %>
+      <div class="col-sm-9 page-content">
+        <div class="inner-box">
+          <div class="usearadmin">
+           <h3><a href="#"><img class="userimg" src="assets/img/user.jpg" alt=""> <%= current_user.firstname %> <%= current_user.lastname %> </a></h3>
+          </div>
+        </div>
+        <div class="inner-box">
+          <div class="welcome-msg">
+            <h3 class="page-sub-header2 clearfix no-padding">
+              Hello <%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize %>
+            </h3>
+            <span class="page-sub-header-sub small">You last logged in at: 01-03-2017 12:40 AM [UK time (GMT + 6:00hrs)]</span> 
+          </div>
+          <div id="accordion" class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a href="#collapseB1" data-toggle="collapse"> My details </a> </h4>
+              </div>
+              <div class="panel-collapse collapse in" id="collapseB1">
+                <div class="panel-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <label class="control-label">First Name</label>
+                      <input class="form-control" placeholder="Jhon" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Last name</label>
+                      <input class="form-control" placeholder="Doe" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Email</label>
+                      <input class="form-control" placeholder="jhon.deo&copy;example.com" type="email">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Address</label>
+                      <input class="form-control" placeholder=".." type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="Phone" class="control-label">Phone</label>
+                      <input class="form-control" id="Phone" placeholder="880 123 456789" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Postcode</label>
+                      <input class="form-control" placeholder="1212" type="text">
+                    </div>
+                    <div class="form-group hide">
+                      <label class="control-label">Facebook account map</label>
+                      <div class="form-control"> <a class="link" href="fb.com">Jhone.doe</a>
+                        <a class=""> <i class="fa fa-minus-circle"></i></a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-common">Update</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a aria-expanded="false" class="collapsed" href="#collapseB2" data-toggle="collapse"> Settings </a> </h4>
+              </div>
+              <div style="height: 0px;" aria-expanded="false" class="panel-collapse collapse" id="collapseB2">
+                <div class="panel-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label><input type="checkbox">Comments are enabled on my ads </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">New Password</label>
+                      <input class="form-control" placeholder="" type="password">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Confirm Password</label>
+                      <input class="form-control" placeholder="" type="password">
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-common">Update</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a aria-expanded="false" class="collapsed" href="#collapseB3" data-toggle="collapse"> Preferences </a> </h4>
+              </div>
+              <div style="height: 0px;" aria-expanded="false" class="panel-collapse collapse" id="collapseB3">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <div class="checkbox">
+                        <label><input type="checkbox">I want to receive newsletter. </label>
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox">I want to receive advice on buying and selling. </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>      
+</div>
+<!-- End Content -->

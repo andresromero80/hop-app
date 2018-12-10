@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
-  def home
-  end
+	include SearchService
 
   def index
+  	@search = SearchService
+  	@categories = Category.all
   end
 end

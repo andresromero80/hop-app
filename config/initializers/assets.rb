@@ -19,4 +19,3 @@ Rails.application.config.assets.precompile +=
   %w(*.png *.jpg *.jpeg *.gif vendor/somefile.js vendor/somefile.css \
      vendor/bootstrap/*.js vendor/bootstrap/*.css \
      vendor/bootstrap/**/*.js vendor/bootstrap/**/*.css)
-

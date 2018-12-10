@@ -1,10 +1,10 @@
-class CreateLoans < ActiveRecord::Migration[5.2]
+class CreateLoanAsks < ActiveRecord::Migration[5.2]
   def change
-    create_table :loans do |t|
+    create_table :loan_asks do |t|
+    	t.boolean :loaner_confirm
     	t.integer :loaner_id
     	t.integer :receiver_id
     	t.references :product
-    	t.date :loan_back
       t.timestamps
     end
   end

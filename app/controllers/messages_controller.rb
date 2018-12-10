@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
   before_action :find_conversation
+  before_action :authenticate_user!
 
   def index
+    # @product = Product.find(params[:product_id])
     @messages = @conversation.messages
 
     if @messages.length > 10
@@ -20,15 +22,13 @@ class MessagesController < ApplicationController
   def create
     @message = @conversation.messages.new(message_params)
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      redirect_to product_conversation_messages_path(@conversation)
     end
   end
 
   def new
     @message = @conversation.messages.new
   end
-
-
 
   private
 

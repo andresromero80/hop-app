@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_185544) do
+ActiveRecord::Schema.define(version: 2018_12_05_124245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.string "street_number"
     t.string "street"
     t.string "city"
-    t.string "country"
     t.string "postal_code"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,10 +53,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
   end
 
   create_table "categories_products", id: false, force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "product_id", null: false
-    t.index ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id"
-    t.index ["product_id", "category_id"], name: "index_categories_products_on_product_id_and_category_id"
+    t.bigint "category_id"
+    t.bigint "product_id"
+    t.index ["category_id"], name: "index_categories_products_on_category_id"
+    t.index ["product_id"], name: "index_categories_products_on_product_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -66,18 +67,37 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
   end
 
   create_table "inventories", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
-  create_table "loans", force: :cascade do |t|
+  create_table "loan_asks", force: :cascade do |t|
+    t.boolean "loaner_confirm"
     t.integer "loaner_id"
     t.integer "receiver_id"
     t.bigint "product_id"
-    t.date "loan_back"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_loans_on_product_id"
+    t.index ["product_id"], name: "index_loan_asks_on_product_id"
+  end
+
+  create_table "loan_backs", force: :cascade do |t|
+    t.boolean "receiver_confirm"
+    t.boolean "loaner_confirm"
+    t.bigint "loan_ask_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_ask_id"], name: "index_loan_backs_on_loan_ask_id"
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.bigint "loan_ask_id"
+    t.date "loan_back_limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_ask_id"], name: "index_loans_on_loan_ask_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -98,6 +118,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "inventory_id"
+    t.string "state"
+    t.string "title"
     t.index ["inventory_id"], name: "index_products_on_inventory_id"
   end
 
@@ -127,6 +149,9 @@ ActiveRecord::Schema.define(version: 2018_12_03_185544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories_products", "categories"
+  add_foreign_key "categories_products", "products"
+  add_foreign_key "inventories", "users"
   add_foreign_key "products", "inventories"
   add_foreign_key "trades", "users"
   add_foreign_key "users", "addresses"

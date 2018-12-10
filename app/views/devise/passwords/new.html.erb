@@ -1,0 +1,37 @@
+ <!-- Content section Start --> 
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
+            <div class="page-login-form box">
+              <h3>
+                Forgot Password ?
+              </h3>
+              <form role="form" class="login-form">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                <%= f.error_notification %>
+                <div class="form-group">
+                  <div class="input-icon">
+                    <!-- <i class="icon fa fa-user"></i> -->
+                    <!-- <input type="text" id="sender-email" class="form-control" name="email" placeholder="Email"> -->
+                    <%= f.email_field :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }, class: 'form-control' %>
+                  </div>
+                </div>     
+                <!-- <button class="btn btn-common log-btn">Send me my Password</button> -->
+                <%= f.button :submit, "Send me my password" %>
+                <% end %>
+              </form>
+              <%= render "devise/shared/links" %>
+              <!-- <ul class="form-links">
+                <li class="pull-left"><a href="signup.html">Don't have an account?</a></li>
+                <li class="pull-right"><a href="login.html">Back to Login</a></li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Content section End --> 
