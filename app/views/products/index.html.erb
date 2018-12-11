@@ -7,37 +7,7 @@
             <!-- Start Search box -->
             <div class="row search-bar">
               <div class="advanced-search">
-                <form action="/products-search" method="post" class="search-form">
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <div class="col-md-3 col-sm-6 search-col">
-                    <div class="input-group-addon search-category-container">
-                      <label class="styled-select">
-                        <select class="dropdown-product selectpicker" multiple="true" name="search[categories][]" >
-                          <% @categories.each do |c| %>
-                            <option value="<%= c.id %>"> <%= c.name %> </option>
-                            <% end %>
-                        </select>  
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6 search-col">
-                    <div class="input-group-addon search-category-container">
-                      <label class="styled-select location-select">
-                        <select class="dropdown-product selectpicker" name="search[location]" >
-                          <option value="0">All Locations</option>
-                          <option value="New York">New York</option>
-                        </select>                              
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6 search-col">
-                    <input class="form-control keyword" name="search[keyword]" value="" placeholder="Enter Keyword" type="text">
-                    <i class="fa fa-search"></i>
-                  </div>
-                  <div class="col-md-3 col-sm-6 search-col">
-                    <button class="btn btn-common btn-search btn-block"><strong>Search</strong></button>
-                  </div>
-                </form>
+                <%= render :partial => "layouts/search_bar" %>
               </div>
             </div>
             <!-- End Search box -->

@@ -1,9 +1,14 @@
 require 'json'
+require 'geocoder'
 
 class ProfileController < ApplicationController
 	before_action :if_logged
 
 	attr_accessor :user_verification
+
+	def locate_user
+		coordinates = current_user.address.geocode
+	end
 
 	def account
 	end

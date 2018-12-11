@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
-
 	root to: "static_pages#index"
-  post '/products-search', to: 'searches#search'
-  get '/products-filtered', to: 'products#index_with_filters'
-  get '/loans/ask/:id_loaner/:id_product', to: 'loans#loan_ask'
-  get '/loan-confirm/:loan_ask_id', to: 'loans#confirm'
-  get '/loan-refuse/:loan_ask_id', to: 'loans#refuse'
-  get '/my-inventory', to: 'inventories#show'
-  get '/profile/ask_profile_verification', to: 'profile#ask_profile_verification'
-  post '/profile/verify_profile', to: 'profile#verify_profile'
-  get '/profile/cancel_profile_verification/:request_id', to: 'profile#cancel_profile_verification'
-  
-  resources :trades, :categories, :products
-
+    get '/home', to: "static_pages#home"
   resources :conversations do
       resources :messages
     end
@@ -40,6 +28,9 @@ Rails.application.routes.draw do
   get '/profile/my-loan-requests', to: 'profile#my_loan_request'
   get '/profile/archived-loans', to: 'profile#archives'
 
-  get '/home', to: "static_pages#home"
+  get '/profile/ask_profile_verification', to: 'profile#ask_profile_verification'
+  get '/profile/cancel_profile_verification/:request_id', to: 'profile#cancel_profile_verification'
+
+  post '/profile/verify_profile', to: 'profile#verify_profile'
 
 end
