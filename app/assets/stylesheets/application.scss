@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * This is a manifest file that'll be compiled into application
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
@@ -12,17 +12,24 @@
  *
  *= require_tree .
  *= require_self
-*= require css/main.css
-*= require css/bootstrap.min.css    
-*= require css/jasny-bootstrap.min.css   
-*= require css/material-kit.css
+<<<<<<< HEAD:app/assets/stylesheets/application.scss
 
-*= require extras/animate.css
-*= require extras/owl.carousel.css
-*= require extras/owl.theme.css 
-*= require extras/settings.css  
-*= require css/responsive.css
-*= require css/slicknav.css
-*= require css/bootstrap-select.min.css
-*= require css/fileinput.css
- */
+ 
+    *= require assets/css/bootstrap.min
+    *= require assets/css/jasny-bootstrap.min
+    *= require assets/css/material-kit
+    *= require font-awesome
+    *= require assets/css/main
+    *= require assets/css/responsive
+    *= require assets/css/bootstrap-select.min
+    *= require assets/fonts/line-icons/line-icons
+    *= require assets/extras/owl.carousel
+    *= require assets/extras/owl.theme
+    *= require assets/extras/settings
+
+    *= require assets/css/fileinput
+
+  */
+  @import "font-awesome";
+
+  
