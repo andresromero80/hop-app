@@ -10,25 +10,27 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs 
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-//= require js/jquery-min.js 
-//= require js/owl.carousel.min.js 
-//= require js/main.js    
-//= require js/bootstrap.min.js
-//= require js/material.min.js
-//= require js/material-kit.js
-//= require js/jquery.parallax.js
-//= require js/wow.js
-//= require js/jquery.counterup.min.js
-//= require js/waypoints.min.js
-//= require js/jasny-bootstrap.min.js
-//= require js/form-validator.min.js
-//= require js/contact-form-script.js    
-//= require js/jquery.themepunch.revolution.min.js
-//= require js/jquery.themepunch.tools.min.js
-//= require js/bootstrap-select.min.js
-//= require js/fileinput.js
+	//= require assets/js/jquery-min
+    //= require assets/js/bootstrap.min
+    //= require assets/js/material.min
+    //= require assets/js/material-kit
+    //= require assets/js/jquery.parallax
+    //= require assets/js/owl.carousel.min
+    //= require assets/js/wow
+    //= require assets/js/main
+    //= require assets/js/jquery.counterup.min
+    //= require assets/js/waypoints.min
+    //= require assets/js/jasny-bootstrap.min
+    //= require assets/js/form-validator.min
+    //= require assets/js/contact-form-script
+    //= require assets/js/jquery.themepunch.revolution.min
+    //= require assets/js/jquery.themepunch.tools.min
+    //= require assets/js/bootstrap-select.min

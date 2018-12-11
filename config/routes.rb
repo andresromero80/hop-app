@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       resources :messages
     end
 
+
+  get "home", to: "static_pages#home"
+
   resources :trades, :categories, :products
   devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
   get '/profile/account', to: 'profile#account'
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
   get '/profile/my-loan-requests', to: 'profile#my_loan_request'
   get '/profile/archived-loans', to: 'profile#archives'
   get 'messages/index', to: 'messages#index'
+
 
   post '/products/search', to: 'searches#search'
 

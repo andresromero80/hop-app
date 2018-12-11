@@ -63,8 +63,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'bootstrap'
+
+gem 'simple_form'
 gem 'jquery-rails'
+gem "font-awesome-rails"
+
+gem 'bootstrap'
 
 gem 'faker'
 gem 'image_processing'
+
