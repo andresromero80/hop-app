@@ -72,10 +72,7 @@ gem 'bootstrap'
 
 gem 'faker'
 gem 'image_processing'
-<<<<<<< HEAD
 
-=======
 gem 'nexmo'
 gem 'rubystats'
 gem 'dotenv-rails'
->>>>>>> 752669e8af1a65c549d95a3fd92e393089e7680a
