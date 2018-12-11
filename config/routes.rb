@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
 	root to: "static_pages#index"
+  post '/products-search', to: 'searches#search'
+  get '/products-filtered', to: 'products#index_with_filters'
   get '/loans/ask/:id_loaner/:id_product', to: 'loans#loan_ask'
   get '/loan-confirm/:loan_ask_id', to: 'loans#confirm'
   get '/loan-refuse/:loan_ask_id', to: 'loans#refuse'
   get '/my-inventory', to: 'inventories#show'
+
   
   resources :conversations do
       resources :messages
@@ -17,8 +20,5 @@ Rails.application.routes.draw do
   get '/profile/my-loan-requests', to: 'profile#my_loan_request'
   get '/profile/archived-loans', to: 'profile#archives'
   get 'messages/index', to: 'messages#index'
-
-  post '/products/search', to: 'searches#search'
-
   get 'conversations', to: 'conversations#index'
 end

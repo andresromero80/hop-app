@@ -3,7 +3,14 @@ class ProductsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
+		@categories = Category.all
 		@products = Product.all
+	end
+
+	def index_with_filters
+		@categories = Category.all
+		@products = Product.where(id: params[:product_id])
+		render "index"
 	end
 	
 	def product_param

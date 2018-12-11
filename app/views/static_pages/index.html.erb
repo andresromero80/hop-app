@@ -9,12 +9,12 @@
             <!-- Start Search box -->
             <div class="row search-bar">
               <div class="advanced-search">
-              <form action="/products/search" method="post" class="search-form">
+              <form action="/products-search" method="post" class="search-form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                   <div class="col-md-3 col-sm-6 search-col">
                     <div class="input-group-addon search-category-container">
                       <label class="styled-select">
-                        <select class="dropdown-product selectpicker" name="search[category]" >
+                        <select class="dropdown-product selectpicker" multiple="true" name="search[categories][]" >
                           <% @categories.each do |c| %>
                             <option value="<%= c.id %>"> <%= c.name %> </option>
                             <% end %>
