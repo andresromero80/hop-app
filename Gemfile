@@ -73,3 +73,6 @@ gem 'bootstrap'
 gem 'faker'
 gem 'image_processing'
 
+gem 'nexmo'
+gem 'rubystats'
+gem 'dotenv-rails'

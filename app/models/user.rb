@@ -11,4 +11,15 @@ class User < ApplicationRecord
   has_many :trades
   has_many :loans, :class_name => 'Loans', :foreign_key => 'loaner_id'
   has_many :receives, :class_name => 'Loans', :foreign_key => 'receiver_id'
+
+  private
+    attr_accessor :verification_code
+  public
+    def get_verification_code
+      @verification_code
+    end
+
+    def set_verification_code(code)
+      @verification_code = code
+    end
 end

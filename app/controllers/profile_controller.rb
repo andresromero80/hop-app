@@ -1,5 +1,15 @@
+require 'json'
+
 class ProfileController < ApplicationController
+	before_action :if_logged
+
+	attr_accessor :user_verification
+
 	def account
+	end
+
+	def if_logged
+		redirect_to '/users/login' unless current_user
 	end
 
 	def archives
@@ -24,7 +34,6 @@ class ProfileController < ApplicationController
 	def my_loan_request
 		@my_asks = []
 		@my_asks = LoanAsk.where(receiver_id: current_user.id)
-		# @my_asks << LoanAsk.find_by(receiver_id: current_user.id)
 	end
 
 	def loan_requests_pending
@@ -33,5 +42,24 @@ class ProfileController < ApplicationController
 	end
 
 	def saved_search
+	end
+
+	def ask_profile_verification
+		request_id = ''
+		@user_verification = UserVerification.new(current_user)
+		@response = @user_verification.send_verification_code
+		@request_id = @response.request_id
+	end
+
+	def verify_profile
+		@user_verification = UserVerification.new(current_user)
+		permited = params.permit(:authenticity_token, :verification_code, :request_id)
+		@response = @user_verification.verify(permited[:verification_code], permited[:request_id])
+	end
+
+	def cancel_profile_verification(request_id)
+		@user_verification = UserVerification.new(current_user)
+		permited = params.permit(:request_id)
+		@user_verification.cancel(permited[:request_id])
 	end
 end
