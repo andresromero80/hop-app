@@ -8,10 +8,9 @@
 require 'faker'
 
 
-
 #Create address
 3.times do |index|
-	address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
+	address = Address.create!(street_number: "13", street: 'rue des hortensias', city: 'ploufragan', postal_code: '22440', country: "France")
 		
 end 
 

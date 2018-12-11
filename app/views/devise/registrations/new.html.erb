@@ -59,14 +59,16 @@
             </div>
 
             <div class="form-group">
-              <h2> Address </h2>
-                <div class="field">
+              <h3> Address </h3>
+                <div class="input-icon">
                   <%= f.fields_for :address do |form| %>
-                    <%= form.text_field :street_number, placeholder: "Street Number" %>
-                    <%= form.text_field :street, placeholder: "Street" %>
-                    <%= form.text_field :city, placeholder: "City" %>
-                    <%= form.text_field :postal_code, placeholder: "Postal Code" %>
-                    <%= form.text_field :country, placeholder: "Country" %>
+                    <%= form.text_field :street, placeholder: "Number & Street", class: 'form-control' %>
+                    <br>
+                    <%= form.text_field :city, placeholder: "City", class: 'form-control' %>
+                    <br>
+                    <%= form.text_field :postal_code, placeholder: "Postal Code", class: 'form-control' %>
+                    <br>
+                    <%= form.text_field :country, placeholder: "Country", class: 'form-control' %>
                   <% end %>
                 </div>
             </div>
