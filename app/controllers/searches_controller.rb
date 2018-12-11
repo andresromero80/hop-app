@@ -7,19 +7,22 @@ class SearchesController < ApplicationController
 	end
 
 	def search
-		puts 'mabite mabite'
-		puts 'mabite mabite'
-		puts 'mabite mabite'
 		products_search_params = compute_search_filters
-		c = products_search_params[:categories].join(',')
-		results = ActiveRecord::Base.connection.execute("SELECT product_id FROM categories_products WHERE category_id IN (#{c});")
-		products_ids = []
-		results.each do |row|
-			products_ids << row['product_id']
-		end
-
 		redirect_params = {}
-		redirect_params[:product_id] = products_ids
+		puts !products_search_params[:categories].nil?
+		if !products_search_params[:categories].nil?
+			puts products_search_params
+			c = products_search_params[:categories].join(',')
+			puts c
+			results = ActiveRecord::Base.connection.execute("SELECT product_id FROM categories_products WHERE category_id IN (#{c});")
+			products_ids = []
+			results.each do |row|
+				products_ids << row['product_id']
+			end
+
+
+			redirect_params[:product_id] = products_ids
+		end
 
 		redirect_to controller: 'products', action: 'index_with_filters', params: redirect_params
 	end
