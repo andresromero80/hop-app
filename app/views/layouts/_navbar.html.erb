@@ -47,13 +47,13 @@
                         <%= link_to "Account", profile_account_path %>
                       </li>
                       <li>
-                        <%= link_to "Archives", profile_archives_path %>
+                        <%= link_to "Archives", profile_archived_loans_path %>
                       </li>
                       <li>
-                        <%= link_to "Favourites", profile_favourites_path %>
+                        <%= link_to "Favourites", profile_account_path %>
                       </li>
                       <li>
-                        <%= link_to "My Ads", profile_ads_path %>
+                        <%= link_to "My Ads", profile_account_path %>
                       </li>
                     </ul>
                     </div>        
@@ -63,7 +63,10 @@
                   </li>
                   <% end %>
               <li class="postadd">
-                <a class="btn btn-danger btn-post" href="post-ads.html"><span class="fa fa-plus-circle"></span> Post an Ad</a>
+            <a class="btn btn-danger btn-post" href="/products/new">
+              <span class="fa fa-plus-circle"></span>
+              Add products
+            </a>
           </li>
         </ul>
       </div>

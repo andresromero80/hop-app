@@ -40,5 +40,6 @@ Rails.application.routes.draw do
   get '/profile/my-loan-requests', to: 'profile#my_loan_request'
   get '/profile/archived-loans', to: 'profile#archives'
 
+  get '/home', to: "static_pages#home"
 
 end
