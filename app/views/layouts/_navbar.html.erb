@@ -17,33 +17,52 @@
       </div>
       <!-- brand and toggle menu for mobile End -->
 
-      <!-- Navbar Start -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-          <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
-          <% unless user_signed_in? %>
-              <li>
-                <%= link_to "Log in", new_user_session_path %>
-              </li>
-              <li>
-                <%= link_to "Sign up", new_user_registration_path %>
-              </li>
-              <% else %>
-              <li>
-                <%= link_to "Products", "/products" %>
-              </li>
-                <li>
-                  <%= link_to "Edit", edit_user_registration_path %>
-              </li>
-              <li>
-                <%= link_to "Messages", "/conversations" %>
-              </li>
-              <li>
-                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-              </li>
-              <% end %>
-          <li class="postadd">
+          <!-- Navbar Start -->
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+              <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
+              <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
+              <% unless user_signed_in? %>
+                  <li>
+                    <%= link_to "Log in", new_user_session_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Sign up", new_user_registration_path %>
+                  </li>
+                  <% else %>
+                  <li>
+                    <%= link_to "Products", "/products" %>
+                  </li>
+                    <li>
+                      <%= link_to "Edit", edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Messages", "/conversations" %>
+                  </li>
+                  <li>
+                    <div class="dropdown-nav">
+                    <button class="dropbtn">Profil</button>
+                    <ul class="dropdown-content">
+                      <li>
+                        <%= link_to "Account", profile_account_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Archives", profile_archived_loans_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Favourites", profile_account_path %>
+                      </li>
+                      <li>
+                        <%= link_to "My Ads", profile_account_path %>
+                      </li>
+                    </ul>
+                    </div>        
+                  </li>
+                  <li>
+                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                  </li>
+                  <% end %>
+              <li class="postadd">
             <a class="btn btn-danger btn-post" href="/products/new">
               <span class="fa fa-plus-circle"></span>
               Add products

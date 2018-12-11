@@ -12,9 +12,7 @@
  *
  *= require_tree .
  *= require_self
-<<<<<<< HEAD:app/assets/stylesheets/application.scss
 
- 
     *= require assets/css/bootstrap.min
     *= require assets/css/jasny-bootstrap.min
     *= require assets/css/material-kit
@@ -31,5 +29,5 @@
 
   */
   @import "font-awesome";
-
+  @import "layouts/*"
   
