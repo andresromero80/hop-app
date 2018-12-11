@@ -68,3 +68,6 @@ gem 'jquery-rails'
 
 gem 'faker'
 gem 'image_processing'
+gem 'nexmo'
+gem 'rubystats'
+gem 'dotenv-rails'

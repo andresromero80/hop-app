@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/loan-confirm/:loan_ask_id', to: 'loans#confirm'
   get '/loan-refuse/:loan_ask_id', to: 'loans#refuse'
   get '/my-inventory', to: 'inventories#show'
+  get '/profile/ask_profile_verification', to: 'profile#ask_profile_verification'
+  post '/profile/verify_profile', to: 'profile#verify_profile'
+  get '/profile/cancel_profile_verification/:request_id', to: 'profile#cancel_profile_verification'
   
   resources :conversations do
       resources :messages

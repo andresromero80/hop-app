@@ -1,11 +1,12 @@
 require_relative 'boot'
-
 require 'rails/all'
+require "mini_magick"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require "mini_magick"
+
+Dotenv::Railtie.load
 
 module HopApp
   class Application < Rails::Application
