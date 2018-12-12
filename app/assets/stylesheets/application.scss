@@ -1,6 +1,9 @@
 /*
 
-   *= require assets/css/bootstrap.min
+ *= require_tree .
+ *= require_self
+
+    *= require assets/css/bootstrap.min
     *= require assets/css/jasny-bootstrap.min
     *= require assets/css/material-kit
     *= require font-awesome
@@ -12,7 +15,7 @@
     *= require assets/extras/owl.theme
     *= require assets/extras/settings
     *= require assets/css/fileinput
-  */
+*/
 
   @imports "font-awesome";
   @import "layouts/*"

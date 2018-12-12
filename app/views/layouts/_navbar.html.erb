@@ -47,6 +47,7 @@
                         <%= link_to "Compte", profile_account_path %>
                       </li>
                       <li>
+<<<<<<< HEAD
                         <%= link_to "Inventaire", my_inventory_path %>
                       </li>
                       <li>
@@ -57,6 +58,15 @@
                       </li>
                       <li>
                         <%= link_to "Emprunts", profile_my_loan_requests_path %>
+=======
+                        <%= link_to "Archives", profile_archived_loans_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Favourites", profile_account_path %>
+                      </li>
+                      <li>
+                        <%= link_to "My Ads", profile_account_path %>
+>>>>>>> dev
                       </li>
                     </ul>
                     </div>        
@@ -66,7 +76,10 @@
                   </li>
                   <% end %>
               <li class="postadd">
-                <a class="btn btn-danger btn-post" href="post-ads.html"><span class="fa fa-plus-circle"></span> Post an Ad</a>
+            <a class="btn btn-danger btn-post" href="/products/new">
+              <span class="fa fa-plus-circle"></span>
+              Add products
+            </a>
           </li>
         </ul>
       </div>
