@@ -1,8 +1,4 @@
 <!-- Start Content -->
-
-<div>
-  <h1> <%= current_user.address.to_string %> </h1>
-  </div>
 <div id="content">
   <div class="container">
     <div class="row">
@@ -10,7 +6,11 @@
       <div class="col-sm-9 page-content">
         <div class="inner-box">
           <div class="usearadmin">
-           <h3><a href="#"><img class="userimg" src="assets/img/user.jpg" alt=""> <%= current_user.firstname %> <%= current_user.lastname %> </a></h3>
+           <h3>
+            <a href="#"><img class="userimg" src="assets/img/user.jpg" alt="">
+              <%= current_user.firstname %> <%= current_user.lastname %>
+            </a>
+           </h3>
           </div>
         </div>
         <div class="inner-box">
@@ -18,12 +18,16 @@
             <h3 class="page-sub-header2 clearfix no-padding">
               Hello <%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize %>
             </h3>
-            <span class="page-sub-header-sub small">You last logged in at: 01-03-2017 12:40 AM [UK time (GMT + 6:00hrs)]</span> 
+            <span class="page-sub-header-sub small">
+              You last logged in at: 01-03-2017 12:40 AM [UK time (GMT + 6:00hrs)]
+            </span> 
           </div>
           <div id="accordion" class="panel-group">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 class="panel-title"> <a href="#collapseB1" data-toggle="collapse"> My details </a> </h4>
+                <h4 class="panel-title">
+                  <a href="#collapseB1" data-toggle="collapse"> My details </a>
+                </h4>
               </div>
               <div class="panel-collapse collapse in" id="collapseB1">
                 <div class="panel-body">
