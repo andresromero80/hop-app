@@ -44,16 +44,19 @@
                     <button class="dropbtn">Profil</button>
                     <ul class="dropdown-content">
                       <li>
-                        <%= link_to "Account", profile_account_path %>
+                        <%= link_to "Compte", profile_account_path %>
                       </li>
                       <li>
-                        <%= link_to "Archives", profile_archives_path %>
+                        <%= link_to "Inventaire", my_inventory_path %>
                       </li>
                       <li>
-                        <%= link_to "Favourites", profile_favourites_path %>
+                        <%= link_to "Archives", profile_archived_loans_path %>
                       </li>
                       <li>
-                        <%= link_to "My Ads", profile_ads_path %>
+                        <%= link_to "Requêtes", profile_loan_requests_pending_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Emprunts", profile_my_loan_requests_path %>
                       </li>
                     </ul>
                     </div>        

@@ -1,7 +1,5 @@
-
 /*
 
- 
    *= require assets/css/bootstrap.min
     *= require assets/css/jasny-bootstrap.min
     *= require assets/css/material-kit
@@ -13,10 +11,9 @@
     *= require assets/extras/owl.carousel
     *= require assets/extras/owl.theme
     *= require assets/extras/settings
-
     *= require assets/css/fileinput
-
   */
-  @import "font-awesome";
-  @imports "layouts
+
+  @imports "font-awesome";
+  @import "layouts/*"
 
