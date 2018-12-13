@@ -1,0 +1,17 @@
+.dropdown-product {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+
+.dropdown-product:hover{
+  display: block;
+  border-radius: 5px;
+}
+
+#ex1 {
+  display: none;
+}

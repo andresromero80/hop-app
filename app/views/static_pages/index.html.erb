@@ -6,14 +6,15 @@
       <!-- Start Search box -->
       <div class="main-text">
         <h1 class="intro-title"><span class="home-title">Halt Over Produce</span></h1>
-        <p class="sub-title">Prêtez et empruntez gratuitement les outils et le matériel dont vous avez besoin</p>
-        <div class="row search-bar">
-          <div class="advanced-search">
+        <p class="sub-title" style="background-color: black; color: white; opacity: 0.5">Prêtez et empruntez gratuitement les outils et le matériel dont vous avez besoin</p>
+        <div class="search-inner" id="home-search"> 
+          <div class="row search-bar"> 
+            <div class="advanced-search"> 
             <%= render :partial => "layouts/search_bar" %>
+            </div>
           </div>
-          <!-- End Search box -->
         </div>
-      </div>
+<!-- End Search box -->
       
       <div id="myCarousel" class="carousel container slide">
         <ol class="carousel-indicators">
@@ -53,13 +54,13 @@
           <div class="box-title no-border">
             <div class="inner">
               <h3 class="section-title"><span>Browse by</span> Category</h3>   
-              <a href="/categories" class="sell-your-item"><i class="fa fa-th-large"></i> View more 
-              </a>
+              <!-- <a href="/categories" class="sell-your-item"><i class="fa fa-th-large"></i> View more 
+              </a> -->
             </div>
           </div>
         </div>
-        <% @categories.each do |c| %>
-          <div class="col-md-12">              
+        <div class="col-md-12">
+          <% @categories.each do |c| %>              
             <div class="col-md-2 col-sm-3 col-xs-6 f-category wow fadeIn" data-wow-delay="0s">
               <a href="category.html">
                 <div class="icon">
@@ -68,8 +69,8 @@
                 <h6> <%= c.name %> </h6> 
               </a>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </section>
