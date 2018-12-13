@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :trades
   has_many :loans, :class_name => 'Loans', :foreign_key => 'loaner_id'
   has_many :receives, :class_name => 'Loans', :foreign_key => 'receiver_id'
+  has_many :reviews, dependent: :destroy, inverse_of: :reviewer, :class_name => 'Review'
+  has_many :notes, dependent: :destroy, inverse_of: :reviewed_user, :class_name => 'Review'
 
   private
     attr_accessor :verification_code

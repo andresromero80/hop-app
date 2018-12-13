@@ -18,13 +18,8 @@ class ProfileController < ApplicationController
 	end
 
 	def archives
-		@loans = LoanAsk.find_by(loaner_id: current_user.id)
-		@archived_loans = []
-
-		if !@loans.nil?
-			ids = @loans.pluck(:id)
-			@archived_loans = LoanBack.where(loan_ask_id: ids)
-		end
+		@my_archived_asks = LoanAsk.where(receiver_id: current_user.id, loaner_confirm: true)
+		@my_archived_loans = LoanAsk.where(loaner_id: current_user.id, loaner_confirm: true)
 	end
 
 	def close

@@ -85,5 +85,6 @@ class ProductsController < ApplicationController
 		@user = User.find(@inventory.user_id)
 		@users = User.all
 		@conversations = Conversation.all
+		@review = Review.new
 	end
 end
