@@ -28,94 +28,60 @@
               </div>
               <div class="categories-list">
                 <ul>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-desktop"></i>
-                      Electronics <span class="category-counter">(9)</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-wrench"></i>
-                      Services <span class="category-counter">(8)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-github-alt"></i>
-                      Pets <span class="category-counter">(2)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-leaf"></i>
-                      Fashion <span class="category-counter">(3)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-home"></i>
-                      Real Estate <span class="category-counter">(4)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-black-tie"></i>
-                      Jobs <span class="category-counter">(5)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-cutlery"></i>
-                      Hotel & Travels <span class="category-counter">(5)</span>
-                    </a>
-                  </li>
+                  <% @categories.each do |c| %>
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-desktop"></i>
+                        <%= c.name.capitalize %>
+                        <span class="category-counter">
+                          (<%= c.products.count %>)
+                        </span>
+                      </a>
+                    </li>
+                  <% end %>
                 </ul>
               </div>
             </div>
           </div>
         </aside>
       </div>
-      <div class="col-sm-9 page-content">
 
-        <!-- Adds wrapper Start -->
-        
+      <div class="col-sm-9 page-content">
+        <!-- Adds wrapper Start -->  
         <% @products.each.with_index do |product,ind| %>
-        <div class="adds-wrapper">
-          <div class="item-list">
-            <div class="col-sm-2 no-padding photobox">
-              <div class="add-image">
-                <a href="#">
-                  <!-- <img src="images/djembe.jpg" alt=""> -->
-                  <%= image_tag("djembe.jpg") %>
+          <div class="adds-wrapper">
+            <div class="item-list">
+              <div class="col-sm-2 no-padding photobox">
+                <div class="add-image">
+                  <a href="#">
+                    <!-- <img src="images/djembe.jpg" alt=""> -->
+                    <%= image_tag("djembe.jpg") %>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-sm-7 add-desc-box">
+                <div class="add-details">
+                  <h5 class="add-title">
+                    <a href="/products/<%= product.id %>">
+                      Title: <%= product.title %>
+                    </a>
+                  </h5>
+                  <br/>
+                  <div class="item_desc">
+                    Short Description: <%= product.short_desc %><br/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3 text-right  price-box">
+                <h2 class="card-title">User No. <%= ind + 1%></h2>
+                <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
+                  Open product
                 </a>
               </div>
             </div>
-            <div class="col-sm-7 add-desc-box">
-              <div class="add-details">
-                <h5 class="add-title"><a href="ads-details.html">Title: <%= product.title %></a></h5><br/>
-                <div class="info">
-                  <span class="add-type">B</span>
-                  <span class="date">
-                    <i class="fa fa-clock"></i>
-                    16:22:13 2017-02-29
-                  </span> -
-                  <span class="category">Electronics</span> -
-                  <span class="item-location"><i class="fa fa-map-marker"></i>London</span>
-                </div>
-                <div class="item_desc">
-                  Short Description: <%= product.short_desc %><br/>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 text-right  price-box">
-              <h2 class="card-title">User No. <%= ind + 1%></h2>
-              <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >Open product</a> 
-            </div>
           </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
       <!-- Adds wrapper End -->
       

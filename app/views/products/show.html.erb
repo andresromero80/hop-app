@@ -6,10 +6,19 @@
       <div class="product-info">
         <div class="col-sm-8">
           <div class="inner-box ads-details-wrapper">
-            <h2> <%= @product.title %> </h2>
-            <% if @product.inventory.user.id == current_user.id %>
-            <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
-            <% end %>
+            <h2>
+              <% if @product.inventory.user.id == current_user.id %>
+                  <%= link_to "Edit Product", edit_product_path(@product) %>
+              <% else %>
+                <a href="/loans/ask/<%= @inventory.user_id %>/<%= @product.id %>" class="btn btn-default">
+                  Demande de pret
+                </a>
+              <% end %>
+            </h2>
+            
+            <h2>
+              <%= @product.title %>
+            </h2>
             <div class="blockquote-footer"> by: <%= @user.email %>
               <cite title="Source Title">on <%= @product.updated_at %></cite>
             </div>
@@ -24,56 +33,55 @@
               <% end %>
             <% end %>
           </div>
+
           <div class="box">
             <h2 class="title-2"><strong>Product Details</strong></h2>
               <div class="row">
-              <div class="ads-details-info col-md-8">
-                <p class="mb15"><%= @product.long_desc %></p>
-                <ul class="list-circle">
-                  <li><i class="fa fa-check-circle"></i> 256GB PCIe flash storage</li>
-                  <li><i class="fa fa-check-circle"></i> 2.7 GHz dual-core Intel Core i5 processor</li>
-                  <li><i class="fa fa-check-circle"></i> Turbo Boost up to 3.1GHz</li>
-                  <li><i class="fa fa-check-circle"></i> Intel Iris Graphics 6100</li>
-                  <li><i class="fa fa-check-circle"></i> 8GB memory (up from 4GB in 2013 model)</li>
-                  <li><i class="fa fa-check-circle"></i> 10 hour battery life</li>
-                  <li><i class="fa fa-check-circle"></i> 13.3" Retina Display</li>
-                  <li><i class="fa fa-check-circle"></i> Intect Box</li>
-                  <li><i class="fa fa-check-circle"></i> 1 Year international warranty</li>
-
-                  <% if @user.id != current_user.id %>
-                    <a href="/loans/ask/<%= @inventory.user_id %>/<%= @product.id %>" class="btn btn-default">
-                      Demande de pret
-                    </a>
-                  <% end %>
-              </div>
-              <div class="col-md-4">
-                <aside class="panel panel-body panel-details">
-                  <ul>
-                    <li>
-                    <p class=" no-margin "><strong>Durée du prêt:</strong> de.. à..</p>
-                    </li>
-                    <li>
-                    <p class="no-margin"><strong>Type:</strong> <a href="#">Electronics</a></p>
-                    </li>
-                    <li>
-                    <p class="no-margin"><strong>Location:</strong> <a href="#">New York</a></p>
-                    </li>
-                    <li>
-                    <p class=" no-margin "><strong>States:</strong> New</p>
-                    </li>
-                    <li>
-                    <p class="no-margin"><strong>Brand:</strong> <a href="#">Apple</a></p>
-                    </li>
+                <div class="ads-details-info col-md-8">
+                  <p class="mb15"><%= @product.long_desc %></p>
+                  <ul class="list-circle">
+                    <li><i class="fa fa-check-circle"></i> 256GB PCIe flash storage</li>
                   </ul>
-                </aside>
+                </div>
+                <div class="col-md-4">
+                  <aside class="panel panel-body panel-details">
+                    <ul>
+                      <li>
+                        <p class=" no-margin "><strong>Durée du prêt:</strong> de.. à..</p>
+                      </li>
+
+                      <li>
+                        <p class="no-margin"><strong>Type:</strong> <a href="#">Electronics</a></p>
+                      </li>
+
+                      <li>
+                        <p class="no-margin"><strong>Location:</strong> <a href="#">New York</a></p>
+                      </li>
+
+                      <li>
+                        <p class=" no-margin "><strong>States:</strong> New</p>
+                      </li>
+
+                      <li>
+                        <p class="no-margin"><strong>Brand:</strong> <a href="#">Apple</a></p>
+                      </li>
+                    </ul>
+                  </aside>
+                </div>
 
                 <div class="ads-action">
                   <ul class="list-border">
                     <li>
-                      <a href="#">Posted by <i class=" fa fa-user"></i> <%= @user.email %></a></li>
+                      <a href="#">
+                        Posted by <i class=" fa fa-user"></i> <%= @user.email %>
+                      </a>
+                    </li>
+
                     <li>
-                      <a href="#"> <i class=" fa fa-heart"></i> Save ad</a></li>
-                    <li>
+                      <a href="#">
+                        <i class=" fa fa-heart"></i> Save ad
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -87,8 +95,9 @@
             </div>
             <img src="assets/img/img1.jpg" alt="">
           </div>
-        <div class="col-xs-12">
-          <div class="features-box wow fadeInDownQuick" data-wow-delay="0.3s">
+
+          <div class="col-xs-12">
+            <div class="features-box wow fadeInDownQuick" data-wow-delay="0.3s">
             <div class="features-icon">
               <i class="lnr lnr-star">
               </i>
@@ -132,7 +141,8 @@
               </p>
             </div>
           </div>
-           </div>
+        </div>
+
         <div class="col-xs-12">
           <div class="features-box wow fadeInDownQuick" data-wow-delay="0.9s">
             <div class="features-icon">
@@ -147,9 +157,8 @@
               </p>
             </div>
           </div>
-           </div>
-
         </div>
       </div>
-  </div>         
+    </div>
+  </div>
 </div>
