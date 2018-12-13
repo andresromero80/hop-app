@@ -8,7 +8,14 @@
           <div class="inner-box ads-details-wrapper">
             <h2> <%= @product.title %> </h2>
             <% if @product.inventory.user.id == current_user.id %>
-            <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
+              <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
+            <% else %>
+              <div">
+                <h2> Your review </h2>
+                <% 5.times do |index| %>
+                  <span id="rate-value-<%= index %>" class="fa fa-star"></span>
+                <% end %>
+              </div>
             <% end %>
             <div class="blockquote-footer"> by: <%= @user.email %>
               <cite title="Source Title">on <%= @product.updated_at %></cite>
@@ -153,3 +160,84 @@
       </div>
   </div>         
 </div>
+<script>
+  $(document).ready(function() {
+    var is_rated = false
+    var stars = $('span[id*=rate-value-]');
+    var stars_ids = [];
+    stars.each(function() {
+      stars_ids.push($(this).attr('id'));
+    });
+    // On parcourt les étoiles pour savoir sur laquelle le curseur pointe.
+      stars.each(function() {
+        // On récupère l'étoile courante et les précédentes.
+        var current_star = $(this);
+
+        var get_selected_stars = function(stars, stars_ids, current_star) {
+          var id = current_star.attr('id').split('-')[2];
+          selected_stars = [];
+          for (var i = id; i >= 0; i--) {
+            if(stars_ids.indexOf('rate-value-'+i) > -1) {
+              selected_stars.push(stars[i]);
+            }
+          }
+
+          return selected_stars;
+        }
+
+        var get_unselected_stars = function(stars, stars_ids, current_star) {
+          var id = current_star.attr('id').split('-')[2];
+          unselected_stars = [];
+          for (var i = id; i <= stars.size; i++) {
+            if(stars_ids.indexOf('rate-value-'+i) > -1) {
+              unselected_stars.push(stars[i]);
+            }
+          }
+
+          return unselected_stars;
+        }
+        $(this).on('click', function() {
+          is_rated = true;
+          data = {
+            // authenticity_token: "<%= form_authenticity_token %>",
+            rating : get_selected_stars(stars, stars_ids, current_star).length,
+            reviewer_id: <%= current_user.id %>,
+            reviewed_user_id: <%= @product.inventory.user.id %>,
+            comment: "It is a good review !"
+          };
+
+          $.ajax({
+            type: 'POST',
+            url: "/reviews",
+            data: data,
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("X-CSRF-Token", "<%= form_authenticity_token %>");
+            }
+          });
+        });
+        var callback_on = function() {
+          
+          var self = $(this);  
+
+          selected_stars = get_selected_stars(stars, stars_ids, current_star);
+          $(selected_stars).each(function() {
+            if(is_rated == false) {
+              $(this).addClass('checked');
+              $(this).css('color', 'orange');
+            }
+          });
+        }
+
+        var callback_off = function() {
+          unselected_stars = get_unselected_stars(stars, stars_ids, current_star);
+          $(selected_stars).each(function() {
+            if(is_rated == false) {
+              $(this).removeClass('checked');
+              $(this).css('color', 'rgb(51, 51, 51)');
+            }
+          });
+        };
+        $(this).hover(callback_on, callback_off);
+      });
+    });
+</script>
