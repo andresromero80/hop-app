@@ -1,5 +1,4 @@
 /*
-
  *= require_tree .
  *= require_self
 
@@ -16,7 +15,6 @@
     *= require assets/extras/settings
     *= require assets/css/fileinput
 */
-
-  @imports "font-awesome";
+  @import "font-awesome";
   @import "layouts/*"
 
