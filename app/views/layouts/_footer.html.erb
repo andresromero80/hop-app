@@ -29,32 +29,7 @@
             </ul>
           </div>
         </div>
-        <!-- Tweets Begin -->
-        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="1s">
-          <div class="widget">
-            <h3 class="block-title">Latest Tweets</h3>
-            <div class="twitter-content clearfix">
-              <ul class="twitter-list">
-                <% BotTwitter.new.stream_tweet.each do |message| %>
-                <li class="clearfix">
-                  <span>
-                    <%= message %>
-                    <a href="https://twitter.com/HOverproduce?lang=en">http://t.co/cLo2w7rWOx</a>
-                  </span>
-                <% end %>
-                </li>
-                <!-- BotTwitter ends--- missing limitation of messages -->
-                <li class="clearfix">
-                  <span>
-                  Introducing Bootstrap 4 Features: What’s new, What’s gone!
-                  <a href="#">http://t.co/cLo2w7rWOx</a>
-                </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Tweets End -->
+
         <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="1.5s">
           <div class="widget">
             <h3 class="block-title">Random Ads</h3>
