@@ -59,16 +59,30 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #Config for MailDev => Testing emails...
-  config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-        :address => "localhost",
-        :port => 1025
-    }
+  # #Config for MailDev => Testing emails...
+  # config.action_mailer.delivery_method = :smtp
+  #   config.action_mailer.smtp_settings = {
+  #       :address => "localhost",
+  #       :port => 1025
+  #   }
 
     #This is required to properly generate links inside the e-mail views.
   config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
     #To enable sending emails in dev
   config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: 'hop-app-thp.herokuapp.com' }
+
+  #Test prod en local
+  ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => 'heroku.com',
+      :enable_starttls_auto => true
+    }
 
 end
