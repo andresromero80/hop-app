@@ -7,6 +7,9 @@
         <div class="col-sm-8">
           <div class="inner-box ads-details-wrapper">
             <h2> <%= @product.title %> </h2>
+            <% if @product.inventory.user.id == current_user.id %>
+            <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
+            <% end %>
             <div class="blockquote-footer"> by: <%= @user.email %>
               <cite title="Source Title">on <%= @product.updated_at %></cite>
             </div>

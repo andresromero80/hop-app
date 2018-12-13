@@ -53,8 +53,7 @@
                         <td class="ads-details-td col-xs-12">  
                       <div class="columns">
                     <%= link_to "From: #{User.find(conversation.sender_id).email},
-                                To: #{User.find(conversation.recipient_id).email}
-                     Product: #{Product.find(conversation.product_id).title}", product_conversation_messages_path(conversation, conversation.product_id), class: 'inline-block' %>
+                                To: #{User.find(conversation.recipient_id).email}", conversation_messages_path(conversation), class: 'inline-block' %>
                       <% end %>
                     <% end %>
                   <% end %>

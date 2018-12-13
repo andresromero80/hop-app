@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 	def index
 		@categories = Category.all
-		@products = Product.all
+		@products = Product.all.order(:title).page params[:page]
 	end
 
 	def index_with_filters
