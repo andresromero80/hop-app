@@ -1,133 +1,128 @@
- 
-      <!-- Search wrapper Start -->
+<!-- Search wrapper Start -->
+<div id="search-row-wrapper">
+  <div class="container">
+    <div class="search-inner">
+        <!-- Start Search box -->
+        <div class="row search-bar">
+          <div class="advanced-search">
+            <%= render :partial => "layouts/search_bar" %>
+          </div>
+        </div>
+        <!-- End Search box -->
+    </div>
+  </div>
+</div>
+<!-- Search wrapper End -->  
 
-    <div id="search-row-wrapper">
-      <div class="container">
-        <div class="search-inner">
-            <!-- Start Search box -->
-            <div class="row search-bar">
-              <div class="advanced-search">
-                <%= render :partial => "layouts/search_bar" %>
+<!-- Main container Start -->  
+<div class="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 page-sidebar">
+        <aside>
+          <div class="inner-box">
+            <div class="categories">
+              <div class="widget-title">
+                <i class="fa fa-align-justify"></i>
+                <h4>All Categories</h4>
+              </div>
+              <div class="categories-list">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-desktop"></i>
+                      Electronics <span class="category-counter">(9)</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-wrench"></i>
+                      Services <span class="category-counter">(8)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-github-alt"></i>
+                      Pets <span class="category-counter">(2)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-leaf"></i>
+                      Fashion <span class="category-counter">(3)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-home"></i>
+                      Real Estate <span class="category-counter">(4)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-black-tie"></i>
+                      Jobs <span class="category-counter">(5)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-cutlery"></i>
+                      Hotel & Travels <span class="category-counter">(5)</span>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <!-- End Search box -->
+          </div>
+        </aside>
+      </div>
+      <div class="col-sm-9 page-content">
+
+        <!-- Adds wrapper Start -->
+        
+        <% @products.each.with_index do |product,ind| %>
+        <div class="adds-wrapper">
+          <div class="item-list">
+            <div class="col-sm-2 no-padding photobox">
+              <div class="add-image">
+                <a href="#">
+                  <!-- <img src="images/djembe.jpg" alt=""> -->
+                  <%= image_tag("djembe.jpg") %>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-7 add-desc-box">
+              <div class="add-details">
+                <h5 class="add-title"><a href="ads-details.html">Title: <%= product.title %></a></h5><br/>
+                <div class="info">
+                  <span class="add-type">B</span>
+                  <span class="date">
+                    <i class="fa fa-clock"></i>
+                    16:22:13 2017-02-29
+                  </span> -
+                  <span class="category">Electronics</span> -
+                  <span class="item-location"><i class="fa fa-map-marker"></i>London</span>
+                </div>
+                <div class="item_desc">
+                  Short Description: <%= product.short_desc %><br/>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 text-right  price-box">
+              <h2 class="card-title">User No. <%= ind + 1%></h2>
+              <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >Open product</a> 
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
+      <!-- Adds wrapper End -->
+      
+      <!-- Start Pagination -->
+      <div class="pagination-bar">
+        <%= paginate @products %>
+      </div>
     </div>
-    <!-- Search wrapper End -->  
-
-    <!-- Main container Start -->  
-    <div class="main-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 page-sidebar">
-            <aside>
-              <div class="inner-box">
-                <div class="categories">
-                  <div class="widget-title">
-                    <i class="fa fa-align-justify"></i>
-                    <h4>All Categories</h4>
-                  </div>
-                  <div class="categories-list">
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-desktop"></i>
-                          Electronics <span class="category-counter">(9)</span>
-                        </a>
-                      </li>
-                      
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-wrench"></i>
-                          Services <span class="category-counter">(8)</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-github-alt"></i>
-                          Pets <span class="category-counter">(2)</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-leaf"></i>
-                          Fashion <span class="category-counter">(3)</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-home"></i>
-                          Real Estate <span class="category-counter">(4)</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-black-tie"></i>
-                          Jobs <span class="category-counter">(5)</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-cutlery"></i>
-                          Hotel & Travels <span class="category-counter">(5)</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </aside>
-          </div>
-          <div class="col-sm-9 page-content">
-
-            <!-- Adds wrapper Start -->
-            <% @products.each.with_index do |product,ind| %>
-            <div class="adds-wrapper">
-              <div class="item-list">
-                <div class="col-sm-2 no-padding photobox">
-                  <div class="add-image">
-                    <a href="#">
-                      <!-- <img src="images/djembe.jpg" alt=""> -->
-                      <%= image_tag("djembe.jpg") %>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-sm-7 add-desc-box">
-                  <div class="add-details">
-                    <h5 class="add-title"><a href="ads-details.html">Title: <%= product.title %></a></h5><br/>
-                    <div class="info">
-                      <span class="add-type">B</span>
-                      <span class="date">
-                        <i class="fa fa-clock"></i>
-                        16:22:13 2017-02-29
-                      </span> -
-                      <span class="category">Electronics</span> -
-                      <span class="item-location"><i class="fa fa-map-marker"></i>London</span>
-                    </div>
-                    <div class="item_desc">
-                      Short Description: <%= product.short_desc %><br/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-3 text-right  price-box">
-                  <h2 class="card-title">User No. <%= ind + 1%></h2>
-                  <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >Open product</a> 
-                </div>
-              </div>
-              <% end %>
-            </div>
-          </div>
-            <!-- Adds wrapper End -->
-            
-            <!-- Start Pagination -->
-            <div class="pagination-bar">
-              <ul class="pagination">
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#"> ...</a></li>
-              <li><a class="pagination-btn" href="#">Next »</a></li>
-              </ul>
-            </div>
+  </div>
+</div>
