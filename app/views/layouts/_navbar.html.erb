@@ -33,27 +33,27 @@
                   <li>
                     <%= link_to "Products", "/products" %>
                   </li>
-                    <li>
-                      <%= link_to "Edit", edit_user_registration_path %>
-                  </li>
                   <li>
-                    <%= link_to "Messages", "/conversations" %>
+                    <%= link_to "Messages", conversations_path %>
                   </li>
                   <li>
                     <div class="dropdown-nav">
                     <button class="dropbtn">Profil</button>
                     <ul class="dropdown-content">
                       <li>
-                        <%= link_to "Account", profile_account_path %>
+                        <%= link_to "Compte", profile_account_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Inventaire", my_inventory_path %>
                       </li>
                       <li>
                         <%= link_to "Archives", profile_archived_loans_path %>
                       </li>
                       <li>
-                        <%= link_to "Favourites", profile_account_path %>
+                        <%= link_to "Requêtes", profile_loan_requests_pending_path %>
                       </li>
                       <li>
-                        <%= link_to "My Ads", profile_account_path %>
+                        <%= link_to "Emprunts", profile_my_loan_requests_path %>
                       </li>
                     </ul>
                     </div>        

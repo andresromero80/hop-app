@@ -20,3 +20,4 @@ module HopApp
     config.exceptions_app = self.routes
   end
 end
+
