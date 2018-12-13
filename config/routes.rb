@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'reviews/create'
   get 'errors/not_found'
   get 'errors/internal_server_error'
+
   root to: "static_pages#index"
   get '/home', to: "static_pages#home"
 	
-  resources :trades, :categories, :products
+  resources :trades, :categories, :products, :reviews
   
   resources :conversations do
     resources :messages
@@ -41,5 +43,4 @@ Rails.application.routes.draw do
   #error views 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
-
 end
