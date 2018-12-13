@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
+  devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords" }
 
   # Messages / Conversations
   get 'messages/index', to: 'messages#index'
-  get 'conversations', to: 'conversations#index'
+  get 'conversations', to: 'conversations#messages/index'
 
   # Products / Inventory / Search
   get '/my-inventory', to: 'inventories#show'
@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   #error views 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
+
 end
