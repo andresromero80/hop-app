@@ -31,6 +31,12 @@ class MessagesController < ApplicationController
         #Message to recipient
         recipient = User.find(@conversation.recipient_id)
         MessageMailer.with(user: recipient).message_email.deliver_now
+
+        @last_message = @conversation.messages.last
+        respond_to do |format|
+          format.html
+          format.js
+       end
     end
   end
 
