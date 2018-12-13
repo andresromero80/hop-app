@@ -11,6 +11,7 @@ class ProfileController < ApplicationController
 	end
 
 	def account
+		
 	end
 
 	def if_logged
