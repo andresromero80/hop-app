@@ -92,13 +92,26 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-    #Mailjet config
-  config.action_mailer.smtp_settings = {
-    :address   => "in-v3.mailjet.com",
-    :port      => 587, 
-    :enable_starttls_auto => true,
-    :user_name => ENV["MAILJET_API_KEY"],
-    :password  => ENV["MAILJET_API_SECRET"],
-    :authentication => 'login',
-  }
+  #   #Mailjet config
+  # config.action_mailer.smtp_settings = {
+  #   :address   => "in-v3.mailjet.com",
+  #   :port      => 587, 
+  #   :enable_starttls_auto => true,
+  #   :user_name => ENV["MAILJET_API_KEY"],
+  #   :password  => ENV["MAILJET_API_SECRET"],
+  #   :authentication => 'login',
+  # }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'hop-app-thp.herokuapp.com' }
+
+  ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => 'heroku.com',
+      :enable_starttls_auto => true
+    }
 end

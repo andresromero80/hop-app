@@ -66,4 +66,9 @@ Rails.application.configure do
         :port => 1025
     }
 
+    #This is required to properly generate links inside the e-mail views.
+  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
+    #To enable sending emails in dev
+  config.action_mailer.perform_deliveries = true
+
 end
