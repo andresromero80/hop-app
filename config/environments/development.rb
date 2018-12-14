@@ -74,15 +74,25 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default_url_options = { host: 'hop-app-thp.herokuapp.com' }
 
-  #Test prod en local
-  ActionMailer::Base.smtp_settings = {
-      :address        => 'smtp.sendgrid.net',
-      :port           => '587',
-      :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'],
-      :password       => ENV['SENDGRID_PASSWORD'],
-      :domain         => 'heroku.com',
-      :enable_starttls_auto => true
-    }
+  # #Test prod en local SENDGRID
+  # config.action_mailer.smtp_settings = {
+  #     :address        => 'smtp.sendgrid.net',
+  #     :port           => '587',
+  #     :enable_starttls_auto => true,
+  #     :authentication => 'login',
+  #     :user_name      => ENV['SENDGRID_USERNAME'],
+  #     :password       => ENV['SENDGRID_PASSWORD'],
+
+  #   }
+
+      #   #Mailjet config
+  # config.action_mailer.smtp_settings = {
+  #   :address   => "in-v3.mailjet.com",
+  #   :port      => 587, 
+  #   :enable_starttls_auto => true,
+  #   :user_name => ENV["MAILJET_API_KEY"],
+  #   :password  => ENV["MAILJET_API_SECRET"],
+  #   :authentication => 'login',
+  # }
 
 end
