@@ -24,6 +24,9 @@ class ProfileController < ApplicationController
 	end
 
 	def close
+		session[:user_id] = nil
+    	@user = User.find(params[:id])
+    	@user.destroy
 	end
 
 	def favourites

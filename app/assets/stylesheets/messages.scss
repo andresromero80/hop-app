@@ -1,3 +1,53 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#msg-box {
+	display: flex;
+	justify-content: center;
+	align-content: stretch;
+	align-self: auto;
+	background-image: url(assets/img/home-office.jpg);
+}
+
+#message_body {
+	width: 800px;
+	height: 200px;
+}
+
+#msg-title {
+	display: flex;
+	justify-content: center;
+	font-style: italic;
+	font-weight: 600;
+}
+
+.message-is-dark { 
+	display: flex;
+	justify-content: flex-start;
+	background-color: white;
+	border-radius: 5px;
+	margin-left: 100px;
+	margin-right: 100px;
+ }
+
+ .message-is-dark:hover {
+ 	background-color: #ADD8E6;
+ }
+
+ .message-body {
+ 	margin-left: 15px;
+ 	margin-right: 15px;
+ 	margin-bottom: 20px;
+ 	margin-top: 10px;
+ }
+
+ #contactForm {
+ 	display: flex;
+ 	justify-content: center;
+ }
+
+ .btn-send {
+ 	display: flex;
+ 	justify-content: flex-end;
+ }
+
+.inner-box::-webkit-scrollbar {
+    width: 3px;
+}
