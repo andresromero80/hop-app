@@ -1,77 +1,72 @@
-    <!-- Start Content -->
-    
-    <div id="content">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-9 page-content">
-            <div class="inner-box">              
-              <h2 class="title-2">Boite de réception</h2>
-              <div class="table-responsive">
-                <div class="table-action">
-                  <div class="checkbox">
-                    <label for="checkAll">
-                      <input id="checkAll" type="checkbox">
-                      Select: All | <a href="#" class="btn btn-xs btn-danger">Delete <i class="fa fa-close"></i></a>
-                    </label>
-                  </div>
-                  <div class="table-search pull-right col-xs-7">
-                    <div class="form-group">
-                      <label class="col-xs-5 control-label text-right">Search <br>
-                        <a title="clear filter" class="clear-filter" href="#clear">[clear]</a> 
-                      </label>
-                      <div class="col-xs-7 searchpan">
-                        <input class="form-control" id="filter" type="text">
-                      </div>
-                    </div>
+<!-- Start Content -->
+
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 page-content">
+        <div class="inner-box">              
+          <h2 class="title-2">Boite de réception</h2>
+          <div class="table-responsive">
+            <div class="table-action">
+              <div class="checkbox">
+                <label for="checkAll">
+                  <input id="checkAll" type="checkbox">
+                  Select: All | <a href="#" class="btn btn-xs btn-danger">Delete <i class="fa fa-close"></i></a>
+                </label>
+              </div>
+              <div class="table-search pull-right col-xs-7">
+                <div class="form-group">
+                  <label class="col-xs-5 control-label text-right">Search <br>
+                    <a title="clear filter" class="clear-filter" href="#clear">[clear]</a> 
+                  </label>
+                  <div class="col-xs-7 searchpan">
+                    <input class="form-control" id="filter" type="text">
                   </div>
                 </div>
-                
-                <table class="table table-striped table-bordered add-manage-table">
-                  <thead>
-                    <tr>
-                      <th data-type="numeric"></th>
-                      <th>Destinataire</th>
-                      <th>Objet</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @conversations.each do |conversation| %>
-                        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-                        <% if conversation.sender_id == current_user.id %>
-                          <% recipient = User.find(conversation.recipient_id) %>
-                        <% else %>
-                          <% recipient = User.find(conversation.sender_id) %>
-                        <% end %>
-                        <% unless current_user.id == recipient %>
-                    <tr>
-                        <td class="checkbox">
-                          <label>
-                            <input type="checkbox">
-                          </label>
-                        </td>
-                        <td class="ads-details-td col-xs-12">  
-                      <div class="columns">
-                    <%= link_to "From: #{User.find(conversation.sender_id).email},
-                                To: #{User.find(conversation.recipient_id).email}", conversation_messages_path(conversation), class: 'inline-block' %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>               
+              </div>
             </div>
-          </div>
-        </div>  
-      </div>      
-    </div>
-    <!-- End Content -->
+            
+            <table class="table table-striped table-bordered add-manage-table">
+              <thead>
+                <tr>
+                  <th data-type="numeric"></th>
+                  <th>Destinataire</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @conversations.each do |conversation| %>
+                  <tr>
+                    <td class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                      </label>
+                    </td>
+                    <td class="ads-details-td col-xs-12">
+                      <% if conversation.sender_id != current_user.id %>
+                        <%= link_to "#{User.find(conversation.sender_id).email}", conversation_messages_path(conversation), class: 'inline-block' %>
+                      <% else %>
+                      <%= link_to "#{User.find(conversation.recipient.id).email}", conversation_messages_path(conversation), class: 'inline-block' %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= conversation.messages.last.created_at %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>               
+        </div>
+      </div>
+    </div>  
+  </div>      
+</div>
+<!-- End Content -->
 
 
 <!-- <% @users.each do |user| %>
-                         <% if user.id != current_user.id %>
-                         <%= link_to "Message #{user.email}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post", class: 'table table-striped table-bordered add-manage-table' %>
-                         <% end %>
-                       <% end %> -->
+                     <% if user.id != current_user.id %>
+                     <%= link_to "Message #{user.email}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post", class: 'table table-striped table-bordered add-manage-table' %>
+                     <% end %>
+                   <% end %> -->

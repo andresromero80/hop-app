@@ -1,105 +1,85 @@
 <!-- Page Header Start -->
-    <div class="page-header" style="background: url(assets/img/home-office.jpg);">
-      <div class="container">
-        <div class="row">         
-          <div class="col-md-12">
-            <div class="breadcrumb-wrapper">
-              <h2 class="page-title">Contact Us</h2>
-            </div>
-          </div>
+<div class="page-header" style="background-color: #1E90FF">
+  <div class="container">    
+    <div class="row">         
+      <div class="col-md-12">
+        <div class="breadcrumb-wrapper">
+          <h2 class="page-title">Messages</h2>
         </div>
       </div>
     </div>
+  </div>
+</div>
 <!-- Page Header End -->
 
+
 <!-- Start Contact Us Section -->
-      <section id="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <h2 class="title-2">
-                Love to hear from you
-              </h2>
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="title-2">
+          Love to hear from you
+        </h2>
+        <center><h1 class="title is-4">
+          Conversation with <%= @conversation.recipient.firstname.capitalize %> <%= @conversation.recipient.lastname.capitalize %>
+        </h1></center>
+        <br />
 
-<h1 class="title is-4">Message <%= @conversation.recipient.email %></h1>
+        <% if @over_ten %>
+          <%= link_to "Show previous", '?m=all', class:'button is-link' %>
+        <% end %>
 
-<% if @over_ten %>
-  <%= link_to "Show previous", '?m=all', class:'button is-link' %>
-<% end %>
-
-<section id="messages" class="mb4">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <article class="message is-dark">
-        <div class="message-body">
-          
-          <div class="inline-block"><strong><%= user.email %></strong> <%= message.message_time %></div>
-          <div class="block pt4">
-            <div class="f4"><%= message.body %></div>
-          </div>
-        </div>
-      </article>
-    <% end %>
-  <% end %>
-</section>
-
-
-    
-      
-
-              <!-- Form -->
-              <div id="contactForm" class="contact-form" data-toggle="validator">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required data-error="Please enter your name">
-                          <div class="help-block with-errors"></div>
-                        </div>                    
+        <section id="messages" class="mb4">
+          <% @messages.each do |message| %>
+            <%= render :partial => "messages/message", object: message %>
+          <% end %>
+        </section>
+        <!-- Form -->
+        <div id="contactForm" class="contact-form" data-toggle="validator">
+          <div class="row"> 
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group"> 
+                    <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
+                    <%= form_for [@product, @conversation, @message], remote: true do |f| %>
+                      <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
+                      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+                      <div class="text-align-right">
+                        <%= f.submit "Send message", class: 'btn btn-common' %>
                       </div>
-                      <div class="col-md-12">
-                        <div class="form-group">                      
-                          <input type="email" class="form-control" id="email" placeholder="you@yoursite.com" required data-error="Please enter your email">
-                          <div class="help-block with-errors"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group"> 
-                          <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required data-error="Please enter your subject">
-                          <div class="help-block with-errors"></div>
-                        </div>
-                      </div> 
-
-                    </div>
-                  </div>    
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group"> 
-                          <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
-                          <%= form_for [@product, @conversation, @message] do |f| %>
-                          <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
-                          <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-                          <div class="text-align-right">
-                          <%= f.submit "Send message", class: 'btn btn-common' %>
-                          </div>
-                          <% end %>
-                          <div class="help-block with-errors"></div>
-                        </div>
-                      </div>
-                    </div>
+                    <% end %>
+                    <div class="help-block with-errors"></div>
                   </div>
-                  <!-- <div class="col-md-12">
-                     <button type="submit" id="submit" class="btn btn-common">Send Your Message</button> 
-                    <div id="msgSubmit" class="h3 text-center hidden"></div> 
-                    <div class="clearfix"></div>   
-                  </div> -->
-
-                </div> 
+                </div>
+              </div>
+            </div>    
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group"> 
+                    <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
+                    <%= form_for [@product, @conversation, @message] do |f| %>
+                    <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
+                    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+                      <div class="text-align-right">
+                        <%= f.submit "Send message", class: 'btn btn-common' %>
+                      </div>
+                    <% end %>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+            <!-- <div class="col-md-12">
+            <button type="submit" id="submit" class="btn btn-common">Send Your Message</button> 
+            <div id="msgSubmit" class="h3 text-center hidden"></div> 
+            <div class="clearfix"></div>   
+            </div> -->
+          </div> 
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
