@@ -31,23 +31,26 @@
               <% @product.uploads.each do |u| %>
                 <div id="owl-demo" class="owl-carousel owl-theme">
                   <div class="item">
-                    <img src="https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg" />
+                    <!-- <img src="https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg" /> -->
                     <%= image_tag u.variant(resize: "250x250") %>
                   </div>
                 </div>
               <% end %>
             <% end %>
           </div>
-
+          <!-- Product Details -->
           <div class="box">
             <h2 class="title-2"><strong>Product Details</strong></h2>
               <div class="row">
                 <div class="ads-details-info col-md-8">
-                  <p class="mb15"><%= @product.long_desc %></p>
                   <ul class="list-circle">
-                    <li><i class="fa fa-check-circle"></i> 256GB PCIe flash storage</li>
+                    <li>
+                      <i class="fa fa-check-circle"></i>
+                      <%= @product.long_desc %>
+                    </li>
                   </ul>
                 </div>
+                <!-- Details Panel -->
                 <div class="col-md-4">
                   <aside class="panel panel-body panel-details">
                     <ul>
@@ -60,15 +63,25 @@
                       </li>
 
                       <li>
-                        <p class="no-margin"><strong>Location:</strong> <a href="#">New York</a></p>
+                        <p class="no-margin"><strong>Location:</strong> 
+                          <a href="#">
+                            <%= Address.find(@user.address_id).city %>
+                          </a>
+                        </p>
                       </li>
 
                       <li>
-                        <p class=" no-margin "><strong>States:</strong> New</p>
+                        <p class=" no-margin "><strong>Country:</strong> 
+                          New <%= Address.find(@user.address_id).country %>
+                        </p>
                       </li>
 
                       <li>
-                        <p class="no-margin"><strong>Brand:</strong> <a href="#">Apple</a></p>
+                        <p class="no-margin"><strong>Brand:</strong> 
+                          <a href="#">
+                            <%= @product.brand %>
+                          </a>
+                        </p>
                       </li>
                     </ul>
                   </aside>
