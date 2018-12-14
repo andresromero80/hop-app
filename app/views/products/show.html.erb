@@ -85,7 +85,7 @@
                       <li>
                         <p class="no-margin"><strong>Brand:</strong> 
                           <a href="#">
-                            <%= @product.brand %>
+                            <%= Brand.find(@product.brand_id).name %>
                           </a>
                         </p>
                       </li>
