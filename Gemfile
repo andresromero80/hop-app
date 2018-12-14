@@ -64,7 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem 'simple_form'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 
@@ -77,3 +76,7 @@ gem 'nexmo'
 gem 'rubystats'
 gem 'dotenv-rails'
 gem 'geocoder'
+gem 'kaminari'
+gem 'mini_racer'
+gem 'twitter'
+gem 'aws-sdk-s3'

@@ -1,0 +1,12 @@
+var html = 
+	"<article class='message is-dark'>"+
+		"<div class='message-body'>"+
+    	"<div class='inline-block'>"+
+      	"<strong><%= User.find(@last_message.user_id).firstname %> <%= User.find(@last_message.user_id).lastname %></strong> <%= @last_message.message_time %>"+
+    	"</div>"+
+    	"<div class='block pt4'>"+
+        "<div class='f4'><%= @last_message.body %> </div>"+
+      "</div>"+
+    "</div>"+
+  "</article>";
+$('#messages').append(html)

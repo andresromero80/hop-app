@@ -12,7 +12,7 @@
         </button>
         <!-- End Toggle Nav Link For Mobiles -->
         <div class="navbar-brand logo" href="index.html">
-          <%= link_to image_tag("logo.png"), root_path, id:"colorlib-logo" %>
+          <%= link_to image_tag("logo_hop.png"), root_path, id:"colorlib-logo" %>
         </div>
       </div>
       <!-- brand and toggle menu for mobile End -->
@@ -20,8 +20,6 @@
           <!-- Navbar Start -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-              <!-- <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-              <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li> -->
               <% unless user_signed_in? %>
                   <li>
                     <%= link_to "Log in", new_user_session_path %>
@@ -33,27 +31,24 @@
                   <li>
                     <%= link_to "Products", "/products" %>
                   </li>
-                    <li>
-                      <%= link_to "Edit", edit_user_registration_path %>
-                  </li>
                   <li>
-                    <%= link_to "Messages", "/conversations" %>
+                    <%= link_to "Messages", conversations_path %>
                   </li>
                   <li>
                     <div class="dropdown-nav">
                     <button class="dropbtn">Profil</button>
                     <ul class="dropdown-content">
                       <li>
-                        <%= link_to "Account", profile_account_path %>
+                        <%= link_to "Compte", edit_user_registration_path %>
                       </li>
                       <li>
-                        <%= link_to "Archives", profile_archived_loans_path %>
+                        <%= link_to "Inventaire", my_inventory_path %>
                       </li>
                       <li>
-                        <%= link_to "Favourites", profile_account_path %>
+                        <%= link_to "Leur demandes", profile_requests_pending_path %>
                       </li>
                       <li>
-                        <%= link_to "My Ads", profile_account_path %>
+                        <%= link_to "Mes emprunts", profile_asks_pending_path %>
                       </li>
                     </ul>
                     </div>        

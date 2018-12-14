@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -91,4 +91,35 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #   #Mailjet config
+  # config.action_mailer.smtp_settings = {
+  #   :address   => "in-v3.mailjet.com",
+  #   :port      => 587, 
+  #   :enable_starttls_auto => true,
+  #   :user_name => ENV["MAILJET_API_KEY"],
+  #   :password  => ENV["MAILJET_API_SECRET"],
+  #   :authentication => 'login',
+  # }
+
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: 'hop-app-thp.herokuapp.com', port: 587 }
+  config.action_mailer.default_url_options = { :host => 'hop-app-thp.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :enable_starttls_auto => true,
+      :authentication => 'login',
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => 'heroku.com',
+
+    }
+
+     
+    #To enable sending emails in dev
+  config.action_mailer.perform_deliveries = true
+
+
 end

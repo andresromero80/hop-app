@@ -4,7 +4,7 @@
       <div class="col-sm-12 col-md-10 col-md-offset-1">
         <div class="box">
           <h2 class="title-2">Share a new product to the community</h2>
-           <div class="row search-bar mb30 red-bg">
+          <div class="row search-bar mb30 red-bg">
             <div class="advanced-search">
               <%= form_for @product, class: "search-form" do |f| %>
                 <div class="col-md-4 col-sm-12 search-col">
@@ -49,6 +49,7 @@
                 </div>
               </div>
             </div>
+
             <div class="form-group mb30">
               <%= f.label :title, class: "control-label" %>
               <%= f.text_field :title, class: 'form-control input-md' %>
@@ -66,14 +67,11 @@
             <div class="form-group">
               <%= f.label :uploads, class: "control-label" %>
               <%= f.file_field :uploads, multiple: true, class: 'file'%>
-              <br>
-              <br>
             </div>
            <%= f.submit "Submit", class: 'btn btn-common' %>
-           <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+         <% end %>
+       </div>
+     </div>
+   </div>
+ </div>
 </section>

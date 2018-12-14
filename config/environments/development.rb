@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
@@ -65,4 +65,34 @@ Rails.application.configure do
         :address => "localhost",
         :port => 1025
     }
+
+    #This is required to properly generate links inside the e-mail views.
+  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
+    #To enable sending emails in dev
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: 'hop-app-thp.herokuapp.com' }
+
+  # #Test prod en local SENDGRID
+  # config.action_mailer.smtp_settings = {
+  #     :address        => 'smtp.sendgrid.net',
+  #     :port           => '587',
+  #     :enable_starttls_auto => true,
+  #     :authentication => 'login',
+  #     :user_name      => ENV['SENDGRID_USERNAME'],
+  #     :password       => ENV['SENDGRID_PASSWORD'],
+
+  #   }
+
+      #   #Mailjet config
+  # config.action_mailer.smtp_settings = {
+  #   :address   => "in-v3.mailjet.com",
+  #   :port      => 587, 
+  #   :enable_starttls_auto => true,
+  #   :user_name => ENV["MAILJET_API_KEY"],
+  #   :password  => ENV["MAILJET_API_SECRET"],
+  #   :authentication => 'login',
+  # }
+
 end
