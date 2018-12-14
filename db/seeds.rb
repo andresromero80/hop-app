@@ -12,8 +12,82 @@ require 'mime-types'
 
 
 # #Create address
-10.times do |index|
-	address = Address.create!(street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
+addresses = [
+  {
+    street: "5 Boulevard Diderot",
+    postal_code: "75012",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "1 place d'ItalieHôtel de Ville",
+    postal_code: "75634",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "115 bis rue Ordener",
+    postal_code: "75018",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "8 rue des Batignolles, Hôtel de Ville",
+    postal_code: "75840",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "71 avenue Henri MartinHôtel de Ville",
+    postal_code: "75016",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "31 rue PecletHôtel de Ville",
+    postal_code: "75732",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "14 RUE BREVIN",
+    postal_code: "75014",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "130 AV D AUMESNILHôtel de ville",
+    postal_code: "75570",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "23 rue Bichat",
+    postal_code: "75475",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "21 place du PanthéonMairie de Paris",
+    postal_code: "75231",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "5 Boulevard Diderot",
+    postal_code: "75012",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "17 rue Meynadier",
+    postal_code: "75019",
+    city: "PARIS",
+    country: "France"
+  }
+]
+addresses.size.times do |index|
+	address = Address.create!(addresses[rand(0..addresses.size)])
 end 
 
 # # User.create(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456")
@@ -60,7 +134,7 @@ end
   index = 1
 
   Product.create!(short_desc: "Superbe ampli MARSHALL presque neuf", long_desc: "MARSHALL MG15GFX - FINITION OR",
-    brand_id: rand(0...brands.size), available: true, title: "MARSHALL MG15GFX - FINITION OR",
+    brand_id: rand(1...(brands.size)), available: true, title: "MARSHALL MG15GFX - FINITION OR",
     inventory_id: index + 1)
 
     
@@ -75,7 +149,7 @@ end
   index = 2
 
   Product.create!(short_desc: "VTC nikel pour se ballader en ville !", long_desc: "Vélo de ville CITY 50 NOIR NAKAMURA",
-    	brand_id: rand(0...brands.size), available: true, title: "Vélo de ville CITY 50 NOIR NAKAMURA",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Vélo de ville CITY 50 NOIR NAKAMURA",
        inventory_id: index + 1)
 
 
@@ -90,7 +164,7 @@ end
   index = 3
 
   Product.create!(short_desc: "VTC nikel pour se ballader en ville !", long_desc: "26cc lame de 60cm poignee pivotante -GREENCUT",
-    	brand_id: rand(0...brands.size), available: true, title: "Taille-haie a moteur essence ",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Taille-haie a moteur essence ",
        inventory_id: index + 1)
 
 
@@ -105,7 +179,7 @@ end
   index = 4
 
   Product.create!(short_desc: "Tondeuse thermique autotractee", long_desc: "Tondeuse thermique autotractee 165cc largeur 48cm 4-en-1 -GREENCUT",
-    	brand_id: rand(0...brands.size), available: true, title: "Tondeuse thermique autotractee",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Tondeuse thermique autotractee",
        inventory_id: index + 1)
 
   img = open("https://cdn.manomano.fr/tondeuse-thermique-autotractee-165cc-largeur-48cm-4-en-1-greencut-P-1045889-2746593_1.jpg")
@@ -119,7 +193,7 @@ end
   index = 5
 
   Product.create!(short_desc: "Micro bonne qualité", long_desc: "Micro SENNHEISER XS1. Très bonne qualité",
-    	brand_id: rand(0...brands.size), available: true, title: "Micro SENNHEISER XS1",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Micro SENNHEISER XS1",
        inventory_id: index + 1)
 
   img = open("https://www.woodbrass.com/images/woodbrass/SENNHEISER+XS1.JPG")
@@ -133,7 +207,7 @@ end
   index = 6
 
   Product.create!(short_desc: "Thermos Acier", long_desc: "Thermos Acier Inoxydable Double Paroi Flasque 0.47L",
-    	brand_id: rand(0...brands.size), available: true, title: "Thermos Acier",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Thermos Acier",
        inventory_id: index + 1)
 
 
@@ -148,7 +222,7 @@ end
   index = 7
 
   Product.create!(short_desc: "Appareil à raclette Moulinex", long_desc: "Appareil à raclette Moulinex RE160811 Accessimo 850 W Noir et Rouge",
-    	brand_id: rand(0...brands.size), available: true, title: "Appareil à raclette",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Appareil à raclette",
        inventory_id: index + 1)
 
 
@@ -163,7 +237,7 @@ end
   index = 8
 
   Product.create!(short_desc: "Râpe électrique rechargeable", long_desc: "Râpe électrique rechargeable",
-    	brand_id: rand(0...brands.size), available: true, title: "Râpe électrique rechargeable",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Râpe électrique rechargeable",
        inventory_id: index + 1)
 
 

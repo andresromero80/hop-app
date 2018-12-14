@@ -9,14 +9,46 @@ class SearchesController < ApplicationController
 	def location_filter(range)
 		id_inventories = []
 		User.all.pluck('id', 'address_id').each do |id, address_id|
-			if !address_id.nil?
-				d = Address.find(address_id).distance_from(current_user.address.geocode, :km)
-				if !d.nil?
-					if d >= range.to_f && d <= range.to_f
-						id_inventories << Inventory.where(user_id: id).pluck('id')
+			d = Address.find(address_id)
+			coords = d.geocode
+			if !coords.nil?
+				d.update(latitude: coords[0], longitude: coords[1])
+				if !current_user.address.nil?
+					compare = current_user.address.geocode
+					if !compare.nil?
+						diff = coords.distance_from(compare, :km)
+						if !diff.nil?
+							if diff >= range.to_f
+								id_inventories << Inventory.where(user_id: id).pluck('id')
+							end
+						end
 					end
 				end
 			end
+			# 	coords = d.geocode
+			# 	if !coords.nil?
+			# 		if !coords.empty?
+			# 			d = d.update(latitude: coords[0], longitude: coords[1])
+			# 			if !current_user.address.geocode.nil?
+			# 				g = d.distance_from(current_user.address.geocode, :km)
+			# 				if !g.nil?
+			# 					if g >= range.to_f
+			# 						id_inventories << Inventory.where(user_id: id).pluck('id')
+			# 					end
+			# 				end
+			# 			end
+			# 		end
+			# 	end
+			# else
+			# 	if !current_user.address.geocode.nil?
+			# 		g = d.distance_from(current_user.address.geocode, :km)
+			# 		if !g.nil?
+			# 			if g >= range.to_f
+			# 				id_inventories << Inventory.where(user_id: id).pluck('id')
+			# 			end
+			# 		end
+			# 	end
+			# end
 		end
 		puts id_inventories
 		id_inventories.join(', ')
@@ -40,7 +72,7 @@ class SearchesController < ApplicationController
 		ids = compute_filters
 		redirect_params =  { product_id: ids }
 
-		# redirect_to controller: 'products', action: 'index_with_filters', params: redirect_params
+		redirect_to controller: 'products', action: 'index_with_filters', params: redirect_params
 	end
 
 	def search_params
