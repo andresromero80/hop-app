@@ -4,12 +4,26 @@ class ProductsController < ApplicationController
 
 	def index
 		@categories = Category.all
-		@products = Product.all.order(:title).page params[:page]
+		ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
+
+		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
+
+		@products = Product.where('id NOT IN (?)', Array.wrap(ids)).order(:title).page params[:page]
 	end
 
 	def index_with_filters
 		@categories = Category.all
-		@products = Product.where(id: params[:product_id])
+
+		# ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
+
+		# (ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
+
+		# params[:product_id].each do |i|
+		# 	ids.delete(i)
+		# end
+
+		# @products = Product.where(id: ids)
+		@products = params[:product_id]
 		render "index"
 	end
 	
@@ -86,5 +100,6 @@ class ProductsController < ApplicationController
 		@users = User.all
 		@conversations = Conversation.all
 		@review = Review.new
+		@loan = Loan.new
 	end
 end

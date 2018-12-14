@@ -19,8 +19,6 @@ class ConversationsController < ApplicationController
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
     else
       @conversation = Conversation.create!(sender_id: params[:sender_id] ,recipient_id: params[:recipient_id], product: @product)
-      #Creation d'objet LoanAsk
-      # @loan_ask = LoanAsk.create(receiver: User.find(params[:sender_id]), loaner: User.find(params[:recipient_id]), product: @product)
     end
     redirect_to product_conversation_messages_path(@conversation, @product.id)
   end
