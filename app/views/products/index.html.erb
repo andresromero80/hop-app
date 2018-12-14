@@ -56,9 +56,14 @@
                   <div class="add-image">
                     <a href= <%= product_path(product.id) %> >
                       <!-- <img src="images/djembe.jpg" alt=""> -->
-                      <%= image_tag(product.uploads.first) %>
+                      <% if product.uploads.size > 0 %>
+                        <%= image_tag(product.uploads.first) %>
+                      <% else %>
+                        <%= image_tag("djembe.jpg") %>
+                      <% end %>  
                     </a>
                   </div>
+                </div>
                 <div class="col-sm-7 add-desc-box">
                   <div class="add-details">
                     <h5 class="add-title">

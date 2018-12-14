@@ -9,7 +9,7 @@ require 'faker'
 
 
 
-# #Create address
+# # #Create address
 # 3.times do |index|
 # 	address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
 		
@@ -32,10 +32,6 @@ require 'faker'
 # 3.times do |index|
 #   product = Product.create!(short_desc: Faker::Name.first_name, long_desc: Faker::Name.last_name, 
 #   	brand: "1234567", available: true, title: Faker::Hipster.word, inventory_id:index + 1)
-# end
-# #Create gossips
-# 20.times do |index|
-#   gossip = Gossip.create!(title: Faker::Book.title, content: Faker::Movie.quote, date:Faker::Time.forward(23, :morning), user_id: User.first.id + rand(10))
 # end
 
 #Create Categories
