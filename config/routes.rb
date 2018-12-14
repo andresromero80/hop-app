@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: "static_pages#index"
   get '/home', to: "static_pages#home"
 	
-  resources :trades, :categories, :products, :reviews
+  resources :trades, :categories, :products, :reviews, :brands
   
   resources :conversations do
     resources :messages

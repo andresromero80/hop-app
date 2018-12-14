@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_151432) do
+ActiveRecord::Schema.define(version: 2018_12_14_163429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2018_12_14_151432) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -101,13 +107,14 @@ ActiveRecord::Schema.define(version: 2018_12_14_151432) do
   create_table "products", force: :cascade do |t|
     t.string "short_desc"
     t.string "long_desc"
-    t.string "brand"
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "inventory_id"
     t.string "state"
     t.string "title"
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["inventory_id"], name: "index_products_on_inventory_id"
   end
 
@@ -154,6 +161,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_151432) do
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
   add_foreign_key "inventories", "users"
+  add_foreign_key "products", "brands"
   add_foreign_key "products", "inventories"
   add_foreign_key "trades", "users"
   add_foreign_key "users", "addresses"
