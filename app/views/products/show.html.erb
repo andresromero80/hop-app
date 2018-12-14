@@ -81,6 +81,8 @@
                           <%= Address.find(@user.address_id).country %>
                         </p>
                       </li>
+                      <%= puts @product.brand_id.inspect %>
+                      <%= puts @product.brand_id.class %>
                       <% if !@product.brand_id.nil? %>
                       <li>
                         <p class="no-margin"><strong>Brand:</strong> 
