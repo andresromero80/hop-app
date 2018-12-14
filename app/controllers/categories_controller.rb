@@ -11,22 +11,22 @@ class CategoriesController < ApplicationController
 		@categories.each do |c|
 			if !c.products.empty?
 				if !@products
-				 @products = c.products.order(:title).page params[:page]
+				 @products = c.products.distinct.order(:title).page params[:page]
 				else
-					a =  c.products.order(:title).page params[:page]
+					a =  c.products.distinct.order(:title).page params[:page]
 					@products << a
 				end
 			end
 		end
-		puts @products.class
+
 		render "products/index"
 	end
 
 	def show
 		@categories = Category.all
 		@category = Category.find(params[:id])
-		@products = @category.products.order(:title).page params[:page]
-		puts @products.class
+		@products = @category.products.distinct.order(:title).page params[:page]
+		
 		render "products/index"
 	end
 

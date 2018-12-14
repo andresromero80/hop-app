@@ -7,19 +7,50 @@ class SearchesController < ApplicationController
 	end
 	
 	def location_filter(range)
-		max = range.split(',')
 		id_inventories = []
-
 		User.all.pluck('id', 'address_id').each do |id, address_id|
-			if !address_id.nil?
-				d = Address.find(address_id).distance_from(current_user.address.geocode, :km)
-				if !d.nil?
-					if d >= max[0].to_f && d <= max[1].to_f
-						id_inventories << Inventory.where(user_id: id).pluck('id')
+			d = Address.find(address_id)
+			coords = d.geocode
+			if !coords.nil?
+				d.update(latitude: coords[0], longitude: coords[1])
+				if !current_user.address.nil?
+					compare = current_user.address.geocode
+					if !compare.nil?
+						diff = coords.distance_from(compare, :km)
+						if !diff.nil?
+							if diff >= range.to_f
+								id_inventories << Inventory.where(user_id: id).pluck('id')
+							end
+						end
 					end
 				end
 			end
+			# 	coords = d.geocode
+			# 	if !coords.nil?
+			# 		if !coords.empty?
+			# 			d = d.update(latitude: coords[0], longitude: coords[1])
+			# 			if !current_user.address.geocode.nil?
+			# 				g = d.distance_from(current_user.address.geocode, :km)
+			# 				if !g.nil?
+			# 					if g >= range.to_f
+			# 						id_inventories << Inventory.where(user_id: id).pluck('id')
+			# 					end
+			# 				end
+			# 			end
+			# 		end
+			# 	end
+			# else
+			# 	if !current_user.address.geocode.nil?
+			# 		g = d.distance_from(current_user.address.geocode, :km)
+			# 		if !g.nil?
+			# 			if g >= range.to_f
+			# 				id_inventories << Inventory.where(user_id: id).pluck('id')
+			# 			end
+			# 		end
+			# 	end
+			# end
 		end
+		puts id_inventories
 		id_inventories.join(', ')
 	end
 
@@ -66,12 +97,14 @@ class SearchesController < ApplicationController
 			global_sql = "#{global_sql} WHERE #{filter_by_categories};"
 		end
 
-		products = []
-		puts global_sql
+		chaine = ''
 		ActiveRecord::Base.connection.execute(global_sql).each do |row|
-			products_ids << row['id']
+			if chaine.length == 0
+				chaine += row['id'].to_s
+			else
+				chaine += ',' + row['id'].to_s
+			end
 		end
-
-		products_ids
+		chaine
 	end
 end
