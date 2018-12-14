@@ -18,6 +18,7 @@ class ProfileController < ApplicationController
 	def asks_pending
 		@objects = Loan.where(borrower_id: current_user.id, is_accepted: nil)
 		@view = "asks/asks_pending"
+		puts @objects.inspect
 		render "loans", objects: @objects
 	end
 
