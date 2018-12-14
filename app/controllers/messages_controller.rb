@@ -20,9 +20,9 @@ class MessagesController < ApplicationController
   end
 
   def create
+    puts params
     @message = @conversation.messages.new(message_params)
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
        # Tell the UserMailer to send a welcome email after save
         # @user = User.find(message_params[:user_id])
         #Message to sender
@@ -33,9 +33,11 @@ class MessagesController < ApplicationController
         MessageMailer.with(user: recipient).message_email.deliver_now
 
         @last_message = @conversation.messages.last
-        respond_to do |format|
-          format.html
-          format.js
+        if @message.save
+          respond_to do |format|
+            format.html
+            format.js
+          end
        end
     end
   end
