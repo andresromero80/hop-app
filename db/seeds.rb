@@ -13,8 +13,7 @@ require 'mime-types'
 
 # #Create address
 10.times do |index|
-	address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
-		
+	address = Address.create!(street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
 end 
 
 # # User.create(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456")
@@ -37,17 +36,17 @@ end
 #Create products
 
 #Create Categories
-3.times do |index|
+# 3.times do |index|
   category = Category.create!(name: "Spectacle")
   category = Category.create!(name: "Cinéma")
   category = Category.create!(name: "Travaux d'entretien")
   category = Category.create!(name: "réparations d'objets")
-end
+# end
 # 9 produits
 
   index = 0
   product = Product.create(short_desc: "Guitare sympa en bonne qualité", long_desc: "Guitare sympa en bonne qualité",
-    	brand_id: rand(0...brands.size), available: true, title: "YAMAHA ETUDE C40 A 4/4",
+    	brand_id: rand(1...(brands.size)), available: true, title: "YAMAHA ETUDE C40 A 4/4",
       inventory_id: index + 1)
 
   img = open("https://www.woodbrass.com/images/woodbrass/MMA+MG15GFX.JPG")

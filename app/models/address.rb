@@ -2,7 +2,7 @@ class Address < ApplicationRecord
 	has_one :user
 	geocoded_by :full_address
 
-	after_validation :geocode
+	# after_validation :geocode
 
 	def full_address
 		["#{self.street}", self.city, self.country].compact.join(', ')

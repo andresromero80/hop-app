@@ -62,7 +62,7 @@
         <div class="col-md-12">
           <% @categories.each do |c| %>              
             <div class="col-md-2 col-sm-3 col-xs-6 f-category wow fadeIn" data-wow-delay="0s">
-              <a href="category.html">
+              <a href="/categories/<%= c.id %>">
                 <div class="icon">
                   <i class="fa fa-car"></i>
                 </div>
@@ -79,6 +79,5 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('.carousel').carousel({interval: 7000});
-    $("#ex2").slider({});
   });
 </script>
