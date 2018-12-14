@@ -11,11 +11,17 @@
               <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
             <% else %>
               <div>
-                <h2>
-                  <a href="/loans/ask/<%= @inventory.user_id %>/<%= @product.id %>" class="btn btn-default">
-                    Demande de pret
-                  </a>
-                </h2>
+                <% if current_user.id != @product.inventory.user.id %>
+                  <h2>
+                    <%= form_for @loan, url: "/loans/ask", method: "post", remote: true, class: "search-form" do |f| %>
+                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                      <%= f.hidden_field :borrower_id, value: current_user.id  %>
+                      <%= f.hidden_field :product_id, value: @product.id %>
+                      <%= f.hidden_field :owner_id, value: @product.inventory.user.id %>
+                      <%= f.submit "Demande de pret", commit: "Create", class: "btn btn-default" %>
+                    <% end %>
+                  </h2>
+                <% end %>
 
                 <h2> Your review </h2>
                 <% 5.times do |index| %>

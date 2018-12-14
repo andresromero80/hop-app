@@ -10,8 +10,8 @@ class User < ApplicationRecord
   
 	has_one_attached :header_image
   has_many :trades
-  has_many :loans, :class_name => 'Loans', :foreign_key => 'loaner_id'
-  has_many :receives, :class_name => 'Loans', :foreign_key => 'receiver_id'
+  has_many :owns, inverse_of: :owner, :class_name => 'Loans', :foreign_key => 'owner_id'
+  has_many :borrows, inverse_of: :borrower, :class_name => 'Loans', :foreign_key => 'borrower_id'
   has_many :reviews, dependent: :destroy, inverse_of: :reviewer, :class_name => 'Review'
   has_many :notes, dependent: :destroy, inverse_of: :reviewed_user, :class_name => 'Review'
 

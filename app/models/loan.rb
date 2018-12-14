@@ -1,7 +1,5 @@
 class Loan < ApplicationRecord
-	belongs_to :loan_ask
-	# belongs_to :product
-	# belongs_to :loaner, class_name: 'User', foreign_key: 'loaner_id'
-	# belongs_to :receiver, class_name: 'User', foreign_key: 'receiver_id'
-
+	has_one :product
+	has_one :owner, class_name: 'User', foreign_key: 'owner_id', inverse_of: :owns
+	has_one :borrower, class_name: 'User', foreign_key: 'borrower_id', inverse_of: :borrows
 end

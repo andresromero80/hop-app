@@ -10,40 +10,54 @@ class ProfileController < ApplicationController
 		coordinates = current_user.address.geocode
 	end
 
-	def account
-		
-	end
-
 	def if_logged
 		redirect_to '/users/login' unless current_user
 	end
 
-	def archives
-		@my_archived_asks = LoanAsk.where(receiver_id: current_user.id, loaner_confirm: true)
-		@my_archived_loans = LoanAsk.where(loaner_id: current_user.id, loaner_confirm: true)
+	## Methods about THE BORROWER
+	def asks_pending
+		@objects = Loan.where(borrower_id: current_user.id, is_accepted: nil)
+		@view = "asks/asks_pending"
+		render "loans", objects: @objects
 	end
 
-	def close
+	def asks_current
+		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true)
+		@view = "asks/asks_current"
+		render "loans", objects: @objects
 	end
 
-	def favourites
+	def asks_past
+		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true, back_confirm: true)
+		@view = "asks/asks_past"
+
+		render "loans", objects: @objects
+	end
+	############################
+
+	## Methods about THE OWNER
+	def requests_pending
+		@objects = Loan.where(owner_id: current_user.id, is_accepted: nil)
+		@view = "requests/requests_pending"
+		render "loans", objects: @objects
 	end
 
-	def my_ads
+	
+	def requests_current
+		@objects = Loan.where(owner_id: current_user.id, is_accepted: true)
+
+		@view = "requests/requests_current"
+
+		render "loans", objects: @objects
 	end
 
-	def my_loan_request
-		@my_asks = []
-		@my_asks = LoanAsk.where(receiver_id: current_user.id)
-	end
+	def requests_past
+		@objects = Loan.where(owner_id: current_user.id, is_accepted: true, back_confirm: true)
+		@view = "requests/requests_past"
 
-	def loan_requests_pending
-		@requests_from_others = []
-		@requests_from_others << LoanAsk.find_by(loaner_id: current_user.id, loaner_confirm: nil)
+		render "loans", objects: @objects
 	end
-
-	def saved_search
-	end
+	############################
 
 	def ask_profile_verification
 		request_id = ''
