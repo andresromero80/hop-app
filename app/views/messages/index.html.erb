@@ -41,8 +41,7 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="form-group"> 
-                    <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
+                  <div class="form-group">
                     <%= form_for [@product, @conversation, @message], remote: true do |f| %>
                       <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
                       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
@@ -55,28 +54,6 @@
                 </div>
               </div>
             </div>    
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group"> 
-                    <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
-                    <%= form_for [@product, @conversation, @message] do |f| %>
-                    <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
-                    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-                      <div class="text-align-right">
-                        <%= f.submit "Send message", class: 'btn btn-common' %>
-                      </div>
-                    <% end %>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="col-md-12">
-            <button type="submit" id="submit" class="btn btn-common">Send Your Message</button> 
-            <div id="msgSubmit" class="h3 text-center hidden"></div> 
-            <div class="clearfix"></div>   
-            </div> -->
           </div> 
         </div>
       </div>

@@ -25,15 +25,26 @@ Rails.application.routes.draw do
   post '/products-search', to: 'searches#search'
 
   # Loans
-  get '/loans/ask/:id_loaner/:id_product', to: 'loans#loan_ask'
-  get '/loan-confirm/:loan_ask_id', to: 'loans#confirm'
-  get '/loan-refuse/:loan_ask_id', to: 'loans#refuse'
+  post '/loans/ask', to: 'loans#ask'
+  get '/loans/ask/cancel/:loan_id', to: 'loans#ask_cancel'
+  get '/loans/ask/confirm/:loan_id', to: 'loans#ask_confirm'
+  get '/loans/ask/refuse/:loan_id', to: 'loans#ask_refuse'
+
+  get '/loans/back/ask/:loan_id', to: 'loans#back_ask'
+  get '/loans/back/confirm/:loan_id', to: 'loans#back_confirm'
+  get '/loans/back/refuse/:loan_id', to: 'loans#back_refuse'
 
   # Profile Info / SMS verification
   get '/profile/account', to: 'profile#account'
-  get '/profile/loan-requests-pending', to: 'profile#loan_requests_pending'
-  get '/profile/my-loan-requests', to: 'profile#my_loan_request'
-  get '/profile/archived-loans', to: 'profile#archives'
+
+  get '/profile/requests-pending', to: 'profile#requests_pending'
+  get '/profile/requests-current', to: 'profile#requests_current'
+  get '/profile/requests-past', to: 'profile#requests_past'
+
+  get '/profile/asks', to: 'profile#asks'
+  get '/profile/asks-pending', to: 'profile#asks_pending'
+  get '/profile/asks-current', to: 'profile#asks_current'
+  get '/profile/asks-past', to: 'profile#asks_past'
 
   get '/profile/ask_profile_verification', to: 'profile#ask_profile_verification'
   get '/profile/cancel_profile_verification/:request_id', to: 'profile#cancel_profile_verification'
