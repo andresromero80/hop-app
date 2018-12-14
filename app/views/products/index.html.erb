@@ -53,9 +53,9 @@
             <div class="item-list">
               <div class="col-sm-2 no-padding photobox">
                 <div class="add-image">
-                  <a href="#">
+                  <a href= <%= product_path(product.id) %> >
                     <!-- <img src="images/djembe.jpg" alt=""> -->
-                    <%= image_tag("djembe.jpg") %>
+                    <%= image_tag(product.uploads.first) %>
                   </a>
                 </div>
               </div>
@@ -64,19 +64,18 @@
                 <div class="add-details">
                   <h5 class="add-title">
                     <a href="/products/<%= product.id %>">
-                      Title: <%= product.title %>
+                      <%= product.title %>
                     </a>
                   </h5>
                   <br/>
                   <div class="item_desc">
-                    Short Description: <%= product.short_desc %><br/>
+                    Description: <%= product.short_desc %><br/>
                   </div>
                 </div>
               </div>
               <div class="col-sm-3 text-right  price-box">
-                <h2 class="card-title">User No. <%= ind + 1%></h2>
                 <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
-                  Open product
+                  Check <%= product.title %>
                 </a>
               </div>
             </div>
