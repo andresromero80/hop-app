@@ -70,11 +70,15 @@ class ProfileController < ApplicationController
 		@user_verification = UserVerification.new(current_user)
 		permited = params.permit(:authenticity_token, :verification_code, :request_id)
 		@response = @user_verification.verify(permited[:verification_code], permited[:request_id])
+
+		redirect_to "/users/edit"
 	end
 
 	def cancel_profile_verification(request_id)
 		@user_verification = UserVerification.new(current_user)
 		permited = params.permit(:request_id)
 		@user_verification.cancel(permited[:request_id])
+
+		redirect_to "/users/edit"
 	end
 end

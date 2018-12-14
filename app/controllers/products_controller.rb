@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
 		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
 
-		@products = Product.where('id NOT IN (?)', Array.wrap(ids)).order(:title).page params[:page]
+		@products = Product.where.not(id: ids).order(:title).page params[:page]
 	end
 
 	def index_with_filters
