@@ -75,31 +75,17 @@ ActiveRecord::Schema.define(version: 2018_12_12_153858) do
     t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
-  create_table "loan_asks", force: :cascade do |t|
-    t.boolean "loaner_confirm"
-    t.integer "loaner_id"
-    t.integer "receiver_id"
-    t.bigint "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_loan_asks_on_product_id"
-  end
-
-  create_table "loan_backs", force: :cascade do |t|
-    t.boolean "receiver_confirm"
-    t.boolean "loaner_confirm"
-    t.bigint "loan_ask_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["loan_ask_id"], name: "index_loan_backs_on_loan_ask_id"
-  end
-
   create_table "loans", force: :cascade do |t|
-    t.bigint "loan_ask_id"
-    t.date "loan_back_limit"
+    t.boolean "is_accepted"
+    t.boolean "back_ask"
+    t.boolean "back_confirm"
+    t.date "limit_date"
+    t.bigint "product_id"
+    t.integer "owner_id"
+    t.integer "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["loan_ask_id"], name: "index_loans_on_loan_ask_id"
+    t.index ["product_id"], name: "index_loans_on_product_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -151,6 +137,10 @@ ActiveRecord::Schema.define(version: 2018_12_12_153858) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "firstname"

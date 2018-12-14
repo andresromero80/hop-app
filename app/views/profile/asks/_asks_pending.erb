@@ -1,0 +1,85 @@
+<% if !@objects.nil? %>
+  <% if @objects.respond_to? :each %>
+    <% if !@objects.empty? %>
+      <% @objects.each do |ask| %>
+        <% product = Product.find(ask.product_id) %>
+        <tr>
+          <td>
+            <% conversation = Conversation.where(sender_id: ask.borrower_id, recipient_id: ask.owner_id).first %>
+            <%= link_to "#{User.find(ask.owner_id).firstname } #{User.find(ask.owner_id).lastname}", conversation_messages_path(conversation), class: 'inline-block' %>
+          </td>
+
+          <td class="add-img-td">
+            <a href="/products/<%= product.id %>">
+              <% product.uploads.each do |u| %>
+                <%= image_tag u.variant(resize: "50x50") %>
+              <% end %>
+            </a>
+          </td>
+          <td class="ads-details-td">
+            <h4>
+              <a href="/products/<%= product.id %>">
+                <%= product.title.capitalize %>
+              </a>
+            </h4>
+            <p> <strong> Posted On </strong>:
+            02-Oct-2017, 04:38 PM </p>
+            <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p>
+          </td>
+          <td class="action-td">
+            <% if ask.owner_id == current_user.id %>
+              <p>
+                <a href="/loan/ask/refuse/<%= ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
+                  <i class=" fa fa-trash"></i>
+                  Refuse
+                </a>
+              </p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% product = Product.find(@objects.product_id) %>
+    <tr>
+      <td>
+        <% conversation = Conversation.where(sender_id: @objects.borrower_id, recipient_id: @objects.owner_id).first %>
+        <%= link_to "#{User.find(@objects.owner_id).firstname } #{User.find(@objects.owner_id).lastname}", conversation_messages_path(conversation), class: 'inline-block' %>
+      </td>
+
+      <td class="add-img-td">
+        <a href="/products/<%= product.id %>">
+          <% product.uploads.each do |u| %>
+            <%= image_tag u.variant(resize: "50x50") %>
+          <% end %>
+        </a>
+      </td>
+      <td class="ads-details-td">
+        <h4>
+          <a href="/products/<%= product.id %>">
+            <%= product.title.capitalize %>
+          </a>
+        </h4>
+        <p> <strong> Posted On </strong>:
+        02-Oct-2017, 04:38 PM </p>
+        <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p>
+      </td>
+      <td class="action-td">
+        <% if @objects.owner_id == current_user.id %>
+          <p>
+            <a href="/loans/ask/refuse/<%= @objects.id %>" data-remote="true" class="btn btn-danger btn-xs">
+              <i class=" fa fa-trash"></i>
+              Refuse
+            </a>
+          </p>
+          <p>
+            <a href="/loans/ask/confirm/<%= @objects.id %>" data-remote="true" class="btn btn-success btn-xs">
+              <i class=" fa fa-trash"></i>
+              Accept
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

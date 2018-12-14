@@ -39,21 +39,17 @@
             <div id="contactForm" class="contact-form" data-toggle="validator">
               <div class="row"> 
                 <div class="col-md-12">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group" id="msg-grp"> 
+                  <div class="form-group" id="msg-grp"> 
                     <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
                         <%= form_for [@product, @conversation, @message], remote: true do |f| %>
                         <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
                         <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
                         <br>
                           <div class="btn-send">
-                            <%= f.submit "Send message", class: 'btn btn-common' %>
-                          </div>
-                        <% end %>
-                          <div class="help-block with-errors"></div>
-                      </div>
-                    </div>
+                          <%= f.submit "Send message", class: 'btn btn-common' %>
+                        </div>
+                      <% end %>
+                    <div class="help-block with-errors"></div>
                   </div>    
                 </div> 
               </div>

@@ -30,7 +30,7 @@
                 <ul>
                   <% @categories.each do |c| %>
                     <li>
-                      <a href="#">
+                      <a href="/categories/<%= c.id %>">
                         <i class="fa fa-desktop"></i>
                         <%= c.name.capitalize %>
                         <span class="category-counter">
@@ -48,39 +48,38 @@
 
       <div class="col-sm-9 page-content">
         <!-- Adds wrapper Start -->  
-        <% @products.each.with_index do |product,ind| %>
-          <div class="adds-wrapper">
-            <div class="item-list">
-              <div class="col-sm-2 no-padding photobox">
-                <div class="add-image">
-                  <a href="#">
-                    <!-- <img src="images/djembe.jpg" alt=""> -->
-                    <%= image_tag("djembe.jpg") %>
-                  </a>
-                </div>
-              </div>
-
-              <div class="col-sm-7 add-desc-box">
-                <div class="add-details">
-                  <h5 class="add-title">
-                    <a href="/products/<%= product.id %>">
-                      Title: <%= product.title %>
+        <% @products.each.with_index do |product, ind| %>
+          <% if product %>
+            <div class="adds-wrapper">
+              <div class="item-list">
+                <div class="col-sm-2 no-padding photobox">
+                  <div class="add-image">
+                    <a href= <%= product_path(product.id) %> >
+                      <!-- <img src="images/djembe.jpg" alt=""> -->
+                      <%= image_tag(product.uploads.first) %>
                     </a>
-                  </h5>
-                  <br/>
-                  <div class="item_desc">
-                    Short Description: <%= product.short_desc %><br/>
+                  </div>
+                <div class="col-sm-7 add-desc-box">
+                  <div class="add-details">
+                    <h5 class="add-title">
+                      <a href="/products/<%= product.id %>">
+                        Title: <%= product.title %>
+                      </a>
+                    </h5>
+                    <br/>
+                    <div class="item_desc">
+                      Description: <%= product.short_desc %><br/>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-3 text-right  price-box">
-                <h2 class="card-title">User No. <%= ind + 1%></h2>
-                <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
-                  Open product
+                <div class="col-sm-3 text-right  price-box">
+                  <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
+                  Check <%= product.title %>
                 </a>
+                </div>
               </div>
             </div>
-          </div>
+            <% end %>
         <% end %>
       </div>
       <!-- Adds wrapper End -->
