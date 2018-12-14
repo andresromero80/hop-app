@@ -81,7 +81,7 @@
                           <%= Address.find(@user.address_id).country %>
                         </p>
                       </li>
-
+                      <% if !@product.brand_id.nil? %>
                       <li>
                         <p class="no-margin"><strong>Brand:</strong> 
                           <a href="#">
@@ -89,6 +89,7 @@
                           </a>
                         </p>
                       </li>
+                      <% end %>
                     </ul>
                   </aside>
                 </div>
