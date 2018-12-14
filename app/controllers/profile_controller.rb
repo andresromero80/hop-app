@@ -21,6 +21,9 @@ class ProfileController < ApplicationController
 		render "loans", objects: @objects
 	end
 
+	def close
+	end
+
 	def asks_current
 		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true)
 		@view = "asks/asks_current"

@@ -17,44 +17,44 @@
 <section id="content">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <h2 class="title-2">
-          Love to hear from you
-        </h2>
-        <center><h1 class="title is-4">
+      <div class="inner-box">
+        <div class="panel-group"  id="msg-box">
+          <div class="col-sm-12">
+            <center><h1 class="title is-4" id="msg-title">
           Conversation with <%= @conversation.recipient.firstname.capitalize %> <%= @conversation.recipient.lastname.capitalize %>
-        </h1></center>
-        <br />
+            </h1></center>
+            <br />
 
-        <% if @over_ten %>
-          <%= link_to "Show previous", '?m=all', class:'button is-link' %>
-        <% end %>
+            <% if @over_ten %>
+            <%= link_to "Show previous", '?m=all', class:'button is-link' %>
+            <% end %>
 
-        <section id="messages" class="mb4">
-          <% @messages.each do |message| %>
-            <%= render :partial => "messages/message", object: message %>
-          <% end %>
-        </section>
+            <section id="messages" class="mb4">
+              <% @messages.each do |message| %>
+              <%= render :partial => "messages/message", object: message %>
+              <br>
+              <% end %>
+            </section>
         <!-- Form -->
-        <div id="contactForm" class="contact-form" data-toggle="validator">
-          <div class="row"> 
-            <div class="col-md-12">
-              <div class="row">
+            <div id="contactForm" class="contact-form" data-toggle="validator">
+              <div class="row"> 
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <%= form_for [@product, @conversation, @message], remote: true do |f| %>
-                      <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
-                      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-                      <div class="text-align-right">
-                        <%= f.submit "Send message", class: 'btn btn-common' %>
-                      </div>
-                    <% end %>
+                  <div class="form-group" id="msg-grp"> 
+                    <!-- <textarea class="form-control" placeholder="Massage" rows="10" data-error="Write your message" required></textarea> -->
+                        <%= form_for [@product, @conversation, @message], remote: true do |f| %>
+                        <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
+                        <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+                        <br>
+                          <div class="btn-send">
+                          <%= f.submit "Send message", class: 'btn btn-common' %>
+                        </div>
+                      <% end %>
                     <div class="help-block with-errors"></div>
-                  </div>
-                </div>
+                  </div>    
+                </div> 
               </div>
-            </div>    
-          </div> 
+            </div>
+          </div>
         </div>
       </div>
     </div>

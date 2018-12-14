@@ -37,7 +37,8 @@
               <tbody>
                 <% @conversations.each do |conversation| %>
                   <tr>
-                    <td class="checkbox">
+                    <td>
+                      <div class="checkbox">
                       <label>
                         <input type="checkbox">
                       </label>
@@ -53,6 +54,7 @@
                       <%= conversation.messages.last.created_at %>
                     </td>
                   </tr>
+                  </div>
                 <% end %>
               </tbody>
             </table>
