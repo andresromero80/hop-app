@@ -39,15 +39,22 @@
                       <span class="hidden-sm hidden-xs">
                         Brand
                       </span>
-                      <select class="dropdown-product selectpicker" name="product[state]">
-                        <% @brands.each do |brand| %>
-                          <option value="<%= brand %>"> <%= brand %> </option>
-                        <% end %>
-                      </select>
+                      <%= f.fields_for :product_detail do |form| %>
+                        <select id="brand-select"class="dropdown-product selectpicker" name="product[product_detail][name]">
+                          <option value="new" > Ajouter une marque  </option>
+                          <% @brands.each do |brand| %>
+                            <option value="<%= brand %>"> <%= brand %> </option>
+                          <% end %>
+                        </select>
+                      <% end %>
                     </label>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div id="brand_field" class="input-icon">
+              <input placeholder="Créer une nouvelle marque"type="text" class="form-control input-md" id="custom-brand" />
             </div>
 
             <div class="form-group mb30">
@@ -75,3 +82,20 @@
    </div>
  </div>
 </section>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#brand-select').on('change', function() {
+      var select_val = $('#brand-select :selected').val();
+      if (select_val == 'new') {
+        $('#custom-brand').removeClass('hidden')
+        $('#custom-brand').on('change', function() {
+          console.log($('#custom-brand').val());
+          $('#brand-select :selected').val($('#custom-brand').val());
+        });
+      }
+      else {
+        $('#custom-brand').addClass('hidden')
+      }
+    });
+  });
+</script>
