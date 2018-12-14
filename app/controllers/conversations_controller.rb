@@ -2,10 +2,15 @@ class ConversationsController < ApplicationController
 	before_action :authenticate_user!
 
   def index
-    # @product = Product.find(params[:product_id])
     @products = Product.all
     @users = User.all
-    @conversations = Conversation.all
+
+    sql = "SELECT DISTINCT * from conversations AS c WHERE c.sender_id=#{current_user.id} OR c.recipient_id=#{current_user.id};"
+    @conversations = []
+    
+    ActiveRecord::Base.connection.execute(sql).each do |row|
+      @conversations << Conversation.new(row)
+    end
   end
 
   def create
