@@ -10,24 +10,24 @@
             <% if @product.inventory.user.id == current_user.id %>
               <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
             <% else %>
-              <div>
-                <% if current_user.id != @product.inventory.user.id %>
-                  <h2>
-                    <%= form_for @loan, url: "/loans/ask", method: "post", remote: true, class: "search-form" do |f| %>
-                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                      <%= f.hidden_field :borrower_id, value: current_user.id  %>
-                      <%= f.hidden_field :product_id, value: @product.id %>
-                      <%= f.hidden_field :owner_id, value: @product.inventory.user.id %>
-                      <%= f.submit "Demande de pret", commit: "Create", class: "btn btn-default" %>
-                    <% end %>
-                  </h2>
-                <% end %>
+            <div>
+              <% if current_user.id != @product.inventory.user.id %>
+                <h2 class="btn-ask">
+                  <%= form_for @loan, url: "/loans/ask", method: "post", remote: true, class: "search-form" do |f| %>
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                    <%= f.hidden_field :borrower_id, value: current_user.id  %>
+                    <%= f.hidden_field :product_id, value: @product.id %>
+                    <%= f.hidden_field :owner_id, value: @product.inventory.user.id %>
+                    <%= f.submit "Demande de pret", commit: "Create", class: "btn btn-common" %>
+                  <% end %>
+                </h2>
+              <% end %>
 
                 <h2> Your review </h2>
                 <% 5.times do |index| %>
                   <span id="rate-value-<%= index %>" class="fa fa-star"></span>
                 <% end %>
-              </div>
+            </div>
             <% end %>
 
             <div class="blockquote-footer"> by: <%= @user.email %>
@@ -81,14 +81,17 @@
                           <%= Address.find(@user.address_id).country %>
                         </p>
                       </li>
-
+                      <%= puts @product.brand_id.inspect %>
+                      <%= puts @product.brand_id.class %>
+                      <% if !@product.brand_id.nil? %>
                       <li>
                         <p class="no-margin"><strong>Brand:</strong> 
                           <a href="#">
-                            <%= @product.brand %>
+                            <%= Brand.find(@product.brand_id).name %>
                           </a>
                         </p>
                       </li>
+                      <% end %>
                     </ul>
                   </aside>
                 </div>
@@ -119,73 +122,12 @@
             </div>
             <img src="assets/img/img1.jpg" alt="">
           </div>
-
-          <div class="col-xs-12">
-            <div class="features-box wow fadeInDownQuick" data-wow-delay="0.3s">
-            <div class="features-icon">
-              <i class="lnr lnr-star">
-              </i>
-            </div>
-            <div class="features-content">
-              <h4>
-                Fraud Protection
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda facere. 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="features-box wow fadeInDownQuick" data-wow-delay="0.6s">
-            <div class="features-icon">
-              <i class="lnr lnr-chart-bars"></i>
-            </div>
-            <div class="features-content">
-              <h4>
-                No Extra Fees 
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda facere. 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="features-box wow fadeInDownQuick" data-wow-delay="0.9s">
-            <div class="features-icon">
-              <i class="lnr lnr-spell-check"></i>
-            </div>
-            <div class="features-content">
-              <h4>
-                Verified Data
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda facere. 
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12">
-          <div class="features-box wow fadeInDownQuick" data-wow-delay="0.9s">
-            <div class="features-icon">
-              <i class="lnr lnr-smile"></i>
-            </div>
-            <div class="features-content">
-              <h4>
-                Friendly Return Policy
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda facere. 
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+
 <script>
   $(document).ready(function() {
     var is_rated = false
