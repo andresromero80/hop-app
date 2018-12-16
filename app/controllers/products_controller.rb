@@ -1,7 +1,25 @@
 class ProductsController < ApplicationController
 	before_action :product_param, only: ['create', 'update']
+	before_action :product_detail_param, only: ['create', 'update']
+	before_action :categories_param, only: ['create', 'update']
 	before_action :authenticate_user!
 
+	def product_param
+		permited = params.require(:product).permit(:title, :short_desc, :long_desc, :state, uploads: [])
+		permited[:inventory_id] = Inventory.find_by(user_id: current_user.id).id
+		permited
+	end
+
+	def product_detail_param
+		d = params.require(:product).permit(:product_detail => [:name])[:product_detail]
+		puts d.class
+		puts d.inspect
+		d
+	end
+
+	def categories_param
+		params.require(:product).permit(categories: [])[:categories]
+	end
 	def index
 		@categories = Category.all
 		ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
@@ -26,10 +44,6 @@ class ProductsController < ApplicationController
 		@products = params[:product_id]
 		render "index"
 	end
-	
-	def product_param
-		params.require(:product).permit(:title, :short_desc, :long_desc, :brand, :state, uploads: [])
-	end
 
 	def new
 		@brands = [
@@ -44,19 +58,23 @@ class ProductsController < ApplicationController
 
 		@categories = Category.all
 		@product = Product.new
+
 	end
 
 	def create
-		@permitted = product_param
-		@permitted[:inventory_id] = Inventory.find_by(user_id: current_user.id).id
+		@p = product_param
+		@d = product_detail_param
+		@c = categories_param
 
-		@product = Product.create(@permitted)
+		@product = Product.create(@p)
+		Brand.create(@d)
 
-		@categories = params.require(:product).permit(categories: [])[:categories]
-		@categories.each do |c|
-			c = c.to_i
-			unless c <= 0
-				@product.categories << Category.find(c)
+		if !@c.nil? 
+			@c.each do |c|
+				c = c.to_i
+				unless c <= 0
+					@product.categories << Category.find(c)
+				end
 			end
 		end
 
@@ -78,9 +96,8 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		@permitted = product_param
 		puts @permitted
-		@product = Product.update(params[:id], @permitted)
+		@product = Product.update(product_param)
 		@categories = params.require(:product).permit(categories: [])[:categories]
 
 		@categories.each do |c|
