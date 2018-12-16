@@ -26,8 +26,8 @@ class MessagesController < ApplicationController
        # Tell the UserMailer to send a welcome email after save
         # @user = User.find(message_params[:user_id])
         # #Message to sender
-        # sender = User.find(@conversation.sender_id)
-        # MessageMailer.with(user: sender).message_email.deliver_now
+        sender = User.find(@conversation.sender_id)
+        MessageMailer.with(user: sender).message_email.deliver_now
         #Message to recipient
         recipient = User.find(@conversation.recipient_id)
         MessageMailer.with(user: recipient).message_email.deliver_now

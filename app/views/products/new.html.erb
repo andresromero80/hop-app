@@ -43,7 +43,11 @@
                         <select id="brand-select"class="dropdown-product selectpicker" name="product[product_detail][name]">
                           <option value="new" > Ajouter une marque  </option>
                           <% @brands.each do |brand| %>
-                            <option value="<%= brand %>"> <%= brand %> </option>
+                            <% if @product.brand_id == brand.id %>
+                              <option selected value="<%= brand %>"> <%= brand.name %> </option>
+                            <% else %>
+                              <option value="<%= brand %>"> <%= brand.name %> </option>
+                            <% end %>
                           <% end %>
                         </select>
                       <% end %>
