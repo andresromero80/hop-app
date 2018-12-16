@@ -16,7 +16,8 @@ class SearchesController < ApplicationController
 				if !current_user.address.nil?
 					compare = current_user.address.geocode
 					if !compare.nil?
-						diff = coords.distance_from(compare, :km)
+						a = Address.find(address_id)
+						diff = a.distance_from(current_user.address.geocode, :km)
 						if !diff.nil?
 							if diff >= range.to_f
 								id_inventories << Inventory.where(user_id: id).pluck('id')
@@ -25,32 +26,7 @@ class SearchesController < ApplicationController
 					end
 				end
 			end
-			# 	coords = d.geocode
-			# 	if !coords.nil?
-			# 		if !coords.empty?
-			# 			d = d.update(latitude: coords[0], longitude: coords[1])
-			# 			if !current_user.address.geocode.nil?
-			# 				g = d.distance_from(current_user.address.geocode, :km)
-			# 				if !g.nil?
-			# 					if g >= range.to_f
-			# 						id_inventories << Inventory.where(user_id: id).pluck('id')
-			# 					end
-			# 				end
-			# 			end
-			# 		end
-			# 	end
-			# else
-			# 	if !current_user.address.geocode.nil?
-			# 		g = d.distance_from(current_user.address.geocode, :km)
-			# 		if !g.nil?
-			# 			if g >= range.to_f
-			# 				id_inventories << Inventory.where(user_id: id).pluck('id')
-			# 			end
-			# 		end
-			# 	end
-			# end
 		end
-		puts id_inventories
 		id_inventories.join(', ')
 	end
 

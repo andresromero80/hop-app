@@ -92,14 +92,21 @@ class ProductsController < ApplicationController
 			"en bon état",
 			"abimé"
 		]
-		@categories = Category.all
 		@product = Product.find(params[:id])
+		@categories = []
+	 	@product.categories.each { |c|
+	 		@categories << c
+	 	}
+	 	@categories
 	end
 
 	def update
-		puts @permitted
+		@p = product_param
+		@d = product_detail_param
+		@c = categories_param
+
 		@product = Product.update(product_param)
-		@categories = params.require(:product).permit(categories: [])[:categories]
+		@categories = categories_param
 
 		@categories.each do |c|
 			c = c.to_i

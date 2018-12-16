@@ -27,6 +27,13 @@
           </td>
           <td class="action-td">
             <% if ask.owner_id == current_user.id %>
+
+            <p>
+            <a href="/loans/ask/confirm/<%= ask.id %>" data-remote="true" class="btn btn-success btn-xs">
+              <i class=" fa fa-trash"></i>
+              Accept
+            </a>
+          </p>
               <p>
                 <a href="/loan/ask/refuse/<%= ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
                   <i class=" fa fa-trash"></i>
