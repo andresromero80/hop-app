@@ -15,11 +15,18 @@
         </div>
         <div class="inner-box">
           <div class="welcome-msg">
-            <h3 class="page-sub-header2 clearfix no-padding">
+            <h2 class="page-sub-header2 clearfix no-padding">
               Hello <%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize %>
-            </h3>
+            </h2>
             <span class="page-sub-header-sub small">
-              You last logged in at: 01-03-2017 12:40 AM [UK time (GMT + 6:00hrs)]
+             
+                <a href="/profile/ask_profile_verification">
+                  <i class="fa fa-home"></i> Vérifier mon Profil
+                </a>
+            </span>
+            <br />
+            <span class="page-sub-header-sub small">
+              Votre dernière connection était le <%= current_user.last_login.getlocal.strftime("%d / %m / %y") %> a : <%= current_user.last_login.getlocal.strftime("%H : %M") %>
             </span> 
           </div>
           <div id="accordion" class="panel-group">

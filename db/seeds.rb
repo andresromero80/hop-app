@@ -12,21 +12,9 @@ require 'faker'
 # # #Create address
 # 3.times do |index|
 # 	address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
-		
-# end 
 
-# # User.create(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456")
+# User.create(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456")
 
-# #Create users
-# 3.times do |index|
-#   user = User.create!(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
-#   	number: "1234567", email: "#{index+1}@#{index+1}.com", address_id: index+1, password: "123456")
-# end
-
-# #Create inventory
-# 3.times do |index|
-#   inventory = Inventory.create!(user_id: index+1)
-# end
 
 # #Create products
 # 3.times do |index|
@@ -34,20 +22,10 @@ require 'faker'
 #   	brand: "1234567", available: true, title: Faker::Hipster.word, inventory_id:index + 1)
 # end
 
+
 #Create Categories
 # 3.times do |index|
 	category = Category.create!(name: "Spectacle")
 	category = Category.create!(name: "Cinéma")
 	category = Category.create!(name: "Travaux d'entretien")
 	category = Category.create!(name: "réparations d'objets")
-	
-
-# end 
-
-# # Association Tags Gossips
-# 10.times do |index|
-# 	number = 1 + rand(10)
-# 		number.times do
-# 			Gossip.find(index+1).tags << Tag.find(Tag.first.id + rand(10))
-# 		end 
-# end 

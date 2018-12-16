@@ -48,47 +48,57 @@
 
       <div class="col-sm-9 page-content">
         <!-- Adds wrapper Start -->  
-        <% @products.each.with_index do |product, ind| %>
-          <% if product %>
-            <div class="adds-wrapper">
-              <div class="item-list">
-                <div class="col-sm-2 no-padding photobox">
-                  <div class="add-image">
-                    <a href= <%= product_path(product.id) %> >
-                      <!-- <img src="images/djembe.jpg" alt=""> -->
-                      <% if product.uploads.size > 0 %>
-                        <%= image_tag(product.uploads.first) %>
-                      <% else %>
-                        <%= image_tag("djembe.jpg") %>
-                      <% end %>  
-                    </a>
-                  </div>
-                </div>
-                <div class="col-sm-7 add-desc-box">
-                  <div class="add-details">
-                    <h5 class="add-title">
-                      <a href="/products/<%= product.id %>">
-                        Title: <%= product.title %>
+
+        <% if !@products.nil? %>
+          <% if @products.respond_to? :each %>
+            <% @products.each do |product| %>
+              <% if product %>
+                <div class="adds-wrapper">
+                  <div class="item-list">
+                    <div class="col-sm-2 no-padding photobox">
+                      <div class="add-image">
+                        <a href="/products/<%= product.id %>">
+                        <% product.uploads.each do |u| %>
+                          <%= image_tag u %>
+                        <% end %>
+                          <!-- <img src="images/djembe.jpg" alt=""> -->
+                          <%= puts product.uploads %>
+                        </a>
+                      </div>
+                    </div>
+                      <div class="col-sm-7 add-desc-box">
+                        <div class="add-details">
+                          <h5 class="add-title">
+                            <a href="/products/<%= product.id %>">
+                              Title: <%= product.title %>
+                            </a>
+                          </h5>
+                          <br/>
+                          <div class="item_desc">
+                            Description: <%= product.short_desc %><br/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 text-right  price-box">
+                        <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
+                        Check <%= product.title %>
+
                       </a>
-                    </h5>
-                    <br/>
-                    <div class="item_desc">
-                      Description: <%= product.short_desc %><br/>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-3 text-right  price-box">
-                  <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
-                  Check <%= product.title %>
-                </a>
-                </div>
-              </div>
-            </div>
+              <% end %>
             <% end %>
+          <% end %>  
         <% end %>
       </div>
       <!-- Adds wrapper End -->
       <!-- Deleted pagination -->
+            <!-- Start Pagination -->
+<!--       <div class="pagination-bar">
+        <%= paginate @products %>
+      </div> -->
     </div>
   </div>
 </div>
