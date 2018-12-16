@@ -59,9 +59,7 @@ class ProductsController < ApplicationController
 
 	def new
 		@brands = Brand.all
-		
 		@states = STATES
-
 		@categories = Category.all
 		@product = Product.new
 
