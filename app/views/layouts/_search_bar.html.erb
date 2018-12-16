@@ -1,53 +1,29 @@
-<div action="/products-search" method="post" class="search-form" style="display: flex; justify-content: space-between;">
+<form class="search-form" action="/products-search" method="post">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-   <div class="col-md-3 col-sm-6 search-col">
-<!--       <div class="row">
-  <div class="small-10 medium-11 columns">
-    <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;">
-      <span class="range-slider-handle" role="slider" tabindex="0"></span>
-      <span class="range-slider-active-segment"></span>
-    </div>
-  </div>
-  <div class="small-2 medium-1 columns">
-    <span id="sliderOutput3"></span>
-  </div> 
- <label class="styled-select">
-      <select class="dropdown-product"> 
-    <input name="search[location]" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[0, 100]"/>
-    <div class="dropdown-distance">
-    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1"/>
-    </div>
-          </select>                                    
-      </label> 
-    </div> -->
+  <div class="col-md-12 col-sm-6 search-col">
+    <div class="col-md-3 col-sm-6 search-col">
+      <input class="form-control" name="search[location]" type="text" value="" placeholder="Distance maximale (km)" />
     </div>  
     
-  <div class="col-md-4 col-sm-6 search-col">
-    <div class="input-group-addon search-category-container">
-      <label class="styled-select">
-      <select class="dropdown-product selectpicker" multiple="true" name="search[categories][]" >
-        <% @categories.each do |c| %>
-          <option value="<%= c.id %>"> <%= c.name %> </option>
-        <% end %>
-      </select>                                    
-      </label>
+    <div class="col-md-3 col-sm-6 search-col">
+      <div class="input-group-addon search-category-container">
+        <label class="styled-select">
+          <select class="dropdown-product selectpicker" multiple="true" name="search[categories][]" >
+            <% @categories.each do |c| %>
+              <option value="<%= c.id %>"> <%= c.name %> </option>
+            <% end %>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 search-col">
+      <input class="form-control keyword" name="search[keyword]" value="" placeholder="Enter Keyword" type="text">
+      <i class="fa fa-search"></i>
+    </div>
+    <div class="col-md-3 col-sm-6 search-col">
+      <button type="submit" class="btn btn-common btn-search btn-block">
+        <strong>Search</strong>
+      </button>
     </div>
   </div>
-
-  <div class="col-md-3 col-sm-6 search-col">
-    <input class="form-control keyword" name="search[keyword]" value="" placeholder="Enter Keyword" type="text">
-    <i class="fa fa-search"></i>
-  </div>
-  <div class="col-md-3 col-sm-6 search-col">
-    <button type="submit" class="btn btn-common btn-search btn-block"><strong>Search</strong></button>
-  </div>
-</div>
-</div>
-
-<script type="text/javascript">$('#ex1').slider({
-    formatter: function(value) {
-        return 'Current value: ' + value;
-    }
-});
-</script>
-
+</form>

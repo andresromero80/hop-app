@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_12_14_163429) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "street_number"
     t.string "street"
     t.string "city"
     t.string "postal_code"
@@ -107,12 +106,12 @@ ActiveRecord::Schema.define(version: 2018_12_14_163429) do
   create_table "products", force: :cascade do |t|
     t.string "short_desc"
     t.string "long_desc"
+    t.string "title"
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "inventory_id"
     t.string "state"
-    t.string "title"
     t.bigint "brand_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["inventory_id"], name: "index_products_on_inventory_id"

@@ -10,15 +10,123 @@ require 'mime-types'
 # require 'filemagic'
 
 
-#Create address
-10.times do |index|
-  address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
+# #Create address
+# 10.times do |index|
+#   address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
     
-end 
+# end 
 
 # User.new(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456", password_confirmation: "123456")
 
 #Create users
+# 10.times do |index|
+#   user = User.new(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
+#     number: "1234567", email: "#{index+1}@#{index+1}.com", address_id: index+1, password: "123456")
+#   user.skip_confirmation!
+#   user.save!
+# =======
+# #Create address
+addresses = [
+  {
+    street: "5 Boulevard Diderot",
+    postal_code: "75012",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "1 place d'ItalieHôtel de Ville",
+    postal_code: "75634",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "115 bis rue Ordener",
+    postal_code: "75018",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "8 rue des Batignolles, Hôtel de Ville",
+    postal_code: "75840",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "71 avenue Henri MartinHôtel de Ville",
+    postal_code: "75016",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "31 rue PecletHôtel de Ville",
+    postal_code: "75732",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "14 RUE BREVIN",
+    postal_code: "75014",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "130 AV D AUMESNILHôtel de ville",
+    postal_code: "75570",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "23 rue Bichat",
+    postal_code: "75475",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "21 place du PanthéonMairie de Paris",
+    postal_code: "75231",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "5 Boulevard Diderot",
+    postal_code: "75012",
+    city: "PARIS",
+    country: "France"
+  },
+  {
+    street: "17 rue Meynadier",
+    postal_code: "75019",
+    city: "PARIS",
+    country: "France"
+  }
+]
+addresses.size.times do |index|
+	address = Address.create!(addresses[rand(0..addresses.size)])
+end 
+# # #Create address
+# 3.times do |index|
+# 	address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
+		
+# end 
+
+brands = ["YAMAHA", "MARSHALL", "NAKAMURA", "GREENCUT", "SENNHEISER", "PIREX", "TEFAL", "Moulinex", "Au Petit Fromton"]
+(brands.size - 1).times do |index|
+  Brand.create(name: brands[index])
+end
+
+
+#Create products
+
+
+#Create Categories
+category = Category.create!(name: "Spectacle")
+category = Category.create!(name: "Cinéma")
+category = Category.create!(name: "Entretien")
+category = Category.create!(name: "Bricolage")
+category = Category.create!(name: "Cuisine")
+category = Category.create!(name: "Musique")
+
+   #Create users
 10.times do |index|
   user = User.new(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
     number: "1234567", email: "#{index+1}@#{index+1}.com", address_id: index+1, password: "123456")
@@ -31,25 +139,11 @@ end
   inventory = Inventory.create!(user_id: index+1)
 end
 
-
-brands = ["YAMAHA", "MARSHALL", "NAKAMURA", "GREENCUT", "SENNHEISER", "PIREX", "TEFAL", "Moulinex", "Au Petit Fromton"]
-(brands.size - 1).times do |index|
-  Brand.create(name: brands[index])
-end
-#Create products
-
-#Create Categories
-# 3.times do |index|
-  category = Category.create!(name: "Spectacle")
-  category = Category.create!(name: "Cinéma")
-  category = Category.create!(name: "Travaux d'entretien")
-  category = Category.create!(name: "réparations d'objets")
-# end
 # 9 produits
 
   index = 0
-  product = Product.create(short_desc: "Guitare sympa en bonne qualité", long_desc: "Guitare sympa en bonne qualité",
-    	brand_id: rand(0...brands.size), available: true, title: "YAMAHA ETUDE C40 A 4/4",
+  product = Product.create!(short_desc: "Guitare sympa en bonne qualité", long_desc: "Guitare sympa en bonne qualité",
+    	brand_id: rand(1...(brands.size)), available: true, title: "YAMAHA ETUDE C40 A 4/4",
       inventory_id: index + 1)
 
   img = open("https://www.woodbrass.com/images/woodbrass/MMA+MG15GFX.JPG")
@@ -63,7 +157,7 @@ end
   index = 1
 
   Product.create!(short_desc: "Superbe ampli MARSHALL presque neuf", long_desc: "MARSHALL MG15GFX - FINITION OR",
-    brand_id: rand(0...brands.size), available: true, title: "MARSHALL MG15GFX - FINITION OR",
+    brand_id: rand(1...(brands.size)), available: true, title: "MARSHALL MG15GFX - FINITION OR",
     inventory_id: index + 1)
 
     
@@ -78,7 +172,7 @@ end
   index = 2
 
   Product.create!(short_desc: "VTC nikel pour se ballader en ville !", long_desc: "Vélo de ville CITY 50 NOIR NAKAMURA",
-    	brand_id: rand(0...brands.size), available: true, title: "Vélo de ville CITY 50 NOIR NAKAMURA",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Vélo de ville CITY 50 NOIR NAKAMURA",
        inventory_id: index + 1)
 
 
@@ -93,7 +187,7 @@ end
   index = 3
 
   Product.create!(short_desc: "VTC nikel pour se ballader en ville !", long_desc: "26cc lame de 60cm poignee pivotante -GREENCUT",
-    	brand_id: rand(0...brands.size), available: true, title: "Taille-haie a moteur essence ",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Taille-haie a moteur essence ",
        inventory_id: index + 1)
 
 
@@ -108,7 +202,7 @@ end
   index = 4
 
   Product.create!(short_desc: "Tondeuse thermique autotractee", long_desc: "Tondeuse thermique autotractee 165cc largeur 48cm 4-en-1 -GREENCUT",
-    	brand_id: rand(0...brands.size), available: true, title: "Tondeuse thermique autotractee",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Tondeuse thermique autotractee",
        inventory_id: index + 1)
 
   img = open("https://cdn.manomano.fr/tondeuse-thermique-autotractee-165cc-largeur-48cm-4-en-1-greencut-P-1045889-2746593_1.jpg")
@@ -122,7 +216,7 @@ end
   index = 5
 
   Product.create!(short_desc: "Micro bonne qualité", long_desc: "Micro SENNHEISER XS1. Très bonne qualité",
-    	brand_id: rand(0...brands.size), available: true, title: "Micro SENNHEISER XS1",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Micro SENNHEISER XS1",
        inventory_id: index + 1)
 
   img = open("https://www.woodbrass.com/images/woodbrass/SENNHEISER+XS1.JPG")
@@ -136,7 +230,7 @@ end
   index = 6
 
   Product.create!(short_desc: "Thermos Acier", long_desc: "Thermos Acier Inoxydable Double Paroi Flasque 0.47L",
-    	brand_id: rand(0...brands.size), available: true, title: "Thermos Acier",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Thermos Acier",
        inventory_id: index + 1)
 
 
@@ -151,7 +245,7 @@ end
   index = 7
 
   Product.create!(short_desc: "Appareil à raclette Moulinex", long_desc: "Appareil à raclette Moulinex RE160811 Accessimo 850 W Noir et Rouge",
-    	brand_id: rand(0...brands.size), available: true, title: "Appareil à raclette",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Appareil à raclette",
        inventory_id: index + 1)
 
 
@@ -166,7 +260,7 @@ end
   index = 8
 
   Product.create!(short_desc: "Râpe électrique rechargeable", long_desc: "Râpe électrique rechargeable",
-    	brand_id: rand(0...brands.size), available: true, title: "Râpe électrique rechargeable",
+    	brand_id: rand(1...(brands.size)), available: true, title: "Râpe électrique rechargeable",
        inventory_id: index + 1)
 
 

@@ -1,3 +1,8 @@
+STATES = [
+			"Neuf",
+			"Bon état",
+			"Abimé"
+		]
 class ProductsController < ApplicationController
 	before_action :product_param, only: ['create', 'update']
 	before_action :product_detail_param, only: ['create', 'update']
@@ -11,15 +16,13 @@ class ProductsController < ApplicationController
 	end
 
 	def product_detail_param
-		d = params.require(:product).permit(:product_detail => [:name])[:product_detail]
-		puts d.class
-		puts d.inspect
-		d
+		params.require(:product).permit(:product_detail => [:name])[:product_detail]
 	end
 
 	def categories_param
 		params.require(:product).permit(categories: [])[:categories]
 	end
+
 	def index
 		@categories = Category.all
 		ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
@@ -32,29 +35,29 @@ class ProductsController < ApplicationController
 	def index_with_filters
 		@categories = Category.all
 
-		# ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
+		ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
 
-		# (ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
-
-		# params[:product_id].each do |i|
-		# 	ids.delete(i)
-		# end
-
-		# @products = Product.where(id: ids)
-		@products = params[:product_id]
+		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
+		# @products = Product.all.order(:title).page params[:page]
+		s = params[:product_id].split(',')
+		if !ids.nil?
+			if ids.respond_to? :each
+				ids.each do |i|
+					if s.include?(i)
+						s.delete(i)
+					end
+				end
+			end
+		end
+		@products = Product.where('id IN (?)', s).order(:title).page params[:page]
+		
 		render "index"
 	end
 
 	def new
-		@brands = [
-			"thompson",
-			"sony"
-		]
-		@states = [
-			"neuf",
-			"en bon état",
-			"abimé"
-		]
+		@brands = Brand.all
+		
+		@states = STATES
 
 		@categories = Category.all
 		@product = Product.new
@@ -82,23 +85,25 @@ class ProductsController < ApplicationController
 	end
 
 	def edit
-		@brands = [
-			"thompson",
-			"sony"
-		]
-		@states = [
-			"neuf",
-			"en bon état",
-			"abimé"
-		]
-		@categories = Category.all
+		@brands = Brand.all
+		@states = STATES
+		
 		@product = Product.find(params[:id])
+		@categories = []
+	 	@product.categories.each { |c|
+	 		@categories << c
+	 	}
+
+	 	@categories
 	end
 
 	def update
-		puts @permitted
+		@p = product_param
+		@d = product_detail_param
+		@c = categories_param
+
 		@product = Product.update(product_param)
-		@categories = params.require(:product).permit(categories: [])[:categories]
+		@categories = categories_param
 
 		@categories.each do |c|
 			c = c.to_i
@@ -116,6 +121,7 @@ class ProductsController < ApplicationController
 		@user = User.find(@inventory.user_id)
 		@users = User.all
 		@conversations = Conversation.all
+
 		@review = Review.new
 		@loan = Loan.new
 	end

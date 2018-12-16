@@ -52,39 +52,34 @@
 
         <% if !@products.nil? %>
           <% if @products.respond_to? :each %>
-            <% @products.each do |product| %>
+            <% @products.each.with_index do |product, ind| %>
               <% if product %>
                 <div class="adds-wrapper">
                   <div class="item-list">
                     <div class="col-sm-2 no-padding photobox">
                       <div class="add-image">
-                        <a href="/products/<%= product.id %>">
-                        <% product.uploads.each do |u| %>
-                          <%= image_tag u %>
-                        <% end %>
+                        <a href= <%= product_path(product.id) %> >
                           <!-- <img src="images/djembe.jpg" alt=""> -->
-                          <%= puts product.uploads %>
+                          <% if product.uploads.size > 0 %>
+                            <%= image_tag(product.uploads.first) %>
+                          <% else %>
+                            <%= image_tag("djembe.jpg") %>
+                          <% end %>  
                         </a>
                       </div>
                     </div>
-                      <div class="col-sm-7 add-desc-box">
-                        <div class="add-details">
-                          <h5 class="add-title">
-                            <a href="/products/<%= product.id %>">
-                              Title: <%= product.title %>
-                            </a>
-                          </h5>
-                          <br/>
-                          <div class="item_desc">
-                            Description: <%= product.short_desc %><br/>
-                          </div>
-                        </div>
+                    <div class="col-sm-7 add-desc-box">
+                      <div class="add-details">
+                        <h5 class="add-title">
+                          <a href="/products/<%= product.id %>">
+                            <%= product.title %>
+                          </a>
+                        </h5>
                       </div>
-                      <div class="col-sm-3 text-right  price-box">
-                        <a style="color: white" href= <%= product_path(product.id) %> class ="btn btn-primary" >
-                        Check <%= product.title %>
 
-                      </a>
+                      <div class="item_desc">
+                        Description: <%= product.short_desc %><br/>
+
                       </div>
                     </div>
                   </div>
