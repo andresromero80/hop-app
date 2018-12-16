@@ -7,7 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+# #Create address
+10.times do |index|
+  address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
+    
+end 
 
+# # User.new(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456", password_confirmation: "123456", confirmed_at: Time.now.utc)
+# # User.new(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456", password_confirmation: "123456")
+
+
+# #Create users
+10.times do |index|
+  user = User.new(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
+    number: "1234567", email: "#{index+1}@#{index+1}.com", address_id: index+1, password: "123456")
+  user.skip_confirmation!
+  user.save!
+
+end
+
+# #Create inventory
+10.times do |index|
+  inventory = Inventory.create!(user_id: index+1)
+end
 
 # # #Create address
 # 3.times do |index|
