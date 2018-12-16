@@ -1,10 +1,10 @@
     <!-- Page Header Start -->
-    <div class="page-header" style="background: url(assets/img/banner1.jpg);">
+    <div class="page-header" style="background-color: #1E90FF;">
       <div class="container">
         <div class="row">         
           <div class="col-md-12">
             <div class="breadcrumb-wrapper">
-              <h2 class="page-title">Login to account</h2>
+              <h2 class="page-title">Connexion</h2>
             </div>
           </div>
         </div>
@@ -38,8 +38,9 @@
                     <!-- <i class="icon fa fa-unlock-alt"></i>
                     <input type="password" class="form-control" placeholder="Password"> -->
                     <%= f.password_field :password,
-                required: false,
+                required: true,
                 input_html: { autocomplete: "current-password" }, class: 'form-control' %>
+                    <span class="error" aria-live="polite"></span>
                   </div>
                 </div>                  
                 <div class="checkbox">
@@ -55,7 +56,4 @@
       </div>
     </section>
     <!-- Content section End --> 
-
-
-
 
