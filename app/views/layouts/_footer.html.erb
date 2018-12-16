@@ -8,7 +8,7 @@
           <div class="widget">
             <h3 class="block-title">About us</h3>
             <div class="textwidget">
-              <p>Spectacle, cinéma, travaux d'entretien des espaces verts ou encore réparations d'objets en tout genre, tant de domaines où le matériel fait souvent défaut ! Nous souhaitons développer un espace dans lequel il sera possible de partager du matériel entre particuliers et professionnels.</p>
+              <p>Spectacle, cinéma, musique, travaux d'entretien des espaces verts ou encore réparations d'objets en tout genre, tant de domaines où le matériel fait souvent défaut ! Nous souhaitons développer un espace dans lequel il sera possible de partager du matériel entre particuliers et professionnels.</p>
             </div>
           </div>
         </div>
@@ -16,16 +16,36 @@
           <div class="widget">
             <h3 class="block-title">Useful Links</h3>
             <ul class="menu">
-              <li><a href="/">Home</a></li>
-              <li><a href="#">Categories</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Left Sidebar</a></li>
-              <li><a href="#">Pricing Plans</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Full Width Page</a></li>
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+                  <% unless user_signed_in? %>
+                  <li>
+                    <%= link_to "Log in", new_user_session_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Sign up", new_user_registration_path %>
+                  </li>
+                  <% else %>
+                  <li>
+                    <%= link_to "Products", "/products" %>
+                  </li>
+                  <li>
+                    <%= link_to "Messages", conversations_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Compte", edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Inventaire", my_inventory_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Demandes", profile_requests_pending_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Emprunts", profile_asks_pending_path %>
+                  </li>        
+                  <li>
+                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                  </li>
+                  <% end %>
             </ul>
           </div>
         </div>
