@@ -7,6 +7,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def index
+		
+
 		@categories = Category.all
 		@categories.each do |c|
 			if !c.products.empty?
@@ -27,6 +29,9 @@ class CategoriesController < ApplicationController
 		@category = Category.find(params[:id])
 		@products = @category.products.distinct.order(:title).page params[:page]
 		
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
+
 		render "products/index"
 	end
 
