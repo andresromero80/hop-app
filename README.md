@@ -1,7 +1,7 @@
 # The Hacking Project
 
 # Final Projet : HOP - Halt OverProduce
-https://hop-app-thp.herokuapp.com/
+https://hoproduce.herokuapp.com/
 
 ## L'idée :
 Spectacle, cinéma, travaux d'entretien des espaces verts ou encore réparations d'objets en tout genre, tant de domaines où le matériel fait souvent défaut ! Nous souhaitons développer un espace dans lequel il sera possible de partager du matériel entre particuliers et professionnels.

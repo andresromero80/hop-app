@@ -1,3 +1,8 @@
+STATES = [
+			"Neuf",
+			"Bon état",
+			"Abimé"
+		]
 class ProductsController < ApplicationController
 	before_action :product_param, only: ['create', 'update']
 	before_action :product_detail_param, only: ['create', 'update']
@@ -25,16 +30,17 @@ class ProductsController < ApplicationController
 		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
 
 		@products = Product.where.not(id: ids).order(:title).page params[:page]
+
+		# @products = Product.all
+		# @products = Product.where('id NOT IN (?)', Array.wrap(ids)).order(:title).page params[:page]
 	end
 
 	def index_with_filters
-		puts ' je suis un test'
 		@categories = Category.all
 
 		ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
 
 		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
-		puts "fin du test"
 		# @products = Product.all.order(:title).page params[:page]
 		s = params[:product_id].split(',')
 		if !ids.nil?
@@ -54,11 +60,7 @@ class ProductsController < ApplicationController
 	def new
 		@brands = Brand.all
 		
-		@states = [
-			"neuf",
-			"en bon état",
-			"abimé"
-		]
+		@states = STATES
 
 		@categories = Category.all
 		@product = Product.new
@@ -87,16 +89,14 @@ class ProductsController < ApplicationController
 
 	def edit
 		@brands = Brand.all
-		@states = [
-			"neuf",
-			"en bon état",
-			"abimé"
-		]
+		@states = STATES
+		
 		@product = Product.find(params[:id])
 		@categories = []
 	 	@product.categories.each { |c|
 	 		@categories << c
 	 	}
+
 	 	@categories
 	end
 
