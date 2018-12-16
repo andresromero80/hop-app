@@ -103,17 +103,12 @@ end
 
 
 #Create Categories
-
-# 3.times do |index|
-  category = Category.create!(name: "Spectacle")
-  category = Category.create!(name: "Cinéma")
-  category = Category.create!(name: "Entretien")
-  category = Category.create!(name: "Bricolage")
-  category = Category.create!(name: "Cuisine")
-  category = Category.create!(name: "Musique")
-# end
-# 9 produits
-
+category = Category.create!(name: "Spectacle")
+category = Category.create!(name: "Cinéma")
+category = Category.create!(name: "Entretien")
+category = Category.create!(name: "Bricolage")
+category = Category.create!(name: "Cuisine")
+category = Category.create!(name: "Musique")
 
    #Create users
 10.times do |index|
@@ -258,4 +253,3 @@ end
   name = product.title.gsub(' ', "").gsub("/", "")
   product.uploads.attach(io: img  , filename: "#{name}.#{content_type}")
   product.categories << Category.find(3)
-
