@@ -33,6 +33,8 @@ class ProductsController < ApplicationController
 
 		# @products = Product.all
 		# @products = Product.where('id NOT IN (?)', Array.wrap(ids)).order(:title).page params[:page]
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
 	end
 
 	def index_with_filters
