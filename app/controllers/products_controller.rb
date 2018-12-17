@@ -31,8 +31,8 @@ class ProductsController < ApplicationController
 
 		@products = Product.where.not(id: ids).order(:title).page params[:page]
 
-		# @products = Product.all
-		# @products = Product.where('id NOT IN (?)', Array.wrap(ids)).order(:title).page params[:page]
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
 	end
 
 	def index_with_filters
@@ -54,14 +54,16 @@ class ProductsController < ApplicationController
 		end
 		@products = Product.where('id IN (?)', s).order(:title).page params[:page]
 		
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
+
 		render "index"
 	end
 
 	def new
-		@brands = Brand.all
-		
+		# @brands = Brand.all
+		@brands = Brand.all.order(:name)
 		@states = STATES
-
 		@categories = Category.all
 		@product = Product.new
 

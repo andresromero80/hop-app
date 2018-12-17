@@ -9,6 +9,22 @@ require 'faker'
 require 'mime-types'
 # require 'filemagic'
 
+
+# #Create address
+# 10.times do |index|
+#   address = Address.create!(street_number: "123", street: Faker::StarWars.planet, city: Faker::StarWars.planet, postal_code: Faker::Address.building_number, country: "France")
+    
+# end 
+
+# User.new(firstname: "A", lastname: "B", number: "1234567", email: "1@1.com", address_id: 1, password: "123456", password_confirmation: "123456")
+
+#Create users
+# 10.times do |index|
+#   user = User.new(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
+#     number: "1234567", email: "#{index+1}@#{index+1}.com", address_id: index+1, password: "123456")
+#   user.skip_confirmation!
+#   user.save!
+# =======
 # #Create address
 addresses = [
   {
@@ -112,8 +128,10 @@ category = Category.create!(name: "Musique")
 
    #Create users
 10.times do |index|
-  user = User.create!(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
+  user = User.new(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, 
     number: "1234567", email: "#{index+1}@#{index+1}.com", address_id: index+1, password: "123456")
+  user.skip_confirmation!
+  user.save!
 end
 
 # #Create inventory

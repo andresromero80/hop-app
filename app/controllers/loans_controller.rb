@@ -27,15 +27,25 @@ class LoansController < ApplicationController
 	end
 
 	def ask_confirm
-		loan = Loan.find(params[:loan_id].to_i)
+		@loan = Loan.find(params[:loan_id].to_i)
 		object_params = { is_accepted: true }
-		loan.update(object_params)
+		@loan.update(object_params)
+
+  	respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def ask_refuse
-		loan = Loan.find(params[:loan_id].to_i)
+		@loan = Loan.find(params[:loan_id].to_i)
 		object_params = { is_accepted: false }
-		loan.update(object_params)
+		@loan.update(object_params)
+
+  	respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def back_ask
@@ -45,15 +55,25 @@ class LoansController < ApplicationController
 	end
 
 	def back_confirm
-		loan = Loan.find(params[:loan_id].to_i)
-		object_params = { back_refuse: false, back_confirm: true }
-		loan.update(object_params)
+		@loan = Loan.find(params[:loan_id].to_i)
+		object_params = { back_confirm: true }
+		@loan.update(object_params)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def back_refuse
-		loan = Loan.find(params[:loan_id].to_i)
-		object_params = { back_refuse: true, back_confirm: false }
-		loan.update(object_params)
+		@loan = Loan.find(params[:loan_id].to_i)
+		object_params = { back_confirm: false }
+		@loan.update(object_params)
+
+  	respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def destroy
