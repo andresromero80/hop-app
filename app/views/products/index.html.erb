@@ -32,7 +32,9 @@
                   <% @categories.each do |c| %>
                     <li>
                       <a href="/categories/<%= c.id %>">
-                        <i class="fa fa-desktop"></i>
+                        <!-- <i class="fa fa-desktop"> -->
+                        <i class="<%= @icon_list[c.id-1] %>">
+                        </i>
                         <%= c.name.capitalize %>
                         <span class="category-counter">
                           (<%= c.products.count %>)

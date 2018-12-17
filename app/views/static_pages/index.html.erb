@@ -62,7 +62,8 @@
             <div class="col-md-2 col-sm-3 col-xs-6 f-category wow fadeIn" data-wow-delay="0s">
               <a href="/categories/<%= c.id %>">
                 <div class="icon">
-                  <i class="fa fa-car"></i>
+                  <!-- <i class="fa fa-car"></i> -->
+                  <i class= "<%= @icon_list[c.id-1] %>" ></i>
                 </div>
                 <h6> <%= c.name %> </h6> 
               </a>

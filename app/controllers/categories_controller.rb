@@ -19,6 +19,9 @@ class CategoriesController < ApplicationController
 			end
 		end
 
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
+
 		render "products/index"
 	end
 
@@ -26,6 +29,9 @@ class CategoriesController < ApplicationController
 		@categories = Category.all
 		@category = Category.find(params[:id])
 		@products = @category.products.distinct.order(:title).page params[:page]
+		
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
 		
 		render "products/index"
 	end
