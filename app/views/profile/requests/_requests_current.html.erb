@@ -5,8 +5,16 @@
         <% product = Product.find(ask.product_id) %>
         <tr id="object-request-<%= ask.id %>">
           <td>
+            <% if current_user.id == ask.borrower_id %>
+              <% user_contact = User.find(ask.owner_id) %>
+              <% contact = "#{user_contact.firstname } #{user_contact.lastname}" %>
+            <% else %>
+              <% user_contact = User.find(ask.borrower_id) %>
+              <% contact = "#{user_contact.firstname } #{user_contact.lastname}" %>
+            <% end %>
+
             <% conversation = Conversation.where(sender_id: ask.borrower_id, recipient_id: ask.owner_id).first %>
-            <%= link_to "#{User.find(ask.owner_id).firstname } #{User.find(ask.owner_id).lastname}", conversation_messages_path(conversation), class: 'inline-block' %>
+            <%= link_to "#{contact}", conversation_messages_path(conversation), class: 'inline-block' %>
           </td>
           <td class="add-img-td">
             <a href="/products/<%= product.id %>">
@@ -50,8 +58,16 @@
     <% product = Product.find(@objects.product_id) %>
     <tr id="object-request-<%= @objects.id %>">
       <td>
+        <% if current_user.id == @objects.borrower_id %>
+          <% user_contact = User.find(@objects.owner_id) %>
+          <% contact = "#{user_contact.firstname } #{user_contact.lastname}" %>
+        <% else %>
+          <% user_contact = User.find(@objects.borrower_id) %>
+          <% contact = "#{user_contact.firstname } #{user_contact.lastname}" %>
+        <% end %>
+
         <% conversation = Conversation.where(sender_id: @objects.borrower_id, recipient_id: @objects.owner_id).first %>
-        <%= link_to "#{User.find(@objects.owner_id).firstname } #{User.find(@objects.owner_id).lastname}", conversation_messages_path(conversation), class: 'inline-block' %>
+        <%= link_to "#{contact}", conversation_messages_path(conversation), class: 'inline-block' %>
       </td>
       <td class="add-img-td">
         <a href="/products/<%= product.id %>">

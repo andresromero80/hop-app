@@ -24,7 +24,7 @@
       	</thead>
       	<tbody>
       		<% @products.each do |p| %>
-      			<tr>
+      			<tr id="my-product-<%= p.id %>">
       				<td class="col-sm-3 text-center">
       					<%= p.title.capitalize %>
 		      		</td>
@@ -41,6 +41,9 @@
 									<li>
 										<%= link_to "Edit", edit_product_path(p), class: "nav-link" %>
 									</li>
+                  <li>
+                    <%= link_to 'Supprimer', product_path(p), remote: true, method: :delete %>
+                  </li>
 								</ul>
 							</td>
 						</tr>
