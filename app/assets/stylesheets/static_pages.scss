@@ -45,7 +45,7 @@
 
 #home-search {
   width: 1000px;
-  z-index: 9999;
+  z-index: 15;
 }
 
 .sub-title {
@@ -55,14 +55,14 @@
   width: 600px;
   height: 50px;
   z-index: 5;
-  margin-top: 250px;
+  margin-top: 150px;
   margin-left: 250px;
 }
 
 
 #srch-bar {
   position: absolute;
-  z-index: 9999;
+  z-index: 15;
 }
 
 #home-header {
