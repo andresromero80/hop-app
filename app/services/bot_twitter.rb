@@ -32,10 +32,18 @@ class BotTwitter
 		# 	puts object.text if object.is_a?(Twitter::Tweet)
 		# end 
 		text_mentions = []
-		mentions = @client.mentions_timeline
-		mentions.each do |object|
-			text_mentions << object.text
-		end 
-		return text_mentions[0,2]
+		begin
+		  mentions = @client.mentions_timeline
+			mentions.each do |object|
+				text_mentions << object.text
+			end 
+
+			text_mentions = text_mentions[0,2]
+		
+		rescue StandardError => e
+		  print e
+
+		end
+		return text_mentions
 	end 
 end

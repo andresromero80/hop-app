@@ -56,8 +56,16 @@
             <h3 class="block-title">Latest Tweets</h3>
             <div class="twitter-content clearfix">
               <ul class="twitter-list">
-                
-                <!-- BotTwitter ends--- missing limitation of messages -->
+                <!-- BotTwitter Starts -->
+                <% BotTwitter.new.stream_tweet.each do |text| %>
+                  <li class="clearfix">
+                    <span>
+                      <%= text %>
+                      <a href="https://twitter.com/HOverproduce">http://t.co/cLo2w7rWOx</a>
+                    </span>
+                  </li>
+                <% end %>
+                <!-- BotTwitter ends---  -->
                 <li class="clearfix">
                   <span>
                   Introducing Bootstrap 4 Features: What’s new, What’s gone!
