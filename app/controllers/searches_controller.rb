@@ -9,31 +9,16 @@ class SearchesController < ApplicationController
 	def location_filter(range)
 		result = nil
 		id_inventories = []
-		User.all.pluck('id', 'address_id').each do |id, address_id|
-			if !address_id.nil?
-				d = Address.find(address_id)
-				if d.latitude.nil? && d.longitude.nil?
-					coords = d.geocode
-					if !coords.nil?
-						d = d.update(latitude: coords[0], longitude: coords[1])
-					end
-				end
-
-				current_user_address = current_user.address
-				if !current_user_address.nil?
-					if current_user_address.latitude.nil? && current_user_address.latitude.nil?
-						compare = current_user_address.geocode
-						if !compare.nil?
-							current_user_address = current_user_address.update(latitude: compare[0], longitude: compare[1])
-						end
-					end
-				end
-
+		if !current_user.address.nil?
+			current_user_address = current_user.address
+			@addresses = Address.all.where.not(latitude: nil)
+			@addresses.each do |a|
 				begin
-					diff = d.distance_from(current_user.address.geocode, :km)
+					diff = a.distance_from(current_user_address.geocode, :km)
 					if !diff.nil?
 						if diff >= range.to_f
-							id_inventories << Inventory.where(user_id: id).pluck('id')
+							user_id = User.where(address_id: a.id)
+							id_inventories << Inventory.where(user_id: user_id).pluck('id')
 						end
 					end
 				rescue StandardError => e
