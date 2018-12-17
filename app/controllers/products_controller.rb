@@ -56,12 +56,13 @@ class ProductsController < ApplicationController
 		
 		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
   				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
-		
+
 		render "index"
 	end
 
 	def new
-		@brands = Brand.all
+		# @brands = Brand.all
+		@brands = Brand.all.order(:name)
 		@states = STATES
 		@categories = Category.all
 		@product = Product.new
