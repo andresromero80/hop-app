@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
 		ids = Product.where(inventory_id: Inventory.find_by(user_id: current_user.id)).pluck('id');
 
 		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
-		# @products = Product.all.order(:title).page params[:page]
+
 		s = params[:product_id].split(',')
 		if !ids.nil?
 			if ids.respond_to? :each
@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		# @brands = Brand.all
 		@brands = Brand.all.order(:name)
 		@states = STATES
 		@categories = Category.all
@@ -129,5 +128,15 @@ class ProductsController < ApplicationController
 
 		@review = Review.new
 		@loan = Loan.new
+	end
+
+	def destroy
+		@id_product = params[:id]
+		Product.find(@id_product).destroy
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 end
