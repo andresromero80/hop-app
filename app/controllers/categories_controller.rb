@@ -7,6 +7,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def index
+		
+
 		@categories = Category.all
 		@categories.each do |c|
 			if !c.products.empty?
@@ -32,7 +34,7 @@ class CategoriesController < ApplicationController
 		
 		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
   				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
-		
+
 		render "products/index"
 	end
 

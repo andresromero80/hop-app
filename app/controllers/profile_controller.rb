@@ -26,7 +26,7 @@ class ProfileController < ApplicationController
 	end
 
 	def asks_current
-		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true)
+		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true, back_confirm: nil)
 		@view = "asks/asks_current"
 		render "loans", objects: @objects
 	end
@@ -48,7 +48,8 @@ class ProfileController < ApplicationController
 
 	
 	def requests_current
-		@objects = Loan.where(owner_id: current_user.id, is_accepted: true)
+		@objects = Loan.where(owner_id: current_user.id, is_accepted: true, back_confirm: nil).or(Loan.where(owner_id: current_user.id, is_accepted: true, back_confirm: false))
+		puts @objects.inspect
 
 		@view = "requests/requests_current"
 

@@ -21,18 +21,32 @@
                 <%= product.title.capitalize %>
               </a>
             </h4>
-            <p> <strong> Posted On </strong>:
-            02-Oct-2017, 04:38 PM </p>
-            <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p>
+            <p> <strong> Ajouté le : </strong>: 
+              <%= product.created_at.getlocal.strftime("%d / %m / %y a %H : %M") %> 
+            </p>
+            <!-- <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p> -->
           </td>
           <td class="action-td">
             <% if ask.owner_id == current_user.id %>
               <p>
-                <a href="/loan/ask/refuse/<%= ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
+                <a href="/loans/ask/refuse/<%= ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
                   <i class=" fa fa-trash"></i>
                   Refuse
                 </a>
               </p>
+            <% else %>
+              <% if ask.back_ask == nil%>
+                <p>
+                  <a href="/loans/back/ask/<%= ask.id %>" data-remote="true" class="btn btn-danger btn-xs">
+                    <i class=" fa fa-trash"></i>
+                    Rendre l'objet
+                  </a>
+                </p>
+                <% else %>
+                  <p>
+                    Retour en attente
+                  </p>
+                <% end %>
             <% end %>
           </td>
         </tr>
@@ -54,13 +68,11 @@
       </td>
       <td class="ads-details-td">
         <h4>
-          <a href="/products/<%= product.id %>">
-            <%= product.title.capitalize %>
-          </a>
-        </h4>
-        <p> <strong> Posted On </strong>:
-        02-Oct-2017, 04:38 PM </p>
-        <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p>
+        <a href="/products/<%= product.id %>"><%= product.title.capitalize %></a>
+      </h4>
+        <strong> Ajouté le : </strong>
+        <%= product.created_at.getlocal.strftime("%d/%m/%y à %H:%M") %>
+        <!-- <p> <strong>Visitors </strong>: 221 <strong>Located In:</strong> New York </p> -->
       </td>
       <td class="action-td">
         <% if @objects.owner_id == current_user.id %>
