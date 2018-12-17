@@ -36,6 +36,6 @@ class BotTwitter
 		mentions.each do |object|
 			text_mentions << object.text
 		end 
-		return text_mentions
+		return text_mentions[0,2]
 	end 
 end
