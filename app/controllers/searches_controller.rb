@@ -12,17 +12,19 @@ class SearchesController < ApplicationController
 		if !current_user.address.nil?
 			current_user_address = current_user.address
 			@addresses = Address.all.where.not(latitude: nil)
-			@addresses.each do |a|
-				begin
-					diff = a.distance_from(current_user_address.geocode, :km)
-					if !diff.nil?
-						if diff >= range.to_f
-							user_id = User.where(address_id: a.id)
-							id_inventories << Inventory.where(user_id: user_id).pluck('id')
+			if !@addresses.nil?
+				@addresses.each do |a|
+					begin
+						diff = a.distance_from(current_user_address.geocode, :km)
+						if !diff.nil?
+							if diff >= range.to_f
+								user_id = User.where(address_id: a.id)
+								id_inventories << Inventory.where(user_id: user_id).pluck('id')
+							end
 						end
+					rescue StandardError => e
+						puts e.message
 					end
-				rescue StandardError => e
-					puts e.message
 				end
 			end
 		end
