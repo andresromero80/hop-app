@@ -18,6 +18,7 @@ class ProfileController < ApplicationController
 	def asks_pending
 		@objects = Loan.where(borrower_id: current_user.id, is_accepted: nil)
 		@view = "asks/asks_pending"
+		@tag = "Mes demandes en attente"
 		puts @objects.inspect
 		render "loans", objects: @objects
 	end
@@ -28,12 +29,14 @@ class ProfileController < ApplicationController
 	def asks_current
 		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true, back_confirm: nil)
 		@view = "asks/asks_current"
+		@tag = "Mes demandes en cours"
 		render "loans", objects: @objects
 	end
 
 	def asks_past
 		@objects = Loan.where(borrower_id: current_user.id, is_accepted: true, back_confirm: true)
 		@view = "asks/asks_past"
+		@tag = "Mes demandes passées"
 
 		render "loans", objects: @objects
 	end
@@ -43,6 +46,7 @@ class ProfileController < ApplicationController
 	def requests_pending
 		@objects = Loan.where(owner_id: current_user.id, is_accepted: nil)
 		@view = "requests/requests_pending"
+		@tag = "Mes prêts en attente"
 		render "loans", objects: @objects
 	end
 
@@ -52,6 +56,7 @@ class ProfileController < ApplicationController
 		puts @objects.inspect
 
 		@view = "requests/requests_current"
+		@tag = "Mes prêts en cours"
 
 		render "loans", objects: @objects
 	end
@@ -59,6 +64,7 @@ class ProfileController < ApplicationController
 	def requests_past
 		@objects = Loan.where(owner_id: current_user.id, is_accepted: true, back_confirm: true)
 		@view = "requests/requests_past"
+		@tag = "Mes prêts passés"
 
 		render "loans", objects: @objects
 	end
