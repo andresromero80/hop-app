@@ -55,12 +55,19 @@ class LoansController < ApplicationController
 		loan = Loan.find(params[:loan_id].to_i)
 		object_params = { back_ask: true }
 		loan.update(object_params)
+		 #Message to owner
+        owner = User.find(loan.owner_id)
+        LoanMailer.with(user: owner).loan_return_email.deliver_now
+
 	end
 
 	def back_confirm
 		@loan = Loan.find(params[:loan_id].to_i)
 		object_params = { back_confirm: true }
 		@loan.update(object_params)
+		#Message to borrower
+        borrower = User.find(@loan.borrower_id)
+        LoanMailer.with(user: borrower).loan_return_confirm_email.deliver_now
 
     respond_to do |format|
       format.html
