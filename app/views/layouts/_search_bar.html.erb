@@ -1,14 +1,13 @@
-<form class="search-form" action="/products-search" method="post">
+<form class="search-form" action="/products-search" method="post" style="position: relative; z-index: 10;">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <div class="col-md-12 col-sm-6 search-col">
     <div class="col-md-3 col-sm-6 search-col">
       <input class="form-control" name="search[location]" type="text" value="" placeholder="Distance maximale (km)" />
-    </div>  
-    
+    </div>      
     <div class="col-md-3 col-sm-6 search-col">
       <div class="input-group-addon search-category-container">
         <label class="styled-select">
-          <select class="dropdown-product selectpicker" multiple="true" name="search[categories][]" >
+          <select class="dropdown-product selectpicker" multiple="true" name="search[categories][]" style="position: relative; z-index: 10;" >
             <% @categories.each do |c| %>
               <option value="<%= c.id %>"> <%= c.name %> </option>
             <% end %>

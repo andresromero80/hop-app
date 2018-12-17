@@ -1,98 +1,99 @@
 <!-- Search wrapper Start -->
 <div id="search-row-wrapper">
-  <div class="container">
-    <div class="search-inner">
-        <!-- Start Search box -->
-        <div class="row search-bar">
-          <div class="advanced-search">
-            <%= render :partial => "layouts/search_bar" %>
-          </div>
-        </div>
-        <!-- End Search box -->
-    </div>
-  </div>
+ <div class="container">
+   <div class="search-inner">
+       <!-- Start Search box -->
+       <div class="row search-bar">
+         <div class="advanced-search">
+           <%= render :partial => "layouts/search_bar" %>
+         </div>
+       </div>
+       <!-- End Search box -->
+   </div>
+ </div>
 </div>
-<!-- Search wrapper End -->  
+<!-- Search wrapper End -->
 
-<!-- Main container Start -->  
+<!-- Main container Start -->
 <div class="main-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3 page-sidebar">
-        <aside>
-          <div class="inner-box">
-            <div class="categories">
-              <div class="widget-title">
-                <i class="fa fa-align-justify"></i>
-                <h4>All Categories</h4>
-              </div>
-              <div class="categories-list">
-                <ul>
-                  <% @categories.each do |c| %>
-                    <li>
-                      <a href="/categories/<%= c.id %>">
-                        <i class="fa fa-desktop"></i>
-                        <%= c.name.capitalize %>
-                        <span class="category-counter">
-                          (<%= c.products.count %>)
-                        </span>
-                      </a>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
+ <div class="container">
+   <div class="row">
 
-      <div class="col-sm-9 page-content">
-        <!-- Adds wrapper Start -->  
-        <% if !@products.nil? %>
-          <% if @products.respond_to? :each %>
-            <% @products.each.with_index do |product, ind| %>
-              <% if product %>
-                <div class="adds-wrapper">
-                  <div class="item-list">
-                    <div class="col-sm-2 no-padding photobox">
-                      <div class="add-image">
-                        <a href= <%= product_path(product.id) %> >
-                          <!-- <img src="images/djembe.jpg" alt=""> -->
-                          <% if product.uploads.size > 0 %>
-                            <%= image_tag(product.uploads.first) %>
-                          <% else %>
-                            <%= image_tag("djembe.jpg") %>
-                          <% end %>  
-                        </a>
-                      </div>
-                    </div>
+     <div class="col-sm-3 page-sidebar">
+       <aside>
+         <div class="inner-box">
+           <div class="categories">
+             <div class="widget-title">
+               <i class="fa fa-align-justify"></i>
+               <h4>All Categories</h4>
+             </div>
+             <div class="categories-list">
+               <ul>
+                 <% @categories.each do |c| %>
+                   <li>
+                     <a href="/categories/<%= c.id %>">
+                       <i class="<%= @icon_list[c.id-1] %>"></i>
+                       <%= c.name.capitalize %>
+                       <span class="category-counter">
+                         (<%= c.products.count %>)
+                       </span>
+                     </a>
+                   </li>
+                 <% end %>
+               </ul>
+             </div>
+           </div>
+         </div>
+       </aside>
+     </div>
 
-                    <div class="col-sm-7 add-desc-box">
-                      <div class="add-details">
-                        <h5 class="add-title">
-                          <a href="/products/<%= product.id %>">
-                            Title: <%= product.title %>
-                          </a>
-                        </h5>
-                      </div>
+     <div class="col-sm-9 page-content">
+       <!-- Adds wrapper Start -->
 
-                      <div class="item_desc">
-                        Description: <%= product.short_desc %><br/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          <% end %>  
-        <% end %>
-      </div>
-      <!-- Adds wrapper End -->
-      
-      <!-- Start Pagination -->
-      <div class="pagination-bar">
-        <%= paginate @products %>
-      </div>
-    </div>
-  </div>
+       <% if !@products.nil? %>
+         <% if @products.respond_to? :each %>
+           <% @products.each.with_index do |product, ind| %>
+             <% if product %>
+               <div class="adds-wrapper">
+                 <div class="item-list">
+                   <div class="col-sm-2 no-padding photobox">
+                     <div class="add-image">
+                       <a href= <%= product_path(product.id) %> >
+                         <!-- <img src="images/djembe.jpg" alt=""> -->
+                         <% if product.uploads.size > 0 %>
+                           <%= image_tag(product.uploads.first) %>
+                         <% else %>
+                           <%= image_tag("djembe.jpg") %>
+                         <% end %>
+                       </a>
+                     </div>
+                   </div>
+                   <div class="col-sm-7 add-desc-box">
+                     <div class="add-details">
+                       <h5 class="add-title">
+                         <a href="/products/<%= product.id %>">
+                           <%= product.title %>
+                         </a>
+                       </h5>
+                     </div>
+
+                     <div class="item_desc">
+                       Description: <%= product.short_desc %><br/>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             <% end %>
+           <% end %>
+         <% end %>
+       <% end %>
+     </div>
+     <!-- Adds wrapper End -->
+     <!-- Deleted pagination -->
+           <!-- Start Pagination -->
+     <div class="pagination-bar">
+       <%= paginate @products %>
+     </div>
+   </div>
+ </div>
 </div>
