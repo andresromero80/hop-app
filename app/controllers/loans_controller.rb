@@ -30,7 +30,10 @@ class LoansController < ApplicationController
 		@loan = Loan.find(params[:loan_id].to_i)
 		object_params = { is_accepted: true }
 		@loan.update(object_params)
-
+		 #Message to borrower
+        borrower = User.find(@loan.borrower_id)
+        LoanMailer.with(user: borrower).loan_accept_email.deliver_now
+        
   	respond_to do |format|
       format.html
       format.js
