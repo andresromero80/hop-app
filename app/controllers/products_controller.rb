@@ -54,6 +54,9 @@ class ProductsController < ApplicationController
 		end
 		@products = Product.where('id IN (?)', s).order(:title).page params[:page]
 		
+		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
+  				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
+		
 		render "index"
 	end
 
