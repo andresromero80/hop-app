@@ -6,28 +6,31 @@
       <div class="product-info">
         <div class="col-sm-8">
           <div class="inner-box ads-details-wrapper">
-            <h2> <%= @product.title %> </h2>
+            <h2> <%= @product.title.capitalize %> </h2>
             <% if @product.inventory.user.id == current_user.id %>
               <h2> <%= link_to "Edit Product", edit_product_path(@product) %> </h2>
             <% else %>
-            <div>
-              <% if current_user.id != @product.inventory.user.id %>
-                <h2 class="btn-ask">
-                  <%= form_for @loan, url: "/loans/ask", method: "post", remote: true, class: "search-form" do |f| %>
-                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                    <%= f.hidden_field :borrower_id, value: current_user.id  %>
-                    <%= f.hidden_field :product_id, value: @product.id %>
-                    <%= f.hidden_field :owner_id, value: @product.inventory.user.id %>
-                    <%= f.submit "Demande de pret", commit: "Create", class: "btn btn-common" %>
+              <div>
+                <% if current_user.id != @product.inventory.user.id %>
+                  <% if Loan.where(borrower_id: current_user.id, product_id: @product.id).empty? %>
+                    <span class="nav-link">
+                      <%= form_for @loan, url: "/loans/ask", method: "post", class: "search-form" do |f| %>
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <%= f.hidden_field :borrower_id, value: current_user.id  %>
+                        <%= f.hidden_field :product_id, value: @product.id %>
+                        <%= f.hidden_field :owner_id, value: @product.inventory.user.id %>
+                        <%= f.submit "Demande de pret", commit: "Create", class: "btn btn-common" %>
+                      <% end %>
+                    </span>
                   <% end %>
-                </h2>
-              <% end %>
-
-                <h2> Your review </h2>
-                <% 5.times do |index| %>
-                  <span id="rate-value-<%= index %>" class="fa fa-star"></span>
                 <% end %>
-            </div>
+                <span>
+                  Your review
+                  <% 5.times do |index| %>
+                    <span id="rate-value-<%= index %>" class="fa fa-star"></span>
+                  <% end %>
+                </span>
+              </div>
             <% end %>
 
             <div class="blockquote-footer"> by: <%= @user.email %>
@@ -46,44 +49,45 @@
           </div>
           <!-- Product Details -->
           <div class="box">
-            <h2 class="title-2"><strong>Product Details</strong></h2>
-              <div class="row">
-                <div class="ads-details-info col-md-8">
-                  <ul class="list-circle">
+            <h2 class="title-2">
+              <strong>Product Details</strong>
+            </h2>
+            <div class="row">
+              <div class="ads-details-info col-md-8">
+                <ul class="list-circle">
+                  <li>
+                    <i class="fa fa-check-circle"></i>
+                    <%= @product.long_desc %>
+                  </li>
+                </ul>
+              </div>
+              <!-- Details Panel -->
+              <div class="col-md-4">
+                <aside class="panel panel-body panel-details">
+                  <ul>
                     <li>
-                      <i class="fa fa-check-circle"></i>
-                      <%= @product.long_desc %>
+                      <p class=" no-margin "><strong>Durée du prêt:</strong> de.. à..</p>
                     </li>
-                  </ul>
-                </div>
-                <!-- Details Panel -->
-                <div class="col-md-4">
-                  <aside class="panel panel-body panel-details">
-                    <ul>
-                      <li>
-                        <p class=" no-margin "><strong>Durée du prêt:</strong> de.. à..</p>
-                      </li>
 
-                      <li>
-                        <p class="no-margin"><strong>Type:</strong> <a href="#">Electronics</a></p>
-                      </li>
+                    <li>
+                      <p class="no-margin"><strong>Type:</strong> <a href="#">Electronics</a></p>
+                    </li>
 
-                      <li>
-                        <p class="no-margin"><strong>Location:</strong> 
-                          <a href="#">
-                            <%= Address.find(@user.address_id).city %>
-                          </a>
-                        </p>
-                      </li>
+                    <li>
+                      <p class="no-margin"><strong>Location:</strong> 
+                        <a href="#">
+                          <%= Address.find(@user.address_id).city %>
+                        </a>
+                      </p>
+                    </li>
 
-                      <li>
-                        <p class=" no-margin "><strong>Country:</strong> 
-                          <%= Address.find(@user.address_id).country %>
-                        </p>
-                      </li>
-                      <%= puts @product.brand_id.inspect %>
-                      <%= puts @product.brand_id.class %>
-                      <% if !@product.brand_id.nil? %>
+                    <li>
+                      <p class=" no-margin "><strong>Country:</strong> 
+                        <%= Address.find(@user.address_id).country %>
+                      </p>
+                    </li>
+
+                    <% if !@product.brand_id.nil? %>
                       <li>
                         <p class="no-margin"><strong>Brand:</strong> 
                           <a href="#">
@@ -93,41 +97,40 @@
                           </a>
                         </p>
                       </li>
-                      <% end %>
-                    </ul>
-                  </aside>
-                </div>
-
-                <div class="ads-action">
-                  <ul class="list-border">
-                    <li>
-                      <a href="#">
-                        Posted by <i class=" fa fa-user"></i> <%= @user.email %>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#">
-                        <i class=" fa fa-heart"></i> Save ad
-                      </a>
-                    </li>
+                    <% end %>
                   </ul>
-                </div>
+                </aside>
+              </div>
+              <div class="ads-action">
+                <ul class="list-border">
+                  <li>
+                    <a href="#">
+                      Posted by <i class=" fa fa-user"></i> <%= @user.email %>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class=" fa fa-heart"></i> Save ad
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="inner-box">
-            <div class="widget-title">
-              <h4>Advertisement</h4>
-            </div>
-            <img src="assets/img/img1.jpg" alt="">
+      </div>
+      <div class="col-sm-4">
+        <div class="inner-box">
+          <div class="widget-title">
+            <h4>Advertisement</h4>
           </div>
+          <img src="assets/img/img1.jpg" alt="">
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
 <script>

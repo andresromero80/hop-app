@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 		(ids << Loan.where(borrower_id: current_user.id, back_ask: nil).pluck('product_id')).flatten!
 
 		@products = Product.where.not(id: ids).order(:title).page params[:page]
-		
+
 		@icon_list = ["fa fa-users", "fa fa-film", "fa fa-briefcase", 
   				"fa fa-wrench", "fa fa-cutlery", "fa fa-music"]
 	end
@@ -59,9 +59,7 @@ class ProductsController < ApplicationController
 
 	def new
 		@brands = Brand.all
-		
 		@states = STATES
-
 		@categories = Category.all
 		@product = Product.new
 

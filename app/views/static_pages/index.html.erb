@@ -1,14 +1,23 @@
 <!-- Start intro section -->
 <section id="intro" class="section-intro">
   <div class="overlay" id="intro-home-page">
-    <div class="container" id="home-page" style="display: flex; justify-content: center !important;">
+    <div
+      class="container"
+      id="home-page"
+      style="display: flex; justify-content: center !important;">
       <!-- Start Search box -->
-      <div class="main-text">
+      <div class="main-text" id="home-header">
         <h2 class="intro-title" style="width: 80%; display: block; margin-left: auto; margin-right: auto;">
-          <%= image_tag "Ha_Ov_Pr.png" %></h2>
-        <div class="search-inner" style="display: block; margin-left: auto; margin-right: auto;" id="home-search"> 
+          <%= image_tag "HaOvPr.png" %>
+        </h2>
+        <br>
+        <div
+          class="search-inner" 
+          style="display: block; margin-left: auto; margin-right: auto;"
+          id="home-search"> 
           <br>
-          <div class="row search-bar"> 
+          <!-- <div class="row search-bar" id="srch-bar">  -->
+          <div class="row search-bar">
             <div class="advanced-search"> 
               <%= render :partial => "layouts/search_bar" %>
             </div>
@@ -38,11 +47,10 @@
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
       </div>
     </div>
-
   </div>
-
 </section>
     <!-- end intro section -->
+<br>
 
 <div class="wrapper">      
   <section class="grid-category">
@@ -62,7 +70,6 @@
             <div class="col-md-2 col-sm-3 col-xs-6 f-category wow fadeIn" data-wow-delay="0s">
               <a href="/categories/<%= c.id %>">
                 <div class="icon">
-                  <!-- <i class="fa fa-car"></i> -->
                   <i class= "<%= @icon_list[c.id-1] %>" ></i>
                 </div>
                 <h6> <%= c.name %> </h6> 
