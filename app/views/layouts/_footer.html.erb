@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0">
           <div class="widget">
-            <h3 class="block-title">About us</h3>
+            <h3 class="block-title">À propos du HOP</h3>
             <div class="textwidget">
               <p>Spectacle, cinéma, musique, travaux d'entretien des espaces verts ou encore réparations d'objets en tout genre, tant de domaines où le matériel fait souvent défaut ! Nous souhaitons développer un espace dans lequel il sera possible de partager du matériel entre particuliers et professionnels.</p>
             </div>
@@ -14,18 +14,18 @@
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.5">
           <div class="widget">
-            <h3 class="block-title">Useful Links</h3>
+            <h3 class="block-title">Liens utiles</h3>
             <ul class="menu">
                   <% unless user_signed_in? %>
                   <li>
-                    <%= link_to "Log in", new_user_session_path %>
+                    <%= link_to "Se connecter", new_user_session_path %>
                   </li>
                   <li>
-                    <%= link_to "Sign up", new_user_registration_path %>
+                    <%= link_to "Créer un compte", new_user_registration_path %>
                   </li>
                   <% else %>
                   <li>
-                    <%= link_to "Products", "/products" %>
+                    <%= link_to "Produits", "/products" %>
                   </li>
                   <li>
                     <%= link_to "Messages", conversations_path %>
@@ -43,7 +43,7 @@
                     <%= link_to "Emprunts", profile_asks_pending_path %>
                   </li>        
                   <li>
-                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                    <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                   </li>
                   <% end %>
             </ul>
@@ -53,7 +53,7 @@
         <!-- Tweets Begin -->
         <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="1s">
           <div class="widget">
-            <h3 class="block-title">Latest Tweets</h3>
+            <h3 class="block-title">Derniers tweets</h3>
             <div class="twitter-content clearfix">
               <ul class="twitter-list">
                 <!-- BotTwitter Starts -->
@@ -80,7 +80,7 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="1.5s">
           <div class="widget">
-            <h3 class="block-title">Random Ads</h3>
+            <h3 class="block-title">Publicité</h3>
             <ul class="featured-list">
               <li>
                 <!-- <img alt="" src="assets/img/featured/img1.jpg"> -->

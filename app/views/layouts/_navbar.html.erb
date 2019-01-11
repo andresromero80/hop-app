@@ -22,14 +22,14 @@
             <ul class="nav navbar-nav navbar-right">
               <% unless user_signed_in? %>
                   <li>
-                    <%= link_to "Log in", new_user_session_path %>
+                    <%= link_to "Se connecter", new_user_session_path %>
                   </li>
                   <li>
-                    <%= link_to "Sign up", new_user_registration_path %>
+                    <%= link_to "Créer un compte", new_user_registration_path %>
                   </li>
                   <% else %>
                   <li>
-                    <%= link_to "Products", "/products" %>
+                    <%= link_to "Produits", "/products" %>
                   </li>
                   <li>
                     <%= link_to "Messages", conversations_path %>
@@ -54,13 +54,13 @@
                     </div>        
                   </li>
                   <li>
-                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                    <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                   </li>
                   <% end %>
               <li class="postadd">
             <a class="btn btn-danger btn-post" href="/products/new">
               <span class="fa fa-plus-circle"></span>
-              Add products
+              Produits
             </a>
           </li>
         </ul>
